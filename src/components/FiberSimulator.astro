@@ -1,0 +1,198 @@
+---
+---
+
+<section id="simulador" class="py-24 relative bg-slate-50 border-b border-slate-200/80 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Title -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold uppercase tracking-wider">
+        Simulador Interactivo de Experiencia
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+        ¿Qué podés hacer con <span class="text-gradient-ip">tu velocidad?</span>
+      </h2>
+      <p class="text-slate-600 text-base sm:text-lg">
+        Desplázate hacia abajo o desliza la barra para ver la capacidad de dispositivos y rendimiento que desbloqueás con cada plan.
+      </p>
+    </div>
+
+    <!-- Main Simulator Box -->
+    <div class="max-w-4xl mx-auto bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl relative">
+      
+      <!-- Interactive Speed Slider Control -->
+      <div class="space-y-4 pb-8 border-b border-slate-100">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold uppercase text-slate-500">Nivel de Velocidad</span>
+          <span id="sim-speed-badge" class="text-2xl sm:text-3xl font-black text-[#FC0432] font-mono">
+            50 <span class="text-base text-slate-500">MB</span>
+          </span>
+        </div>
+
+        <input 
+          type="range" 
+          id="speed-range-slider" 
+          min="10" 
+          max="500" 
+          step="10" 
+          value="50" 
+          class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#FC0432]"
+        />
+
+        <div class="flex justify-between text-[11px] font-mono text-slate-400 font-semibold px-1">
+          <span>10 MB (Básico)</span>
+          <span>50 MB (Familiar)</span>
+          <span>200 MB (Turbo)</span>
+          <span>500 MB (Pro/Empresa)</span>
+        </div>
+      </div>
+
+      <!-- Live Devices Grid (se iluminan / activan dinámicamente) -->
+      <div class="py-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        
+        <!-- Device 1: Celulares / Redes -->
+        <div id="sim-dev-1" class="p-5 rounded-2xl border-2 border-[#FC0432] bg-red-50/50 text-center transition-all duration-300">
+          <div class="text-3xl mb-2">📱</div>
+          <h4 class="font-bold text-slate-900 text-sm">Redes & WhatsApp</h4>
+          <span id="dev-status-1" class="text-[11px] font-mono text-[#FC0432] font-bold mt-1 block">Hasta 4 Dispositivos</span>
+        </div>
+
+        <!-- Device 2: Streaming HD / 4K -->
+        <div id="sim-dev-2" class="p-5 rounded-2xl border-2 border-slate-200 bg-slate-50/60 text-center transition-all duration-300">
+          <div class="text-3xl mb-2">📺</div>
+          <h4 class="font-bold text-slate-900 text-sm">Smart TV (Streaming)</h4>
+          <span id="dev-status-2" class="text-[11px] font-mono text-slate-400 mt-1 block">1 Pantalla HD</span>
+        </div>
+
+        <!-- Device 3: Teletrabajo & Zoom -->
+        <div id="sim-dev-3" class="p-5 rounded-2xl border-2 border-slate-200 bg-slate-50/60 text-center transition-all duration-300">
+          <div class="text-3xl mb-2">💻</div>
+          <h4 class="font-bold text-slate-900 text-sm">Home Office / Zoom</h4>
+          <span id="dev-status-3" class="text-[11px] font-mono text-slate-400 mt-1 block">Básico</span>
+        </div>
+
+        <!-- Device 4: Gaming & 4K Simultáneo -->
+        <div id="sim-dev-4" class="p-5 rounded-2xl border-2 border-slate-200 bg-slate-50/60 text-center transition-all duration-300">
+          <div class="text-3xl mb-2">🎮</div>
+          <h4 class="font-bold text-slate-900 text-sm">Gaming & Descargas</h4>
+          <span id="dev-status-4" class="text-[11px] font-mono text-slate-400 mt-1 block">Requiere +100MB</span>
+        </div>
+
+      </div>
+
+      <!-- Plan recommendation output -->
+      <div class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono uppercase text-slate-500 font-bold block">Plan Recomendado para tu caso:</span>
+          <span id="sim-plan-name" class="text-xl font-black text-slate-900">Plan Esencial 50 MB</span>
+        </div>
+        <a 
+          id="sim-cta-btn"
+          href="https://wa.me/584260337589?text=Hola,%20solicito%20contratar%20el%20Plan%20Esencial%2050MB" 
+          target="_blank"
+          class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#FC0432] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-md shadow-[#FC0432]/25 uppercase tracking-wider text-center"
+        >
+          Solicitar este Plan
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const slider = document.getElementById('speed-range-slider') as HTMLInputElement;
+  const speedBadge = document.getElementById('sim-speed-badge');
+  const planName = document.getElementById('sim-plan-name');
+  const ctaBtn = document.getElementById('sim-cta-btn');
+
+  const dev1 = document.getElementById('sim-dev-1');
+  const dev2 = document.getElementById('sim-dev-2');
+  const dev3 = document.getElementById('sim-dev-3');
+  const dev4 = document.getElementById('sim-dev-4');
+
+  const status1 = document.getElementById('dev-status-1');
+  const status2 = document.getElementById('dev-status-2');
+  const status3 = document.getElementById('dev-status-3');
+  const status4 = document.getElementById('dev-status-4');
+
+  function updateSimulator(speed: number) {
+    if (speedBadge) speedBadge.innerHTML = `${speed} <span class="text-base text-slate-500">MB</span>`;
+
+    // 10 MB - 40 MB
+    if (speed < 50) {
+      if (planName) planName.innerText = "Plan Hogar 10 - 20 MB";
+      if (ctaBtn) ctaBtn.setAttribute('href', 'https://wa.me/584260337589?text=Hola,%20me%20interesa%20el%20Plan%20Hogar');
+      
+      setDeviceActive(dev1, status1, true, "2 a 3 Móviles");
+      setDeviceActive(dev2, status2, false, "Streaming Básico");
+      setDeviceActive(dev3, status3, false, "Llamadas de voz");
+      setDeviceActive(dev4, status4, false, "No recomendado");
+    }
+    // 50 MB - 150 MB
+    else if (speed >= 50 && speed < 200) {
+      if (planName) planName.innerText = "Plan Fibra Esencial 50 MB";
+      if (ctaBtn) ctaBtn.setAttribute('href', 'https://wa.me/584260337589?text=Hola,%20me%20interesa%20el%20Plan%20Fibra%2050MB');
+
+      setDeviceActive(dev1, status1, true, "6+ Móviles Simultáneos");
+      setDeviceActive(dev2, status2, true, "1-2 Pantallas Full HD");
+      setDeviceActive(dev3, status3, true, "Zoom y Meet Fluidos");
+      setDeviceActive(dev4, status4, false, "Juegos Ligeros");
+    }
+    // 200 MB - 350 MB
+    else if (speed >= 200 && speed < 400) {
+      if (planName) planName.innerText = "Plan Fibra Turbo 200 MB Simétrico";
+      if (ctaBtn) ctaBtn.setAttribute('href', 'https://wa.me/584260337589?text=Hola,%20me%20interesa%20el%20Plan%20Fibra%20Turbo%20200MB');
+
+      setDeviceActive(dev1, status1, true, "15+ Dispositivos");
+      setDeviceActive(dev2, status2, true, "3+ Pantallas en 4K");
+      setDeviceActive(dev3, status3, true, "Teletrabajo Intensivo");
+      setDeviceActive(dev4, status4, true, "Gaming Ultra Ping <8ms");
+    }
+    // 400 MB - 500 MB
+    else {
+      if (planName) planName.innerText = "Plan Solución Dedicada / Fibra Giga (500 MB)";
+      if (ctaBtn) ctaBtn.setAttribute('href', 'https://wa.me/584260337589?text=Hola,%20solicito%20cotización%20Plan%20Giga%20Dedicado%20500MB');
+
+      setDeviceActive(dev1, status1, true, "Sin límite de conexiones");
+      setDeviceActive(dev2, status2, true, "4K/8K Simultáneo");
+      setDeviceActive(dev3, status3, true, "Servidores & Cloud");
+      setDeviceActive(dev4, status4, true, "Torneos / Descarga Giga");
+    }
+  }
+
+  function setDeviceActive(el: HTMLElement | null, statusEl: HTMLElement | null, active: boolean, text: string) {
+    if (!el || !statusEl) return;
+    statusEl.innerText = text;
+    if (active) {
+      el.className = "p-5 rounded-2xl border-2 border-[#FC0432] bg-red-50/50 text-center transition-all duration-300 shadow-sm";
+      statusEl.className = "text-[11px] font-mono text-[#FC0432] font-bold mt-1 block";
+    } else {
+      el.className = "p-5 rounded-2xl border-2 border-slate-200 bg-slate-50/60 text-center opacity-60 transition-all duration-300";
+      statusEl.className = "text-[11px] font-mono text-slate-400 mt-1 block";
+    }
+  }
+
+  if (slider) {
+    slider.addEventListener('input', (e) => {
+      const val = parseInt((e.target as HTMLInputElement).value, 10);
+      updateSimulator(val);
+    });
+  }
+
+  // Sincronización automática opcional al scrollear sobre el simulador
+  const simSection = document.getElementById('simulador');
+  if (simSection && slider) {
+    window.addEventListener('scroll', () => {
+      const rect = simSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const progress = Math.min(1, Math.max(0, (windowHeight - rect.top) / (windowHeight + rect.height)));
+        const calculatedSpeed = Math.round((10 + progress * 490) / 10) * 10;
+        slider.value = calculatedSpeed.toString();
+        updateSimulator(calculatedSpeed);
+      }
+    }, { passive: true });
+  }
+</script>
