@@ -1,0 +1,65 @@
+---
+---
+
+<div id="fiber-beam-container" class="pointer-events-none fixed inset-0 z-30 overflow-hidden hidden md:block">
+  <!-- Cable de fibra guía tenue a la izquierda -->
+  <svg class="absolute top-0 left-6 lg:left-12 h-full w-8" preserveAspectRatio="none" viewBox="0 0 32 1000">
+    <!-- Línea base tenue del cable -->
+    <line 
+      x1="16" y1="0" x2="16" y2="1000" 
+      stroke="#e2e8f0" 
+      stroke-width="2" 
+      stroke-dasharray="4 4"
+    />
+    <!-- Línea de luz activa alimentada por scroll -->
+    <line 
+      id="fiber-progress-line" 
+      x1="16" y1="0" x2="16" y2="0" 
+      stroke="url(#fiber-gradient)" 
+      stroke-width="3.5" 
+      stroke-linecap="round"
+    />
+    
+    <defs>
+      <linearGradient id="fiber-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#FC0432" />
+        <stop offset="60%" stop-color="#ff2b52" />
+        <stop offset="100%" stop-color="#0A559F" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Pulso de luz brillante (Orb) que viaja con el scroll -->
+  <div 
+    id="fiber-light-orb" 
+    class="absolute left-6 lg:left-12 -translate-x-[7px] w-6 h-6 rounded-full bg-[#FC0432] shadow-[0_0_18px_6px_rgba(252,4,50,0.75)] flex items-center justify-center transition-transform duration-75"
+    style="top: 80px;"
+  >
+    <div class="w-2 h-2 rounded-full bg-white animate-ping"></div>
+  </div>
+</div>
+
+<script>
+  // Sincronización del haz de fibra lumínica con el scroll bidireccional
+  const orb = document.getElementById('fiber-light-orb');
+  const progressLine = document.getElementById('fiber-progress-line');
+
+  function updateFiberBeam() {
+    if (!orb || !progressLine) return;
+
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = Math.min(1, Math.max(0, scrollTop / (docHeight || 1)));
+
+    // Posición del orb en la ventana
+    const orbY = 90 + progress * (window.innerHeight - 150);
+    orb.style.transform = `translate3d(0, ${orbY - 90}px, 0)`;
+
+    // Dibujar trazo en el SVG proporcional a la altura
+    progressLine.setAttribute('y2', `${progress * 1000}`);
+  }
+
+  window.addEventListener('scroll', updateFiberBeam, { passive: true });
+  window.addEventListener('resize', updateFiberBeam);
+  updateFiberBeam();
+</script>
