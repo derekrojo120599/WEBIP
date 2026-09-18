@@ -1,127 +1,65 @@
 ---
 ---
 
-<section class="relative min-h-[92vh] flex items-center justify-center pt-36 pb-20 overflow-hidden bg-radial-mesh-light">
-  <!-- Subtle ambient fiber accents -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute top-1/2 -right-32 w-[28rem] h-[28rem] bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+<section class="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-radial-mesh-light">
+  <!-- Interactive Canvas para partículas de fibra óptica reactivas al mouse -->
+  <canvas id="hero-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0"></canvas>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="max-w-4xl mx-auto text-center space-y-8">
       
-      <!-- Hero Left Copy -->
-      <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-        
-        <div class="hero-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold tracking-wide shadow-xs">
-          <span class="w-2 h-2 rounded-full bg-[#FC0432] animate-ping"></span>
-          <span>INTERNET DE ALTA VELOCIDAD & FIBRA ÓPTICA EN TRUJILLO</span>
-        </div>
-
-        <h1 class="hero-title text-4xl sm:text-6xl font-black tracking-tight leading-[1.15] text-slate-900">
-          Vive una experiencia <br class="hidden sm:inline" />
-          <span class="text-gradient-ip">de otro nivel.</span>
-        </h1>
-
-        <p class="hero-desc text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-          Conexión de fibra óptica y soluciones inalámbricas estables para la educación de tus hijos, streaming sin interrupciones y soluciones dedicadas para empresas y productores en Valera y todo Trujillo.
-        </p>
-
-        <!-- CTA cluster -->
-        <div class="hero-cta flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-          <a 
-            href="#planes" 
-            class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-lg shadow-[#FC0432]/25 hover:scale-[1.02] active:scale-[0.98] transition-all text-center flex items-center justify-center gap-2"
-          >
-            <span>Ver Planes y Tarifas</span>
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-
-          <a 
-            href="https://portal.ipsistemas.com.ve" 
-            target="_blank"
-            class="w-full sm:w-auto px-6 py-4 rounded-xl text-sm font-bold text-[#0A559F] bg-blue-50 border border-blue-200 hover:bg-[#0A559F] hover:text-white transition-all text-center"
-          >
-            Portal de Pagos
-          </a>
-        </div>
-
-        <!-- Metrics stats -->
-        <div class="hero-stats pt-6 grid grid-cols-3 gap-4 border-t border-slate-200 max-w-lg mx-auto lg:mx-0">
-          <div>
-            <div class="text-2xl sm:text-3xl font-black text-[#FC0432] font-mono">100%</div>
-            <div class="text-xs text-slate-500 mt-0.5 font-medium">Estabilidad Real</div>
-          </div>
-          <div>
-            <div class="text-2xl sm:text-3xl font-black text-[#0A559F] font-mono">500 MB</div>
-            <div class="text-xs text-slate-500 mt-0.5 font-medium">Velocidad Máxima</div>
-          </div>
-          <div>
-            <div class="text-2xl sm:text-3xl font-black text-emerald-600 font-mono">24/7</div>
-            <div class="text-xs text-slate-500 mt-0.5 font-medium">Soporte Técnico</div>
-          </div>
-        </div>
-
+      <!-- Badge Conatel / Estado -->
+      <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-200/80 text-xs text-[#FC0432] font-semibold tracking-wide shadow-xs">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#FC0432] animate-ping"></span>
+        <span>INTERNET DE ALTA VELOCIDAD & FIBRA ÓPTICA EN TRUJILLO</span>
       </div>
 
-      <!-- Hero Right Card (Speed & Network Visualizer) -->
-      <div class="lg:col-span-5 relative">
-        <div class="hero-visual bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl shadow-slate-200/50 relative overflow-hidden">
-          
-          <div class="flex items-center justify-between pb-6 border-b border-slate-100">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span class="text-xs font-mono font-bold uppercase text-slate-700">Nodo Central Valera</span>
-            </div>
-            <span class="text-[11px] font-mono text-white bg-[#FC0432] px-2.5 py-1 rounded-md font-bold shadow-xs">CONATEL HGTS-00565</span>
-          </div>
+      <!-- Main Headline -->
+      <h1 class="hero-title text-5xl sm:text-7xl font-black tracking-tight leading-[1.12] text-slate-900">
+        Vive una experiencia <br />
+        <span class="text-gradient-ip">de otro nivel.</span>
+      </h1>
 
-          <!-- Central Speed Gauge Visual -->
-          <div class="py-8 text-center relative flex flex-col items-center justify-center">
-            
-            <div class="relative w-48 h-48 flex items-center justify-center">
-              <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
-                <circle class="text-slate-100" stroke-width="7" stroke="currentColor" fill="transparent" r="42" cx="50" cy="50" />
-                <circle 
-                  class="text-[#FC0432]" 
-                  stroke-width="7" 
-                  stroke-linecap="round" 
-                  stroke="currentColor" 
-                  fill="transparent" 
-                  r="42" 
-                  cx="50" 
-                  cy="50" 
-                  stroke-dasharray="264" 
-                  stroke-dashoffset="40"
-                />
-              </svg>
-              
-              <div class="absolute inset-0 flex flex-col items-center justify-center">
-                <span class="speed-number text-5xl font-black tracking-tight text-slate-900 font-mono">500</span>
-                <span class="text-xs font-bold text-[#FC0432] uppercase tracking-wider -mt-1">Mbps Máximo</span>
-              </div>
-            </div>
+      <!-- Description -->
+      <p class="hero-desc text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+        Conexión de fibra óptica y soluciones inalámbricas estables para la educación de tus hijos, streaming en alta definición y soluciones dedicadas para empresas y productores en Valera y todo Trujillo.
+      </p>
 
-          </div>
+      <!-- Action Buttons -->
+      <div class="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        <a 
+          href="#planes" 
+          class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-xl shadow-[#FC0432]/25 hover:scale-[1.02] active:scale-[0.98] transition-all text-center flex items-center justify-center gap-2"
+        >
+          <span>Ver Planes Disponibles</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
 
-          <!-- Real-time Status meters -->
-          <div class="grid grid-cols-2 gap-3 pt-2">
-            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/60">
-              <div class="text-[11px] font-semibold text-slate-500">Planes Residenciales</div>
-              <div class="text-sm font-bold text-slate-900 font-mono flex items-center gap-1.5 mt-0.5">
-                <span class="text-[#FC0432]">●</span> Desde 10 a 80 MB
-              </div>
-            </div>
-            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/60">
-              <div class="text-[11px] font-semibold text-slate-500">Fibra & Dedicados</div>
-              <div class="text-sm font-bold text-slate-900 font-mono flex items-center gap-1.5 mt-0.5">
-                <span class="text-[#0A559F]">●</span> Hasta 500 MB 1:1
-              </div>
-            </div>
-          </div>
+        <a 
+          href="https://portal.ipsistemas.com.ve" 
+          target="_blank"
+          class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-[#0A559F] bg-blue-50 border border-blue-200 hover:bg-[#0A559F] hover:text-white transition-all text-center"
+        >
+          Portal de Pagos
+        </a>
+      </div>
 
+      <!-- Trust Metrics pill stats -->
+      <div class="hero-stats pt-10 grid grid-cols-3 gap-6 border-t border-slate-200/80 max-w-2xl mx-auto">
+        <div>
+          <div class="text-3xl sm:text-4xl font-black text-[#FC0432] font-mono">100%</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Estabilidad Real</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-black text-[#0A559F] font-mono">500 MB</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Velocidad Máxima</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-black text-emerald-600 font-mono">24/7</div>
+          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Soporte Técnico</div>
         </div>
       </div>
 
@@ -132,6 +70,7 @@
 <script>
   import { animate } from 'animejs';
 
+  // Animaciones de entrada suaves
   animate('.hero-badge', {
     opacity: [0, 1],
     translateY: [-15, 0],
@@ -163,11 +102,124 @@
     ease: 'outQuad'
   });
 
-  animate('.hero-visual', {
+  animate('.hero-stats', {
     opacity: [0, 1],
-    scale: [0.94, 1],
-    duration: 900,
-    delay: 150,
-    ease: 'outExpo'
+    duration: 800,
+    delay: 450,
+    ease: 'outQuad'
   });
+
+  // Canvas interactivo de partículas flotantes de fibra óptica con física al pasar el mouse
+  const canvas = document.getElementById('hero-particles-canvas') as HTMLCanvasElement;
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = canvas.offsetWidth);
+    let height = (canvas.height = canvas.offsetHeight);
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = canvas.offsetWidth;
+      height = canvas.height = canvas.offsetHeight;
+    });
+
+    const colors = ['rgba(252, 4, 50, ', 'rgba(10, 85, 159, ', 'rgba(0, 150, 255, '];
+    
+    interface Particle {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      radius: number;
+      colorBase: string;
+      alpha: number;
+      baseX: number;
+      baseY: number;
+    }
+
+    const particleCount = Math.min(65, Math.floor(width / 20));
+    const particles: Particle[] = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      const x = Math.random() * width;
+      const y = Math.random() * height;
+      particles.push({
+        x,
+        y,
+        baseX: x,
+        baseY: y,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7,
+        radius: Math.random() * 2.5 + 1.2,
+        colorBase: colors[Math.floor(Math.random() * colors.length)],
+        alpha: Math.random() * 0.4 + 0.2
+      });
+    }
+
+    const mouse = { x: -1000, y: -1000, radius: 140 };
+
+    window.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    function render() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+
+      // Dibujar líneas conectoras tenues de fibra óptica
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(10, 85, 159, ${0.12 * (1 - dist / 110)})`;
+            ctx.lineWidth = 0.8;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Actualizar y dibujar partículas
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Rebote en bordes
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        // Interacción física con el cursor (repulsión magnética elástica)
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < mouse.radius) {
+          const force = (mouse.radius - distance) / mouse.radius;
+          const maxPush = 45;
+          const angle = Math.atan2(dy, dx);
+          p.x -= Math.cos(angle) * force * 4;
+          p.y -= Math.sin(angle) * force * 4;
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `${p.colorBase}${p.alpha})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(render);
+    }
+
+    render();
+  }
 </script>
