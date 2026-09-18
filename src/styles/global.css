@@ -7,55 +7,42 @@
     --color-ip-blue: #0A559F;
     --color-ip-blue-bright: #0066cc;
     --color-ip-dark: #0C1020;
-    --color-bg-base: #060913;
-    --color-surface: #0e1526;
-    --color-surface-card: #111827;
-    --color-text-muted: #757F95;
+    --color-bg-base: #ffffff;
+    --color-bg-subtle: #f8fafc;
+    --color-border: #e2e8f0;
+    --color-text-main: #0f172a;
+    --color-text-muted: #64748b;
   }
 
   body {
     background-color: var(--color-bg-base);
-    color: #f8fafc;
+    color: var(--color-text-main);
     font-family: 'Rubik', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 }
 
-.glass-panel {
-  background: rgba(14, 21, 38, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.card-white {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 10px -2px rgba(0, 0, 0, 0.02);
 }
 
-.glass-panel-glow {
-  background: rgba(14, 21, 38, 0.85);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(252, 4, 50, 0.3);
-  box-shadow: 0 0 35px -10px rgba(252, 4, 50, 0.2);
+.card-white-featured {
+  background: #ffffff;
+  border: 2px solid #FC0432;
+  box-shadow: 0 20px 40px -10px rgba(252, 4, 50, 0.12), 0 8px 16px -4px rgba(252, 4, 50, 0.06);
 }
 
 .text-gradient-ip {
-  background: linear-gradient(135deg, #FC0432 0%, #ff5271 50%, #0A559F 100%);
+  background: linear-gradient(135deg, #FC0432 0%, #0A559F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-gradient-red {
-  background: linear-gradient(135deg, #FC0432 0%, #ff4d6d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-blue {
-  background: linear-gradient(135deg, #38bdf8 0%, #0A559F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.bg-radial-mesh {
+.bg-radial-mesh-light {
   background-image: 
-    radial-gradient(at 15% 20%, rgba(252, 4, 50, 0.08) 0px, transparent 50%),
-    radial-gradient(at 85% 30%, rgba(10, 85, 159, 0.12) 0px, transparent 55%),
-    radial-gradient(at 50% 80%, rgba(223, 14, 14, 0.06) 0px, transparent 50%);
+    radial-gradient(at 10% 20%, rgba(252, 4, 50, 0.04) 0px, transparent 45%),
+    radial-gradient(at 90% 25%, rgba(10, 85, 159, 0.06) 0px, transparent 50%),
+    radial-gradient(at 50% 85%, rgba(241, 245, 249, 0.8) 0px, transparent 60%);
 }

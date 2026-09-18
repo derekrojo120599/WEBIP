@@ -9,34 +9,34 @@ const nodes = [
 ];
 ---
 
-<section id="cobertura" class="py-24 relative bg-[#060913]">
+<section id="cobertura" class="py-24 relative bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       <!-- Left text -->
       <div class="lg:col-span-5 space-y-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-xs text-cyan-300 font-mono uppercase tracking-wider">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs text-[#0A559F] font-semibold uppercase tracking-wider">
           Infraestructura Trujillo
         </div>
 
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-          Nuestra red llega donde <span class="text-gradient-cyan">otros no llegan.</span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          Nuestra red llega donde <span class="text-gradient-ip">otros no llegan.</span>
         </h2>
 
-        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
           Diseñamos y operamos una infraestructura híbrida de fibra óptica troncal y torres de microondas de alta capacidad para garantizar que los hogares, campos y empresas de Trujillo cuenten con internet ininterrumpido.
         </p>
 
-        <div class="p-6 rounded-2xl glass-panel border-white/5 space-y-3">
-          <div class="text-xs font-bold uppercase text-white tracking-wider">¿Tu zona no aparece en la lista?</div>
-          <p class="text-xs text-slate-400">
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+          <div class="text-xs font-bold uppercase text-slate-900 tracking-wider">¿Tu zona no aparece en la lista?</div>
+          <p class="text-xs text-slate-500 leading-relaxed">
             Expandimos constantemente nuestros anillos de fibra y enlaces punto a punto. Consultá con nuestro equipo de ingeniería.
           </p>
           <a 
             href="https://wa.me/584260337589?text=Hola,%20deseo%20consultar%20cobertura%20en%20mi%20zona"
             target="_blank"
-            class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 transition-colors pt-1"
+            class="inline-flex items-center gap-2 text-xs font-bold text-[#FC0432] hover:text-[#DF0E0E] transition-colors pt-1"
           >
             <span>Consultar viabilidad técnica por WhatsApp</span>
             <span>→</span>
@@ -44,24 +44,24 @@ const nodes = [
         </div>
       </div>
 
-      <!-- Right nodes visual grid -->
+      <!-- Right nodes grid -->
       <div class="lg:col-span-7">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {nodes.map((node, index) => (
-            <div class="coverage-card glass-panel p-5 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all duration-300 group">
+            <div class="coverage-card card-white p-5 rounded-2xl border border-slate-200 hover:border-[#FC0432]/40 hover:shadow-md transition-all duration-300 group">
               <div class="flex items-start justify-between">
                 <div>
                   <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <h3 class="text-base font-bold text-white group-hover:text-cyan-400 transition-colors">{node.city}</h3>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <h3 class="text-base font-bold text-slate-900 group-hover:text-[#FC0432] transition-colors">{node.city}</h3>
                   </div>
                   <span class="text-[11px] font-mono text-slate-500 block mt-0.5">{node.state}</span>
                 </div>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-500/20">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
                   {node.status}
                 </span>
               </div>
-              <p class="text-xs text-slate-400 mt-3 pt-3 border-t border-white/5 font-mono">
+              <p class="text-xs text-slate-600 mt-3 pt-3 border-t border-slate-100 font-medium">
                 {node.type}
               </p>
             </div>

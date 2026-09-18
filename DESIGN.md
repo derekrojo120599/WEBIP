@@ -1,25 +1,19 @@
-# DESIGN SYSTEM: IP SISTEMAS C.A.
+# DESIGN SYSTEM: IP SISTEMAS C.A. (White / Clean Modern Look)
 
-## 1. Corporate Brand Identity & Palette
-Extraído de los activos oficiales de IP SISTEMAS C.A. (`https://ipsistemas.com.ve`):
+## 1. Visual Theme: Crisp Modern White & Clean Corporate
+- **Background Principal:** `#FFFFFF` y tonalidades claras `#F8FAFC` / `#F1F5F9` (para alternar secciones con contraste suave).
+- **Navbar:** Fondo blanco puro (`#FFFFFF/95`) con borde sutil `#E2E8F0` y efecto `backdrop-blur` para que el `Logo color.svg` resalte con máxima nitidez.
+- **Top Bar:** `#F8FAFC` / `#0C1020` con información de contacto y habilitación CONATEL.
+- **Tarjetas / Contenedores:** Fondo blanco (`#FFFFFF`) con sombras suaves modernas (`box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05)`), bordes limpios `#E2E8F0` y realce en hover con Rojo IP.
+- **Footer:** `#0C1020` (Dark Slate elegante de cierre institucional con `Logo Blanco.svg`).
 
-- **Primary Color (Rojo IP):** `#FC0432` / `#DF0E0E` (Acentos de acción, llamados, velocidad, badges)
-- **Secondary Color (Azul Telecom):** `#0A559F` / `#0050DB` (Estructura corporativa, badges secundarios, conectividad)
-- **Deep Slate/Dark Surface (Modo Tech):** `#0C1020` (Fondos de alto contraste, tarjetas de planos)
-- **Neutral Dark Background:** `#060913` (Fondo general inmersivo)
-- **Neutral Light / Cards:** `#111726` (Superficies con elevación)
-- **Borders & Dividers:** `#E1E6EE` (Modo claro) / `rgba(255, 255, 255, 0.08)` (Modo oscuro)
-- **Body & Muted Text:** `#757F95` / `#94A3B8`
-- **Headings & High Contrast Text:** `#FFFFFF` / `#0C1020`
-- **Status Online / CONATEL:** `#10B981` (Emerald)
+## 2. Paleta Oficial de Colores
+- **Primary Color (Rojo IP):** `#FC0432` / `#DF0E0E` (Botones de acción, badges, detalles de velocidad).
+- **Secondary Color (Azul Telecom):** `#0A559F` / `#0050DB` (Botones secundarios, enlaces, portal de pagos).
+- **Headings & Títulos:** `#0C1020` / `#1E293B` (Alto contraste sobre blanco).
+- **Textos de Cuerpo & Párrafos:** `#475569` / `#64748B` (Lectura cómoda y descansada).
+- **Acentos de Estado:** `#10B981` (Verde esmeralda para CONATEL y estado operativo).
 
-## 2. Typography
-- **Primary Headings & Body:** `Rubik`, sans-serif (tipografía corporativa original de IP Sistemas) combinada con `Plus Jakarta Sans` para números y legibilidad tecnológica.
-- **Speeds & Data:** `JetBrains Mono` (Mbps, latencias y métricas).
-
-## 3. Assets & Icons
-- Carpeta de íconos SVG: `public/icons/` (servida directamente en `/icons/<nombre>.svg` en Astro/HTML).
-
-## 4. Motion System (Anime.js v4)
-- Animaciones sincronizadas al scroll para el flujo de datos.
-- Transiciones con gradientes de Rojo IP (`#FC0432`) a Azul Telecom (`#0A559F`).
+## 3. Tipografía
+- **Títulos & Botones:** `Rubik` (fuente oficial de la marca) + `Plus Jakarta Sans`.
+- **Métricas & Datos:** `JetBrains Mono`.
