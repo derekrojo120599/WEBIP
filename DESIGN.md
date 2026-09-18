@@ -1,21 +1,25 @@
-# DESIGN SYSTEM: IP SISTEMAS (ISP High Performance)
+# DESIGN SYSTEM: IP SISTEMAS C.A.
 
-## 1. Visual Identity & Atmosphere
-- **Concept:** Conectividad de Ultra Alta Velocidad & Fibra Óptica Pura.
-- **Palette (Deep Modern Dark & Neon Cyber/Fiber Accents):**
-  - Background Base: `#0a0f1d` (Deep Navy / Midnight)
-  - Surface Card: `#111827` (Rich Slate)
-  - Border Glass: `rgba(255, 255, 255, 0.08)` / `rgba(59, 130, 246, 0.2)`
-  - Primary Accent (Fiber Cyan): `#00f2fe` -> `#4facfe` (Gradient Beam)
-  - Secondary Accent (Laser Violet): `#7928ca` -> `#ff0080`
-  - High Contrast Text: `#f9fafb` (Headings) / `#94a3b8` (Muted / Body)
-  - Success Indicator (Low Latency / Conatel): `#10b981` (Emerald)
+## 1. Corporate Brand Identity & Palette
+Extraído de los activos oficiales de IP SISTEMAS C.A. (`https://ipsistemas.com.ve`):
+
+- **Primary Color (Rojo IP):** `#FC0432` / `#DF0E0E` (Acentos de acción, llamados, velocidad, badges)
+- **Secondary Color (Azul Telecom):** `#0A559F` / `#0050DB` (Estructura corporativa, badges secundarios, conectividad)
+- **Deep Slate/Dark Surface (Modo Tech):** `#0C1020` (Fondos de alto contraste, tarjetas de planos)
+- **Neutral Dark Background:** `#060913` (Fondo general inmersivo)
+- **Neutral Light / Cards:** `#111726` (Superficies con elevación)
+- **Borders & Dividers:** `#E1E6EE` (Modo claro) / `rgba(255, 255, 255, 0.08)` (Modo oscuro)
+- **Body & Muted Text:** `#757F95` / `#94A3B8`
+- **Headings & High Contrast Text:** `#FFFFFF` / `#0C1020`
+- **Status Online / CONATEL:** `#10B981` (Emerald)
 
 ## 2. Typography
-- Display / Headings: `Plus Jakarta Sans`, sans-serif (Bold, 800, tight tracking `-0.03em`)
-- Body: `Inter`, sans-serif (Clean, high legibility on dark modes)
-- Numbers / Speeds / Latency: `JetBrains Mono` or tabular numerals.
+- **Primary Headings & Body:** `Rubik`, sans-serif (tipografía corporativa original de IP Sistemas) combinada con `Plus Jakarta Sans` para números y legibilidad tecnológica.
+- **Speeds & Data:** `JetBrains Mono` (Mbps, latencias y métricas).
 
-## 3. Motion System (Anime.js v4)
-- **Scroll Sync (Bidirectional):** Elementos que se dibujan (SVG stroke dashboards), pulsos de fibra que viajan según el progreso de scroll, cards que emergen con efecto tilt/depth 3D.
-- **Micro-interactions:** Hover magnético en botones de CTA, brillo en bordes activos, switch suave de tabs (Residencial vs Empresarial).
+## 3. Assets & Icons
+- Carpeta de íconos SVG: `public/icons/` (servida directamente en `/icons/<nombre>.svg` en Astro/HTML).
+
+## 4. Motion System (Anime.js v4)
+- Animaciones sincronizadas al scroll para el flujo de datos.
+- Transiciones con gradientes de Rojo IP (`#FC0432`) a Azul Telecom (`#0A559F`).

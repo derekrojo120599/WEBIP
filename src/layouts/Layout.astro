@@ -7,7 +7,7 @@ interface Props {
 }
 
 const {
-  title = "IP SISTEMAS C.A. | Internet de Ultra Alta Velocidad & Fibra Óptica",
+  title = "IP SISTEMAS C.A. | Internet de Alta Velocidad & Fibra Óptica",
   description = "Proveedor líder de internet de alta velocidad, fibra óptica simétrica y enlaces dedicados en Trujillo y Valera. Habilitación CONATEL Nº HGTS-00565."
 } = Astro.props;
 ---
@@ -21,12 +21,12 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <!-- Google Fonts -->
+    <!-- Google Fonts Rubik & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-[#060913] text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+  <body class="bg-[#060913] text-slate-100 min-h-screen flex flex-col selection:bg-[#FC0432]/30 selection:text-white">
     <slot />
   </body>
 </html>

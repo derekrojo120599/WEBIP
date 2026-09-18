@@ -1,37 +1,47 @@
 ---
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-xl bg-[#060913]/80 border-b border-white/5">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-xl bg-[#060913]/90 border-b border-white/5">
+  <!-- Top bar corporativo -->
+  <div class="hidden lg:block bg-[#0C1020] border-b border-white/5 text-xs text-slate-400 py-1.5 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-1.5"><span class="text-[#FC0432]">📍</span> Calle 13, Valera 3101, Trujillo</span>
+        <span class="flex items-center gap-1.5"><span class="text-[#FC0432]">🕒</span> Lun - Sáb: 8:00 AM - 5:00 PM</span>
+        <span class="flex items-center gap-1.5"><span class="text-emerald-400">●</span> Conatel HGTS-00565</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:02712210316" class="hover:text-white transition-colors">0271-2210316</a>
+        <span>|</span>
+        <a href="https://www.instagram.com/ipsistemas.ve/" target="_blank" class="hover:text-[#FC0432] transition-colors">@ipsistemas.ve</a>
+      </div>
+    </div>
+  </div>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
     
-    <!-- Logo & Brand -->
+    <!-- Logo & Brand con colores corporativos Rojo y Azul -->
     <a href="/" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 p-[1px] shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-shadow">
-        <div class="w-full h-full bg-[#080d1a] rounded-[11px] flex items-center justify-center">
-          <svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
-            <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
-            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
-            <line x1="12" y1="20" x2="12.01" y2="20"></line>
-          </svg>
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FC0432] to-[#0A559F] p-[2px] shadow-lg shadow-[#FC0432]/20 group-hover:shadow-[#FC0432]/40 transition-shadow">
+        <div class="w-full h-full bg-[#0C1020] rounded-[10px] flex items-center justify-center font-black text-white text-sm tracking-wider">
+          <span class="text-[#FC0432]">I</span><span class="text-[#38bdf8]">P</span>
         </div>
       </div>
       <div>
         <span class="font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
           IP SISTEMAS
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          <span class="inline-block w-2 h-2 rounded-full bg-[#FC0432] animate-pulse"></span>
         </span>
-        <span class="text-[10px] tracking-widest text-cyan-400/80 font-mono block -mt-1 uppercase">Telecomunicaciones</span>
+        <span class="text-[10px] tracking-widest text-slate-400 font-mono block -mt-1 uppercase">C.A. • Telecomunicaciones</span>
       </div>
     </a>
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-      <a href="#planes" class="hover:text-cyan-400 transition-colors">Planes</a>
-      <a href="#cobertura" class="hover:text-cyan-400 transition-colors">Cobertura</a>
-      <a href="#experiencia" class="hover:text-cyan-400 transition-colors">Tecnología</a>
-      <a href="#faq" class="hover:text-cyan-400 transition-colors">Preguntas</a>
-      <a href="#contacto" class="hover:text-cyan-400 transition-colors">Contacto</a>
+      <a href="#planes" class="hover:text-[#FC0432] transition-colors">Planes</a>
+      <a href="#cobertura" class="hover:text-[#FC0432] transition-colors">Cobertura</a>
+      <a href="#faq" class="hover:text-[#FC0432] transition-colors">Preguntas</a>
+      <a href="tel:02712210316" class="hover:text-[#FC0432] transition-colors">Contacto</a>
     </nav>
 
     <!-- Action CTAs -->
@@ -40,7 +50,7 @@
         href="https://portal.ipsistemas.com.ve" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all duration-300 shadow-sm"
+        class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider text-white bg-[#0A559F]/50 border border-[#0A559F] hover:bg-[#0A559F] transition-all duration-300 shadow-sm"
       >
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect width="20" height="14" x="2" y="5" rx="2"></rect>
@@ -53,7 +63,7 @@
         href="https://wa.me/584260337589?text=Hola,%20deseo%20información%20sobre%20sus%20planes%20de%20internet" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-blue-400 hover:from-cyan-300 hover:to-blue-300 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#FC0432] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-lg shadow-[#FC0432]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
       >
         Contratar
       </a>
