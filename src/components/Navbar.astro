@@ -1,10 +1,10 @@
 ---
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-xl bg-white/95 border-b border-slate-200/80 shadow-xs">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-xl bg-white/90 border-b border-slate-200/80 shadow-xs">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
     
-    <!-- Logo SVG Oficial de IP Sistemas optimizado para aprovechar al máximo la altura del navbar -->
+    <!-- Brand Logo Oficial sobre fondo blanco -->
     <a href="/" class="flex items-center group py-1">
       <img 
         src="/icons/Logo%20color.svg" 
@@ -13,42 +13,62 @@
       />
     </a>
 
-    <!-- Desktop Navigation -->
+    <!-- Navigation Links -->
     <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
-      <a href="#planes" class="hover:text-[#FC0432] transition-colors">Planes</a>
-      <a href="#cobertura" class="hover:text-[#FC0432] transition-colors">Cobertura</a>
-      <a href="#faq" class="hover:text-[#FC0432] transition-colors">Preguntas</a>
-      <a href="tel:02712210316" class="hover:text-[#FC0432] transition-colors">Contacto</a>
+      <a href="#planes" class="hover:text-[#FC0432] transition-colors relative py-1 group">
+        <span>Planes</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC0432] transition-all duration-200 group-hover:w-full"></span>
+      </a>
+      <a href="#beneficios" class="hover:text-[#FC0432] transition-colors relative py-1 group">
+        <span>Beneficios</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC0432] transition-all duration-200 group-hover:w-full"></span>
+      </a>
+      <a href="#cobertura" class="hover:text-[#FC0432] transition-colors relative py-1 group">
+        <span>Cobertura</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC0432] transition-all duration-200 group-hover:w-full"></span>
+      </a>
+      <a href="#faq" class="hover:text-[#FC0432] transition-colors relative py-1 group">
+        <span>Preguntas</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC0432] transition-all duration-200 group-hover:w-full"></span>
+      </a>
+      <a href="tel:02712210316" class="hover:text-[#FC0432] transition-colors relative py-1 group">
+        <span>Contacto</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC0432] transition-all duration-200 group-hover:w-full"></span>
+      </a>
     </nav>
 
-    <!-- Action CTAs -->
+    <!-- CTAs -->
     <div class="flex items-center gap-3 sm:gap-4">
       <a 
         href="https://portal.ipsistemas.com.ve" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[#0A559F] bg-blue-50 border border-blue-200 hover:bg-[#0A559F] hover:text-white transition-all duration-200 shadow-xs"
+        class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[#0A559F] bg-blue-50 border border-blue-200/80 hover:bg-[#0A559F] hover:text-white transition-all duration-200 shadow-xs active:scale-95"
       >
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect width="20" height="14" x="2" y="5" rx="2"></rect>
           <line x1="2" x2="22" y1="10" y2="10"></line>
         </svg>
-        Portal de Pagos
+        <span>Portal de Pagos</span>
       </a>
       
       <a 
-        href="https://wa.me/584260337589?text=Hola,%20deseo%20información%20sobre%20sus%20planes%20de%20internet" 
+        href="https://wa.me/584260337589?text=Hola,%20deseo%20contratar%20internet%20de%20IP%20Sistemas" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#FC0432] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-md shadow-[#FC0432]/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-md shadow-[#FC0432]/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
       >
-        Contratar
+        <span>Contratar</span>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
       </a>
     </div>
 
   </div>
 
-  <!-- Barra de progreso de lectura / fibra óptica en el border-bottom del Navbar sticky -->
+  <!-- Scroll Progress Line en border-bottom -->
   <div class="absolute bottom-0 left-0 h-[2.5px] w-full bg-slate-100 overflow-hidden pointer-events-none">
     <div 
       id="navbar-scroll-progress" 

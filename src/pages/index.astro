@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
 import Plans from '../components/Plans.astro';
 import Coverage from '../components/Coverage.astro';
 import Faq from '../components/Faq.astro';
@@ -12,6 +13,7 @@ import Footer from '../components/Footer.astro';
   <Navbar />
   <main class="relative z-10">
     <Hero />
+    <Features />
     <Plans />
     <Coverage />
     <Faq />
@@ -22,22 +24,22 @@ import Footer from '../components/Footer.astro';
 <script>
   import { animate } from 'animejs';
 
-  // Sutil animación de entrada para tarjetas y elementos al cruzarse con el scroll
+  // Animación de entrada suave basada en scroll con IntersectionObserver & Anime.js
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         animate(entry.target, {
           opacity: [0, 1],
           translateY: [25, 0],
-          duration: 700,
+          duration: 650,
           ease: 'outCubic'
         });
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.12 });
 
-  document.querySelectorAll('.plan-card, .coverage-card, .faq-item').forEach(el => {
+  document.querySelectorAll('.plan-card, .coverage-card, .faq-item, .feature-card').forEach(el => {
     observer.observe(el);
   });
 </script>
