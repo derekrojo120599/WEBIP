@@ -47,63 +47,81 @@
         </a>
       </div>
 
-      <!-- PROPUESTA 2: Carrusel / Banner de Novedades y Servicios con Anime.js -->
-      <div class="pt-6 max-w-3xl mx-auto">
+      <!-- PROPUESTA 3: Router Óptico Flotante con Nodos y Ondas de Señal Vivas -->
+      <div class="pt-6 max-w-2xl mx-auto relative">
         
-        <div class="relative bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-8 overflow-hidden text-left">
+        <!-- Contenedor del dispositivo flotante -->
+        <div id="router-container" class="relative bg-white/90 backdrop-blur-md rounded-3xl border border-slate-200 shadow-2xl p-8 overflow-hidden transition-transform duration-300">
           
-          <!-- Barra superior con temporizador / auto-slide indicator -->
-          <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#FC0432] animate-pulse"></span>
-              <span class="text-xs font-mono font-bold uppercase text-slate-500">Destacados IP Sistemas</span>
-            </div>
-
-            <!-- Controles de navegación del carrusel -->
-            <div class="flex items-center gap-2">
-              <button id="carousel-prev-btn" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#FC0432] hover:text-white text-slate-700 font-bold flex items-center justify-center transition-colors text-xs shadow-xs">
-                ←
-              </button>
-              <button id="carousel-next-btn" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#FC0432] hover:text-white text-slate-700 font-bold flex items-center justify-center transition-colors text-xs shadow-xs">
-                →
-              </button>
-            </div>
+          <!-- Ondas de señal Wi-Fi / Fibra en el fondo del mockup -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
+            <div class="w-64 h-64 rounded-full border-2 border-red-200 animate-ping" style="animation-duration: 3s;"></div>
+            <div class="absolute w-44 h-44 rounded-full border-2 border-blue-200 animate-ping" style="animation-duration: 2s;"></div>
           </div>
 
-          <!-- Slide Content Dinámico -->
-          <div id="carousel-slide-box" class="flex flex-col sm:flex-row items-center gap-6 min-h-[120px]">
-            <div id="slide-icon" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center text-3xl sm:text-4xl shadow-xs shrink-0">
-              🚀
+          <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+            
+            <!-- Router Visual Mockup Digital -->
+            <div id="floating-router-mockup" class="w-32 h-32 rounded-2xl bg-gradient-to-tr from-slate-900 to-slate-800 p-4 shadow-xl flex flex-col justify-between text-white relative transition-transform">
+              <div class="flex items-center justify-between">
+                <div class="flex gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="w-2 h-2 rounded-full bg-[#FC0432] animate-pulse" style="animation-delay: 200ms;"></span>
+                  <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style="animation-delay: 400ms;"></span>
+                </div>
+                <span class="text-[9px] font-mono text-slate-400">Wi-Fi 6</span>
+              </div>
+
+              <!-- Antenas / Isotipo -->
+              <div class="text-center py-2">
+                <span class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FC0432] to-[#38bdf8] font-mono">
+                  FTTH
+                </span>
+                <span class="text-[8px] font-mono text-slate-400 block tracking-widest">GIGABIT ONU</span>
+              </div>
+
+              <div class="text-[9px] font-mono text-emerald-400 text-center bg-black/40 rounded py-0.5 border border-white/5">
+                ● ONLINE 100%
+              </div>
             </div>
 
-            <div class="space-y-1.5 text-center sm:text-left flex-1">
-              <span id="slide-category" class="text-[11px] font-mono font-bold uppercase text-[#FC0432] bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200 inline-block">
-                Tecnología FTTH
-              </span>
-              <h3 id="slide-title" class="text-xl sm:text-2xl font-black text-slate-900">
-                Fibra Óptica Simétrica en Valera
-              </h3>
-              <p id="slide-desc" class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                Disfruta de la misma velocidad de subida y de bajada. Ideal para creadores de contenido, streaming 4K y teletrabajo sin latencia.
-              </p>
+            <!-- Nodos y Tags Orbitantes de Métricas -->
+            <div class="grid grid-cols-2 gap-3 flex-1 text-left">
+              
+              <div class="p-3 rounded-xl bg-red-50/70 border border-red-200/80 hover:scale-105 transition-transform">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs">⚡</span>
+                  <span class="text-[11px] font-mono font-bold text-[#FC0432] uppercase">500 Mbps</span>
+                </div>
+                <span class="text-[10px] text-slate-600 block mt-0.5 font-medium">Fibra Simétrica Pura</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-blue-50/70 border border-blue-200/80 hover:scale-105 transition-transform">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs">🎯</span>
+                  <span class="text-[11px] font-mono font-bold text-[#0A559F] uppercase">&lt; 8ms Ping</span>
+                </div>
+                <span class="text-[10px] text-slate-600 block mt-0.5 font-medium">Baja Latencia Gaming</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200/80 hover:scale-105 transition-transform">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs">📶</span>
+                  <span class="text-[11px] font-mono font-bold text-emerald-700 uppercase">Wi-Fi 6 Doble</span>
+                </div>
+                <span class="text-[10px] text-slate-600 block mt-0.5 font-medium">2.4GHz + 5.8GHz</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-purple-50/70 border border-purple-200/80 hover:scale-105 transition-transform">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs">🛡️</span>
+                  <span class="text-[11px] font-mono font-bold text-purple-700 uppercase">SLA 99.9%</span>
+                </div>
+                <span class="text-[10px] text-slate-600 block mt-0.5 font-medium">Uptime Ininterrumpido</span>
+              </div>
+
             </div>
 
-            <div class="shrink-0 text-center sm:text-right border-t sm:border-t-0 sm:border-l border-slate-100 pt-4 sm:pt-0 sm:pl-6">
-              <span class="text-[10px] font-mono text-slate-400 block uppercase">Velocidades Hasta</span>
-              <span id="slide-metric" class="text-2xl sm:text-3xl font-black font-mono text-[#FC0432] block">500 <span class="text-xs">MB</span></span>
-            </div>
-          </div>
-
-          <!-- Barra de progreso lineal automática -->
-          <div class="w-full bg-slate-100 h-1 rounded-full mt-6 overflow-hidden">
-            <div id="carousel-progress-bar" class="h-full bg-gradient-to-r from-[#FC0432] to-[#0A559F] w-0 transition-all duration-100"></div>
-          </div>
-
-          <!-- Dots indicators -->
-          <div class="flex items-center justify-center gap-2 mt-4">
-            <button class="slide-dot w-2.5 h-2.5 rounded-full bg-[#FC0432] transition-all"></button>
-            <button class="slide-dot w-2.5 h-2.5 rounded-full bg-slate-200 transition-all"></button>
-            <button class="slide-dot w-2.5 h-2.5 rounded-full bg-slate-200 transition-all"></button>
           </div>
 
         </div>
@@ -117,7 +135,7 @@
 <script>
   import { animate } from 'animejs';
 
-  // Animaciones iniciales
+  // Animaciones de entrada iniciales
   animate('.hero-badge, .hero-title, .hero-desc, .hero-cta', {
     opacity: [0, 1],
     translateY: [20, 0],
@@ -126,99 +144,17 @@
     ease: 'outQuad'
   });
 
-  // Datos del Carrusel
-  const slides = [
-    {
-      icon: "🚀",
-      category: "Tecnología FTTH Pura",
-      title: "Fibra Óptica Simétrica en Valera",
-      desc: "Misma velocidad de subida que de bajada. Subí archivos pesados, hacé streamings y jugá con latencia inferior a 8ms.",
-      metric: "500 MB"
-    },
-    {
-      icon: "🌱",
-      category: "Crecimiento Regional",
-      title: "Impulsando a Productores y Comercios",
-      desc: "Enlaces dedicados y conectividad continua para Jajó, La Mesa de Esnujaque, Cabimbú y zonas agrícolas de Trujillo.",
-      metric: "1:1 Dedicado"
-    },
-    {
-      icon: "🎓",
-      category: "Educación & Familia",
-      title: "Mejora la educación de tus hijos",
-      desc: "Conexión ininterrumpida para clases virtuales, tareas escolares y plataformas interactivas sin límites de datos.",
-      metric: "100% Estable"
-    }
-  ];
-
-  let currentSlide = 0;
-  let timerInterval: any = null;
-  let progress = 0;
-
-  const slideBox = document.getElementById('carousel-slide-box');
-  const slideIcon = document.getElementById('slide-icon');
-  const slideCat = document.getElementById('slide-category');
-  const slideTitle = document.getElementById('slide-title');
-  const slideDesc = document.getElementById('slide-desc');
-  const slideMetric = document.getElementById('slide-metric');
-  const progressBar = document.getElementById('carousel-progress-bar');
-  const dots = document.querySelectorAll('.slide-dot');
-
-  function renderSlide(index: number) {
-    currentSlide = (index + slides.length) % slides.length;
-    const data = slides[currentSlide];
-
-    if (slideBox) {
-      animate(slideBox, {
-        opacity: [0.4, 1],
-        translateX: [15, 0],
-        duration: 350,
-        ease: 'outQuad'
-      });
-    }
-
-    if (slideIcon) slideIcon.innerText = data.icon;
-    if (slideCat) slideCat.innerText = data.category;
-    if (slideTitle) slideTitle.innerText = data.title;
-    if (slideDesc) slideDesc.innerText = data.desc;
-    if (slideMetric) slideMetric.innerHTML = `${data.metric}`;
-
-    dots.forEach((dot, i) => {
-      if (i === currentSlide) {
-        dot.className = "slide-dot w-6 h-2.5 rounded-full bg-[#FC0432] transition-all";
-      } else {
-        dot.className = "slide-dot w-2.5 h-2.5 rounded-full bg-slate-200 transition-all";
-      }
+  // Animación de levitación continua para el router
+  const routerMockup = document.getElementById('floating-router-mockup');
+  if (routerMockup) {
+    animate(routerMockup, {
+      translateY: [-6, 6],
+      duration: 2400,
+      direction: 'alternate',
+      loop: true,
+      ease: 'inOutSine'
     });
-
-    progress = 0;
   }
-
-  function startAutoCycle() {
-    if (timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-      progress += 2;
-      if (progressBar) progressBar.style.width = `${progress}%`;
-      if (progress >= 100) {
-        renderSlide(currentSlide + 1);
-      }
-    }, 100);
-  }
-
-  document.getElementById('carousel-prev-btn')?.addEventListener('click', () => {
-    renderSlide(currentSlide - 1);
-  });
-
-  document.getElementById('carousel-next-btn')?.addEventListener('click', () => {
-    renderSlide(currentSlide + 1);
-  });
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => renderSlide(i));
-  });
-
-  renderSlide(0);
-  startAutoCycle();
 
   // Canvas interactivo de partículas flotantes
   const canvas = document.getElementById('hero-particles-canvas') as HTMLCanvasElement;
