@@ -2,13 +2,13 @@
 ---
 
 <div id="fiber-scrollytelling-wrapper" class="relative w-full">
-  <!-- Canvas 3D Fijo de Fondo que reacciona con la física y rotación al scroll -->
+  <!-- Canvas 3D Fijo de Fondo: Propuesta B (Cable de Fibra Óptica Abierto en Sección Transversal) -->
   <div class="sticky top-0 h-screen w-full overflow-hidden pointer-events-none z-0">
     <canvas id="scrolly-canvas-3d" class="absolute inset-0 w-full h-full"></canvas>
     
-    <!-- Indicador de secciones lateral estilo Musée -->
+    <!-- Indicador de capítulos lateral estilo Musée -->
     <div class="absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-4 z-20 pointer-events-auto">
-      <div id="dot-0" class="scrolly-dot w-3 h-3 rounded-full bg-[#FC0432] ring-4 ring-red-100 transition-all duration-300"></div>
+      <div id="dot-0" class="scrolly-dot w-3.5 h-3.5 rounded-full bg-[#FC0432] ring-4 ring-red-100 transition-all duration-300"></div>
       <div id="dot-1" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
       <div id="dot-2" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
       <div id="dot-3" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
@@ -18,73 +18,73 @@
   <!-- Capas de texto editorial superpuestas en el recorrido del scroll -->
   <div class="relative z-10 -mt-[100vh]">
     
-    <!-- Capítulo 1: El Origen de la Red -->
+    <!-- Capítulo 1: El Blindaje y la Cubierta Exterior -->
     <section class="min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto">
-      <div class="max-w-lg bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xl space-y-4">
+      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4">
         <span class="text-xs font-mono font-bold uppercase text-[#FC0432] tracking-widest block">
-          Capítulo 01 • El Nodo Central
+          Capítulo 01 • Blindaje de Alta Resistencia
         </span>
         <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          La velocidad nace en <span class="text-gradient-ip">Valera</span>
+          Protección total contra <span class="text-gradient-ip">el clima y cortes</span>
         </h2>
         <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-          Nuestra infraestructura comienza en el corazón de Trujillo con enlaces troncales internacionales. El haz de luz viaja por hilos de vidrio puro a la velocidad de la luz hacia cada sector.
+          Nuestros cables de fibra troncal están diseñados con recubrimiento de polietileno de alta densidad y miembros de tracción dieléctricos para soportar las condiciones climáticas del estado Trujillo.
         </p>
         <div class="pt-2 flex items-center gap-3 text-xs font-mono font-bold text-slate-500">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-          <span>100% Fibra Óptica Troncal</span>
+          <span class="w-2 h-2 rounded-full bg-[#FC0432] animate-ping"></span>
+          <span>Cubierta Exterior Dieléctrica</span>
         </div>
       </div>
     </section>
 
-    <!-- Capítulo 2: Distribución por los Andes -->
+    <!-- Capítulo 2: Despliegue Interior de Filamentos -->
     <section class="min-h-screen flex items-center justify-end px-6 lg:px-20 max-w-7xl mx-auto">
-      <div class="max-w-lg bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xl space-y-4 text-right sm:text-left">
+      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4 text-right sm:text-left">
         <span class="text-xs font-mono font-bold uppercase text-[#0A559F] tracking-widest block">
-          Capítulo 02 • Conectividad Real
+          Capítulo 02 • Núcleo Multihilo FTTH
         </span>
         <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          Donde otros no llegan, <span class="text-gradient-ip">llegamos nosotros</span>
+          Hilos de vidrio puro <span class="text-gradient-ip">sin interferencias</span>
         </h2>
         <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-          Desafiamos la geografía andina conectando Jajó, Cabimbú, La Mesa de Esnujaque, Cuicas, Burbusay y zonas rurales con enlaces de alta potencia y tendidos FTTH.
+          En el interior, múltiples filamentos ópticos independientes transportan terabytes de datos simultáneos. Cero interferencia electromagnética y sin atenuación de señal.
         </p>
         <div class="pt-2 flex items-center justify-end sm:justify-start gap-2 text-xs font-mono text-[#0A559F] font-bold">
-          <span>● Cobertura Urbana & Rural</span>
+          <span>● Transmisión Óptica Pura 100%</span>
         </div>
       </div>
     </section>
 
-    <!-- Capítulo 3: El Núcleo de Fibra Simétrica -->
+    <!-- Capítulo 3: Viaje a la Velocidad de la Luz -->
     <section class="min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto">
-      <div class="max-w-lg bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xl space-y-4">
-        <span class="text-xs font-mono font-bold uppercase text-[#FC0432] tracking-widest block">
-          Capítulo 03 • Mínima Latencia
+      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4">
+        <span class="text-xs font-mono font-bold uppercase text-emerald-600 tracking-widest block">
+          Capítulo 03 • Luz Continua a &lt; 8ms
         </span>
         <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          Subida y bajada <span class="text-gradient-ip">a la par</span>
+          Pulsos láser <span class="text-gradient-ip">ultrarrápidos</span>
         </h2>
         <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-          Sin caídas ni degradación de señal. Velocidad simétrica desde 20 hasta 500 MB para que la educación de tus hijos, el streaming 4K y tu negocio operen con latencia inferior a 8 milisegundos.
+          La luz viaja a través del núcleo de sílice con reflexión interna total. Tu conexión alcanza velocidades de 10 a 500 MB simétricos con respuesta instantánea.
         </p>
         <div class="pt-2 inline-flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 font-bold">
-          <span>Ping en Trujillo: &lt; 8 ms</span>
+          <span>Latencia en Trujillo: &lt; 8 ms</span>
         </div>
       </div>
     </section>
 
-    <!-- Capítulo 4: Conexión Final y Planes -->
+    <!-- Capítulo 4: Conexión Final Directa a tu Inmueble -->
     <section class="min-h-screen flex items-center justify-center text-center px-6 max-w-4xl mx-auto">
       <div class="bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-2xl space-y-6">
         <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold uppercase tracking-wider font-mono">
-          Tu Elección Inteligente
+          Instalación Garantizada
         </div>
         <h2 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-          Conéctate hoy al internet <br />
-          <span class="text-gradient-ip">que mereces</span>
+          Conexión directa hasta <br />
+          <span class="text-gradient-ip">tu hogar o empresa</span>
         </h2>
         <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
-          Elige entre nuestros planes residenciales o cotiza una solución dedicada empresarial con respaldo técnico en Valera.
+          Llevamos el hilo de fibra directamente hasta tu router para garantizar máxima estabilidad y soporte en Valera y todo Trujillo.
         </p>
         <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a 
@@ -114,67 +114,128 @@
   const canvas = document.getElementById('scrolly-canvas-3d') as HTMLCanvasElement;
   if (canvas) {
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#f8fafc'); // Fondo blanco roto editorial
+    scene.background = new THREE.Color('#f8fafc');
 
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 0, 14);
+    camera.position.set(0, 0, 16);
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Iluminación de estudio tridimensional
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    // Iluminación realista
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
     scene.add(ambientLight);
 
-    const redLight = new THREE.PointLight(0xFC0432, 4, 30);
-    redLight.position.set(5, 5, 5);
-    scene.add(redLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    dirLight.position.set(10, 15, 10);
+    scene.add(dirLight);
 
-    const blueLight = new THREE.PointLight(0x0A559F, 5, 30);
-    blueLight.position.set(-5, -3, 3);
-    scene.add(blueLight);
+    const redLaser = new THREE.PointLight(0xFC0432, 6, 25);
+    redLaser.position.set(0, 0, 0);
+    scene.add(redLaser);
 
-    // Grupo de Objetos 3D de Telecomunicaciones y Fibra Óptica
-    const mainGroup = new THREE.Group();
-    scene.add(mainGroup);
+    const blueLaser = new THREE.PointLight(0x0A559F, 6, 25);
+    blueLaser.position.set(0, 0, 4);
+    scene.add(blueLaser);
 
-    // 1. Núcleo Óptico (Torus Knot reflectivo que simboliza el flujo continuo de datos)
-    const knotGeo = new THREE.TorusKnotGeometry(2.4, 0.45, 160, 32, 2, 3);
-    const knotMat = new THREE.MeshPhysicalMaterial({
-      color: 0xFC0432,
-      emissive: 0x220005,
-      roughness: 0.15,
-      metalness: 0.85,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.1,
+    // GRUPO PRINCIPAL: CABLE DE FIBRA ÓPTICA (Corte Transversal / Exploded View)
+    const cableGroup = new THREE.Group();
+    scene.add(cableGroup);
+
+    // 1. Cubierta Exterior del Cable (Jacket Negra/Slate con textura satinada)
+    const outerJacketGeo = new THREE.CylinderGeometry(2.8, 2.8, 12, 48, 1, true);
+    const outerJacketMat = new THREE.MeshStandardMaterial({
+      color: 0x0C1020,
+      roughness: 0.35,
+      metalness: 0.2,
+      side: THREE.DoubleSide
     });
-    const fiberKnot = new THREE.Mesh(knotGeo, knotMat);
-    mainGroup.add(fiberKnot);
+    const outerJacket = new THREE.Mesh(outerJacketGeo, outerJacketMat);
+    outerJacket.rotation.x = Math.PI / 2;
+    cableGroup.add(outerJacket);
 
-    // 2. Anillo de Nodos Orbitantes (partículas de luz de fibra)
-    const particleCount = 120;
-    const particleGeo = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
+    // 2. Capa Intermedia de Blindaje y Protección (Buffer Tube Rojo IP)
+    const bufferTubeGeo = new THREE.CylinderGeometry(2.0, 2.0, 13, 36, 1, true);
+    const bufferTubeMat = new THREE.MeshStandardMaterial({
+      color: 0xFC0432,
+      roughness: 0.25,
+      metalness: 0.6,
+      side: THREE.DoubleSide
+    });
+    const bufferTube = new THREE.Mesh(bufferTubeGeo, bufferTubeMat);
+    bufferTube.rotation.x = Math.PI / 2;
+    cableGroup.add(bufferTube);
 
-    for (let i = 0; i < particleCount * 3; i += 3) {
-      const radius = 4.2 + Math.random() * 1.5;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(Math.random() * 2 - 1);
-      positions[i] = radius * Math.sin(phi) * Math.cos(theta);
-      positions[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
-      positions[i + 2] = radius * Math.cos(phi);
+    // 3. Filamentos / Hilos de Fibra Óptica de Vidrio Puro con Núcleo Láser (Glass Cores)
+    const fiberCoresGroup = new THREE.Group();
+    cableGroup.add(fiberCoresGroup);
+
+    const coreCount = 7;
+    const coreMeshes: THREE.Mesh[] = [];
+    const coreRadius = 0.32;
+    const coreLength = 15;
+
+    // Núcleo central
+    const centerCoreGeo = new THREE.CylinderGeometry(coreRadius * 1.3, coreRadius * 1.3, coreLength, 24);
+    const centerCoreMat = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      emissive: 0xFC0432,
+      emissiveIntensity: 1.5,
+      transmission: 0.9,
+      opacity: 1,
+      transparent: true,
+      roughness: 0.05,
+      ior: 1.5
+    });
+    const centerCore = new THREE.Mesh(centerCoreGeo, centerCoreMat);
+    centerCore.rotation.x = Math.PI / 2;
+    fiberCoresGroup.add(centerCore);
+    coreMeshes.push(centerCore);
+
+    // 6 Núcleos alrededor
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2;
+      const dist = 1.05;
+      const coreGeo = new THREE.CylinderGeometry(coreRadius, coreRadius, coreLength, 24);
+      const isBlue = i % 2 === 0;
+      const coreMat = new THREE.MeshPhysicalMaterial({
+        color: isBlue ? 0x0A559F : 0xFC0432,
+        emissive: isBlue ? 0x0088ff : 0xff0044,
+        emissiveIntensity: 1.8,
+        transmission: 0.85,
+        transparent: true,
+        roughness: 0.08,
+        ior: 1.52
+      });
+      const core = new THREE.Mesh(coreGeo, coreMat);
+      core.position.set(Math.cos(angle) * dist, Math.sin(angle) * dist, 0);
+      core.rotation.x = Math.PI / 2;
+      fiberCoresGroup.add(core);
+      coreMeshes.push(core);
     }
 
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particleMat = new THREE.PointsMaterial({
-      color: 0x0A559F,
-      size: 0.12,
+    // 4. Haz de partículas fotónicas viajando por dentro de la fibra
+    const photonCount = 150;
+    const photonGeo = new THREE.BufferGeometry();
+    const photonPositions = new Float32Array(photonCount * 3);
+
+    for (let i = 0; i < photonCount; i++) {
+      photonPositions[i * 3] = (Math.random() - 0.5) * 2.2;
+      photonPositions[i * 3 + 1] = (Math.random() - 0.5) * 2.2;
+      photonPositions[i * 3 + 2] = (Math.random() - 0.5) * coreLength;
+    }
+
+    photonGeo.setAttribute('position', new THREE.BufferAttribute(photonPositions, 3));
+    const photonMat = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.18,
       transparent: true,
-      opacity: 0.7
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending
     });
-    const orbitParticles = new THREE.Points(particleGeo, particleMat);
-    mainGroup.add(orbitParticles);
+    const photons = new THREE.Points(photonGeo, photonMat);
+    cableGroup.add(photons);
 
     // Responsive resize
     window.addEventListener('resize', () => {
@@ -183,11 +244,15 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // Scrollytelling Lerp Interpolation
-    let targetRotationX = 0;
-    let targetRotationY = 0;
-    let targetCameraZ = 14;
+    // Scrollytelling Targets
+    let targetRotationX = 0.3;
+    let targetRotationY = -0.5;
+    let targetRotationZ = 0;
+    let targetCameraZ = 16;
     let targetCameraX = 0;
+    let targetCameraY = 0;
+    let outerJacketOffsetZ = 0;
+    let bufferTubeOffsetZ = 0;
 
     const dots = [
       document.getElementById('dot-0'),
@@ -216,40 +281,52 @@
       const currentScroll = -rect.top;
       const progress = Math.min(1, Math.max(0, currentScroll / (totalScroll || 1)));
 
-      // 4 Estaciones de Cámara 3D sincronizadas exactamente como Musée
+      // 4 Fases de Scrollytelling según la Propuesta B
       if (progress < 0.25) {
-        // Capítulo 1: Vista Frontal Equilibrada
-        targetRotationY = progress * Math.PI * 2;
-        targetRotationX = 0.2;
-        targetCameraZ = 14;
+        // Capítulo 1: Vista general del cable cerrado y robusto
+        targetRotationX = 0.4;
+        targetRotationY = -0.4;
+        targetRotationZ = 0.1;
+        targetCameraZ = 16;
         targetCameraX = 0.8;
-        knotMat.color.setHex(0xFC0432); // Rojo IP
+        targetCameraY = 0;
+        outerJacketOffsetZ = 0;
+        bufferTubeOffsetZ = 0;
         updateDots(0);
       } else if (progress < 0.55) {
-        // Capítulo 2: Acercamiento dinámico hacia el lateral derecho
-        const localProg = (progress - 0.25) / 0.3;
-        targetRotationY = Math.PI * 1.5 + localProg * 2;
-        targetRotationX = -0.3;
-        targetCameraZ = 9.5;
-        targetCameraX = -2.8;
-        knotMat.color.setHex(0x0A559F); // Azul Telecom
+        // Capítulo 2: Despliegue de capas (Exploded view lateral)
+        const local = (progress - 0.25) / 0.3;
+        targetRotationX = 0.2;
+        targetRotationY = Math.PI / 2.8;
+        targetRotationZ = -0.15;
+        targetCameraZ = 11.5;
+        targetCameraX = -2.6;
+        targetCameraY = 0.5;
+        outerJacketOffsetZ = -2.5; // Capa exterior se retrae hacia atrás
+        bufferTubeOffsetZ = -1.2;
         updateDots(1);
       } else if (progress < 0.82) {
-        // Capítulo 3: Macro zoom en la estructura interna de fibra
-        const localProg = (progress - 0.55) / 0.27;
-        targetRotationY = Math.PI * 2.8 + localProg * 2.5;
-        targetRotationX = 0.5;
-        targetCameraZ = 7.2;
-        targetCameraX = 2.5;
-        knotMat.color.setHex(0x10B981); // Verde Simetría
+        // Capítulo 3: Macro zoom frontal hacia los hilos de vidrio iluminados (luz a <8ms)
+        const local = (progress - 0.55) / 0.27;
+        targetRotationX = 0.05;
+        targetRotationY = 0.02; // Vista casi frontal directa al corte
+        targetRotationZ = local * 1.5;
+        targetCameraZ = 6.2;
+        targetCameraX = 2.4;
+        targetCameraY = 0;
+        outerJacketOffsetZ = -4.0;
+        bufferTubeOffsetZ = -2.0;
         updateDots(2);
       } else {
-        // Capítulo 4: Alejamiento panorámico para la llamada a la acción
-        targetRotationY = Math.PI * 4;
-        targetRotationX = 0;
-        targetCameraZ = 16;
+        // Capítulo 4: Ensamblaje y vista panorámica para los planes
+        targetRotationX = 0.35;
+        targetRotationY = Math.PI * 2;
+        targetRotationZ = 0;
+        targetCameraZ = 15;
         targetCameraX = 0;
-        knotMat.color.setHex(0xFC0432);
+        targetCameraY = 0;
+        outerJacketOffsetZ = 0;
+        bufferTubeOffsetZ = 0;
         updateDots(3);
       }
     }
@@ -257,18 +334,31 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Render loop con física elástica (lerp)
+    // Render loop con lerp suave
     function animate() {
       requestAnimationFrame(animate);
 
-      // Interpolación continua para suavidad absoluta
-      fiberKnot.rotation.y += (targetRotationY - fiberKnot.rotation.y) * 0.05;
-      fiberKnot.rotation.x += (targetRotationX - fiberKnot.rotation.x) * 0.05;
-      orbitParticles.rotation.y += 0.002;
-      orbitParticles.rotation.x += 0.001;
+      cableGroup.rotation.x += (targetRotationX - cableGroup.rotation.x) * 0.05;
+      cableGroup.rotation.y += (targetRotationY - cableGroup.rotation.y) * 0.05;
+      cableGroup.rotation.z += (targetRotationZ - cableGroup.rotation.z) * 0.05;
 
       camera.position.z += (targetCameraZ - camera.position.z) * 0.05;
       camera.position.x += (targetCameraX - camera.position.x) * 0.05;
+      camera.position.y += (targetCameraY - camera.position.y) * 0.05;
+
+      // Animación de capas desplegadas
+      outerJacket.position.z += (outerJacketOffsetZ - outerJacket.position.z) * 0.05;
+      bufferTube.position.z += (bufferTubeOffsetZ - bufferTube.position.z) * 0.05;
+
+      // Movimiento continuo de fotones de luz por el interior del cable
+      const pos = photonGeo.attributes.position.array as Float32Array;
+      for (let i = 2; i < pos.length; i += 3) {
+        pos[i] += 0.12;
+        if (pos[i] > coreLength / 2) {
+          pos[i] = -coreLength / 2;
+        }
+      }
+      photonGeo.attributes.position.needsUpdate = true;
 
       renderer.render(scene, camera);
     }
