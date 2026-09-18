@@ -47,4 +47,28 @@
     </div>
 
   </div>
+
+  <!-- Barra de progreso de lectura / fibra óptica en el border-bottom del Navbar sticky -->
+  <div class="absolute bottom-0 left-0 h-[2.5px] w-full bg-slate-100 overflow-hidden pointer-events-none">
+    <div 
+      id="navbar-scroll-progress" 
+      class="h-full w-0 bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#0A559F] shadow-[0_0_8px_rgba(252,4,50,0.6)] transition-[width] duration-75 ease-out"
+    ></div>
+  </div>
 </header>
+
+<script>
+  const progressBar = document.getElementById('navbar-scroll-progress');
+
+  function updateNavbarProgress() {
+    if (!progressBar) return;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / (docHeight || 1)) * 100;
+    progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+  }
+
+  window.addEventListener('scroll', updateNavbarProgress, { passive: true });
+  window.addEventListener('resize', updateNavbarProgress);
+  updateNavbarProgress();
+</script>
