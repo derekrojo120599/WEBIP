@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Plans from '../components/Plans.astro';
+import Coverage from '../components/Coverage.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Navbar />
+  <main>
+    <Hero />
+    <Plans />
+    <Coverage />
+    <Faq />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { animate } from 'animejs';
+
+  // Subtle scroll entrance animations for sections using IntersectionObserver & Anime.js
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animate(entry.target, {
+          opacity: [0, 1],
+          translateY: [30, 0],
+          duration: 800,
+          ease: 'outCubic'
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.plan-card, .coverage-card, .faq-item').forEach(el => {
+    observer.observe(el);
+  });
+</script>

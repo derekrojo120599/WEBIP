@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-base: #060913;
+    --color-surface: #0e1526;
+    --color-surface-hover: #152038;
+    --color-accent-cyan: #00f2fe;
+    --color-accent-blue: #4facfe;
+    --color-accent-purple: #8b5cf6;
+  }
+
+  body {
+    background-color: var(--color-bg-base);
+    color: #f8fafc;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+.glass-panel {
+  background: rgba(14, 21, 38, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-glow {
+  background: rgba(14, 21, 38, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  box-shadow: 0 0 35px -10px rgba(0, 242, 254, 0.15);
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-laser {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-radial-mesh {
+  background-image: 
+    radial-gradient(at 15% 20%, rgba(0, 242, 254, 0.08) 0px, transparent 50%),
+    radial-gradient(at 85% 30%, rgba(139, 92, 246, 0.1) 0px, transparent 55%),
+    radial-gradient(at 50% 80%, rgba(59, 130, 246, 0.06) 0px, transparent 50%);
+}
