@@ -47,56 +47,67 @@
         </a>
       </div>
 
-      <!-- PROPUESTA 1: Showcase 3D Card con Efecto Tilt y Tabs de Casos de Uso -->
+      <!-- PROPUESTA 2: Carrusel / Banner de Novedades y Servicios con Anime.js -->
       <div class="pt-6 max-w-3xl mx-auto">
-        <!-- Interactive Tabs Selector -->
-        <div class="flex items-center justify-center gap-2 mb-4">
-          <button id="tab-btn-1" class="hero-tab-btn active px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-white border-2 border-[#FC0432] text-[#FC0432] shadow-sm transition-all">
-            👨‍👩‍👧‍👦 Familia & Hogar
-          </button>
-          <button id="tab-btn-2" class="hero-tab-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 border-2 border-transparent text-slate-600 hover:text-slate-900 transition-all">
-            🌾 Productores & Pymes
-          </button>
-          <button id="tab-btn-3" class="hero-tab-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 border-2 border-transparent text-slate-600 hover:text-slate-900 transition-all">
-            🎮 Gaming & 4K
-          </button>
-        </div>
-
-        <!-- 3D Tilt Card Interactive Container -->
-        <div 
-          id="hero-tilt-card" 
-          class="relative bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-2xl shadow-slate-300/40 text-left transition-transform duration-150 ease-out cursor-pointer overflow-hidden group"
-          style="transform-style: preserve-3d;"
-        >
-          <!-- Subtle lighting reflection overlay -->
-          <div id="tilt-glare" class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent pointer-events-none opacity-0 transition-opacity duration-300"></div>
-
-          <div class="flex flex-col sm:flex-row items-center gap-6 relative z-10">
-            <div id="tilt-icon" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center text-3xl sm:text-4xl shadow-xs shrink-0">
-              🎓
+        
+        <div class="relative bg-white rounded-3xl border border-slate-200 shadow-2xl p-6 sm:p-8 overflow-hidden text-left">
+          
+          <!-- Barra superior con temporizador / auto-slide indicator -->
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#FC0432] animate-pulse"></span>
+              <span class="text-xs font-mono font-bold uppercase text-slate-500">Destacados IP Sistemas</span>
             </div>
-            
+
+            <!-- Controles de navegación del carrusel -->
+            <div class="flex items-center gap-2">
+              <button id="carousel-prev-btn" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#FC0432] hover:text-white text-slate-700 font-bold flex items-center justify-center transition-colors text-xs shadow-xs">
+                ←
+              </button>
+              <button id="carousel-next-btn" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#FC0432] hover:text-white text-slate-700 font-bold flex items-center justify-center transition-colors text-xs shadow-xs">
+                →
+              </button>
+            </div>
+          </div>
+
+          <!-- Slide Content Dinámico -->
+          <div id="carousel-slide-box" class="flex flex-col sm:flex-row items-center gap-6 min-h-[120px]">
+            <div id="slide-icon" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center text-3xl sm:text-4xl shadow-xs shrink-0">
+              🚀
+            </div>
+
             <div class="space-y-1.5 text-center sm:text-left flex-1">
-              <div class="flex items-center justify-center sm:justify-start gap-2">
-                <span id="tilt-tag" class="text-[11px] font-mono font-bold uppercase text-[#FC0432] bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200">
-                  Educación y Streaming
-                </span>
-                <span class="text-xs text-emerald-600 font-bold font-mono">● Sin Cortes</span>
-              </div>
-              <h3 id="tilt-title" class="text-xl sm:text-2xl font-black text-slate-900">
-                Impulsa la educación de tus hijos con internet estable
+              <span id="slide-category" class="text-[11px] font-mono font-bold uppercase text-[#FC0432] bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200 inline-block">
+                Tecnología FTTH
+              </span>
+              <h3 id="slide-title" class="text-xl sm:text-2xl font-black text-slate-900">
+                Fibra Óptica Simétrica en Valera
               </h3>
-              <p id="tilt-desc" class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
-                Acceso continuo a plataformas educativas, clases virtuales simultáneas y entretenimiento familiar en alta definición sin interrupciones.
+              <p id="slide-desc" class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
+                Disfruta de la misma velocidad de subida y de bajada. Ideal para creadores de contenido, streaming 4K y teletrabajo sin latencia.
               </p>
             </div>
 
             <div class="shrink-0 text-center sm:text-right border-t sm:border-t-0 sm:border-l border-slate-100 pt-4 sm:pt-0 sm:pl-6">
-              <span class="text-[10px] font-mono text-slate-400 block uppercase">Velocidad Sugerida</span>
-              <span id="tilt-speed" class="text-2xl sm:text-3xl font-black font-mono text-[#FC0432] block">50 - 200 <span class="text-xs">MB</span></span>
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Velocidades Hasta</span>
+              <span id="slide-metric" class="text-2xl sm:text-3xl font-black font-mono text-[#FC0432] block">500 <span class="text-xs">MB</span></span>
             </div>
           </div>
+
+          <!-- Barra de progreso lineal automática -->
+          <div class="w-full bg-slate-100 h-1 rounded-full mt-6 overflow-hidden">
+            <div id="carousel-progress-bar" class="h-full bg-gradient-to-r from-[#FC0432] to-[#0A559F] w-0 transition-all duration-100"></div>
+          </div>
+
+          <!-- Dots indicators -->
+          <div class="flex items-center justify-center gap-2 mt-4">
+            <button class="slide-dot w-2.5 h-2.5 rounded-full bg-[#FC0432] transition-all"></button>
+            <button class="slide-dot w-2.5 h-2.5 rounded-full bg-slate-200 transition-all"></button>
+            <button class="slide-dot w-2.5 h-2.5 rounded-full bg-slate-200 transition-all"></button>
+          </div>
+
         </div>
+
       </div>
 
     </div>
@@ -115,102 +126,101 @@
     ease: 'outQuad'
   });
 
-  // Efecto 3D Tilt interactivo que reacciona a la posición del mouse
-  const card = document.getElementById('hero-tilt-card');
-  const glare = document.getElementById('tilt-glare');
-
-  if (card) {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      
-      if (glare) {
-        glare.style.opacity = '1';
-        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.6) 0%, transparent 60%)`;
-      }
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-      if (glare) glare.style.opacity = '0';
-    });
-  }
-
-  // Lógica de pestañas interactivas de Casos de Uso
-  const tabsData = [
+  // Datos del Carrusel
+  const slides = [
+    {
+      icon: "🚀",
+      category: "Tecnología FTTH Pura",
+      title: "Fibra Óptica Simétrica en Valera",
+      desc: "Misma velocidad de subida que de bajada. Subí archivos pesados, hacé streamings y jugá con latencia inferior a 8ms.",
+      metric: "500 MB"
+    },
+    {
+      icon: "🌱",
+      category: "Crecimiento Regional",
+      title: "Impulsando a Productores y Comercios",
+      desc: "Enlaces dedicados y conectividad continua para Jajó, La Mesa de Esnujaque, Cabimbú y zonas agrícolas de Trujillo.",
+      metric: "1:1 Dedicado"
+    },
     {
       icon: "🎓",
-      tag: "Educación & Streaming",
-      title: "Impulsa la educación de tus hijos con internet estable",
-      desc: "Acceso continuo a plataformas de estudio, videoconferencias escolares y entretenimiento en 4K sin ralentizaciones.",
-      speed: "50 - 200 MB"
-    },
-    {
-      icon: "🏢",
-      tag: "Productores & Comercios",
-      title: "Conectividad robusta para potenciar tu negocio en Trujillo",
-      desc: "Enlaces dedicados 1:1, transferencias de archivos masivos, puntos de venta siempre activos y facturación electrónica.",
-      speed: "Dedicado SLA"
-    },
-    {
-      icon: "⚡",
-      tag: "Gaming & Fibra Simétrica",
-      title: "Latencia ultrabaja para juegos competitivos y streaming",
-      desc: "Ping mínimo hacia servidores internacionales (<8ms) y velocidad de subida exacta a la de bajada.",
-      speed: "200 - 500 MB"
+      category: "Educación & Familia",
+      title: "Mejora la educación de tus hijos",
+      desc: "Conexión ininterrumpida para clases virtuales, tareas escolares y plataformas interactivas sin límites de datos.",
+      metric: "100% Estable"
     }
   ];
 
-  const btns = [
-    document.getElementById('tab-btn-1'),
-    document.getElementById('tab-btn-2'),
-    document.getElementById('tab-btn-3')
-  ];
+  let currentSlide = 0;
+  let timerInterval: any = null;
+  let progress = 0;
 
-  const tiltIcon = document.getElementById('tilt-icon');
-  const tiltTag = document.getElementById('tilt-tag');
-  const tiltTitle = document.getElementById('tilt-title');
-  const tiltDesc = document.getElementById('tilt-desc');
-  const tiltSpeed = document.getElementById('tilt-speed');
+  const slideBox = document.getElementById('carousel-slide-box');
+  const slideIcon = document.getElementById('slide-icon');
+  const slideCat = document.getElementById('slide-category');
+  const slideTitle = document.getElementById('slide-title');
+  const slideDesc = document.getElementById('slide-desc');
+  const slideMetric = document.getElementById('slide-metric');
+  const progressBar = document.getElementById('carousel-progress-bar');
+  const dots = document.querySelectorAll('.slide-dot');
 
-  btns.forEach((btn, index) => {
-    btn?.addEventListener('click', () => {
-      btns.forEach(b => {
-        if (b) {
-          b.className = "hero-tab-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 border-2 border-transparent text-slate-600 hover:text-slate-900 transition-all";
-        }
+  function renderSlide(index: number) {
+    currentSlide = (index + slides.length) % slides.length;
+    const data = slides[currentSlide];
+
+    if (slideBox) {
+      animate(slideBox, {
+        opacity: [0.4, 1],
+        translateX: [15, 0],
+        duration: 350,
+        ease: 'outQuad'
       });
-      if (btn) {
-        btn.className = "hero-tab-btn active px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-white border-2 border-[#FC0432] text-[#FC0432] shadow-sm transition-all";
-      }
+    }
 
-      const data = tabsData[index];
-      if (card) {
-        animate(card, {
-          scale: [0.98, 1],
-          duration: 300,
-          ease: 'outQuad'
-        });
-      }
+    if (slideIcon) slideIcon.innerText = data.icon;
+    if (slideCat) slideCat.innerText = data.category;
+    if (slideTitle) slideTitle.innerText = data.title;
+    if (slideDesc) slideDesc.innerText = data.desc;
+    if (slideMetric) slideMetric.innerHTML = `${data.metric}`;
 
-      if (tiltIcon) tiltIcon.innerText = data.icon;
-      if (tiltTag) tiltTag.innerText = data.tag;
-      if (tiltTitle) tiltTitle.innerText = data.title;
-      if (tiltDesc) tiltDesc.innerText = data.desc;
-      if (tiltSpeed) tiltSpeed.innerHTML = `${data.speed} <span class="text-xs">MB</span>`;
+    dots.forEach((dot, i) => {
+      if (i === currentSlide) {
+        dot.className = "slide-dot w-6 h-2.5 rounded-full bg-[#FC0432] transition-all";
+      } else {
+        dot.className = "slide-dot w-2.5 h-2.5 rounded-full bg-slate-200 transition-all";
+      }
     });
+
+    progress = 0;
+  }
+
+  function startAutoCycle() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      progress += 2;
+      if (progressBar) progressBar.style.width = `${progress}%`;
+      if (progress >= 100) {
+        renderSlide(currentSlide + 1);
+      }
+    }, 100);
+  }
+
+  document.getElementById('carousel-prev-btn')?.addEventListener('click', () => {
+    renderSlide(currentSlide - 1);
   });
 
-  // Canvas interactivo de partículas de fibra flotantes
+  document.getElementById('carousel-next-btn')?.addEventListener('click', () => {
+    renderSlide(currentSlide + 1);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => renderSlide(i));
+  });
+
+  renderSlide(0);
+  startAutoCycle();
+
+  // Canvas interactivo de partículas flotantes
   const canvas = document.getElementById('hero-particles-canvas') as HTMLCanvasElement;
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -223,19 +233,8 @@
     });
 
     const colors = ['rgba(252, 4, 50, ', 'rgba(10, 85, 159, ', 'rgba(0, 150, 255, '];
-    
-    interface Particle {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      colorBase: string;
-      alpha: number;
-    }
-
     const particleCount = Math.min(50, Math.floor(width / 25));
-    const particles: Particle[] = [];
+    const particles: any[] = [];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
