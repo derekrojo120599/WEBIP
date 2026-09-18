@@ -1,0 +1,278 @@
+---
+---
+
+<div id="fiber-scrollytelling-wrapper" class="relative w-full">
+  <!-- Canvas 3D Fijo de Fondo que reacciona con la física y rotación al scroll -->
+  <div class="sticky top-0 h-screen w-full overflow-hidden pointer-events-none z-0">
+    <canvas id="scrolly-canvas-3d" class="absolute inset-0 w-full h-full"></canvas>
+    
+    <!-- Indicador de secciones lateral estilo Musée -->
+    <div class="absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-4 z-20 pointer-events-auto">
+      <div id="dot-0" class="scrolly-dot w-3 h-3 rounded-full bg-[#FC0432] ring-4 ring-red-100 transition-all duration-300"></div>
+      <div id="dot-1" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+      <div id="dot-2" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+      <div id="dot-3" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+    </div>
+  </div>
+
+  <!-- Capas de texto editorial superpuestas en el recorrido del scroll -->
+  <div class="relative z-10 -mt-[100vh]">
+    
+    <!-- Capítulo 1: El Origen de la Red -->
+    <section class="min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto">
+      <div class="max-w-lg bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xl space-y-4">
+        <span class="text-xs font-mono font-bold uppercase text-[#FC0432] tracking-widest block">
+          Capítulo 01 • El Nodo Central
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          La velocidad nace en <span class="text-gradient-ip">Valera</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Nuestra infraestructura comienza en el corazón de Trujillo con enlaces troncales internacionales. El haz de luz viaja por hilos de vidrio puro a la velocidad de la luz hacia cada sector.
+        </p>
+        <div class="pt-2 flex items-center gap-3 text-xs font-mono font-bold text-slate-500">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          <span>100% Fibra Óptica Troncal</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capítulo 2: Distribución por los Andes -->
+    <section class="min-h-screen flex items-center justify-end px-6 lg:px-20 max-w-7xl mx-auto">
+      <div class="max-w-lg bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xl space-y-4 text-right sm:text-left">
+        <span class="text-xs font-mono font-bold uppercase text-[#0A559F] tracking-widest block">
+          Capítulo 02 • Conectividad Real
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          Donde otros no llegan, <span class="text-gradient-ip">llegamos nosotros</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Desafiamos la geografía andina conectando Jajó, Cabimbú, La Mesa de Esnujaque, Cuicas, Burbusay y zonas rurales con enlaces de alta potencia y tendidos FTTH.
+        </p>
+        <div class="pt-2 flex items-center justify-end sm:justify-start gap-2 text-xs font-mono text-[#0A559F] font-bold">
+          <span>● Cobertura Urbana & Rural</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capítulo 3: El Núcleo de Fibra Simétrica -->
+    <section class="min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto">
+      <div class="max-w-lg bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-xl space-y-4">
+        <span class="text-xs font-mono font-bold uppercase text-[#FC0432] tracking-widest block">
+          Capítulo 03 • Mínima Latencia
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          Subida y bajada <span class="text-gradient-ip">a la par</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Sin caídas ni degradación de señal. Velocidad simétrica desde 20 hasta 500 MB para que la educación de tus hijos, el streaming 4K y tu negocio operen con latencia inferior a 8 milisegundos.
+        </p>
+        <div class="pt-2 inline-flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 font-bold">
+          <span>Ping en Trujillo: &lt; 8 ms</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capítulo 4: Conexión Final y Planes -->
+    <section class="min-h-screen flex items-center justify-center text-center px-6 max-w-4xl mx-auto">
+      <div class="bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-2xl space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold uppercase tracking-wider font-mono">
+          Tu Elección Inteligente
+        </div>
+        <h2 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+          Conéctate hoy al internet <br />
+          <span class="text-gradient-ip">que mereces</span>
+        </h2>
+        <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
+          Elige entre nuestros planes residenciales o cotiza una solución dedicada empresarial con respaldo técnico en Valera.
+        </p>
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="#planes" 
+            class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-xl shadow-[#FC0432]/30 transition-all uppercase tracking-wider"
+          >
+            Explorar Planes
+          </a>
+          <a 
+            href="https://portal.ipsistemas.com.ve" 
+            target="_blank" 
+            class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-[#0A559F] bg-blue-50 border border-blue-200 hover:bg-[#0A559F] hover:text-white transition-all shadow-xs"
+          >
+            Portal de Pagos
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+  import * as THREE from 'three';
+
+  // Configuración de la Escena 3D WebGL con Three.js
+  const canvas = document.getElementById('scrolly-canvas-3d') as HTMLCanvasElement;
+  if (canvas) {
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#f8fafc'); // Fondo blanco roto editorial
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 14);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Iluminación de estudio tridimensional
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    scene.add(ambientLight);
+
+    const redLight = new THREE.PointLight(0xFC0432, 4, 30);
+    redLight.position.set(5, 5, 5);
+    scene.add(redLight);
+
+    const blueLight = new THREE.PointLight(0x0A559F, 5, 30);
+    blueLight.position.set(-5, -3, 3);
+    scene.add(blueLight);
+
+    // Grupo de Objetos 3D de Telecomunicaciones y Fibra Óptica
+    const mainGroup = new THREE.Group();
+    scene.add(mainGroup);
+
+    // 1. Núcleo Óptico (Torus Knot reflectivo que simboliza el flujo continuo de datos)
+    const knotGeo = new THREE.TorusKnotGeometry(2.4, 0.45, 160, 32, 2, 3);
+    const knotMat = new THREE.MeshPhysicalMaterial({
+      color: 0xFC0432,
+      emissive: 0x220005,
+      roughness: 0.15,
+      metalness: 0.85,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.1,
+    });
+    const fiberKnot = new THREE.Mesh(knotGeo, knotMat);
+    mainGroup.add(fiberKnot);
+
+    // 2. Anillo de Nodos Orbitantes (partículas de luz de fibra)
+    const particleCount = 120;
+    const particleGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      const radius = 4.2 + Math.random() * 1.5;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(Math.random() * 2 - 1);
+      positions[i] = radius * Math.sin(phi) * Math.cos(theta);
+      positions[i + 1] = radius * Math.sin(phi) * Math.sin(theta);
+      positions[i + 2] = radius * Math.cos(phi);
+    }
+
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const particleMat = new THREE.PointsMaterial({
+      color: 0x0A559F,
+      size: 0.12,
+      transparent: true,
+      opacity: 0.7
+    });
+    const orbitParticles = new THREE.Points(particleGeo, particleMat);
+    mainGroup.add(orbitParticles);
+
+    // Responsive resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Scrollytelling Lerp Interpolation
+    let targetRotationX = 0;
+    let targetRotationY = 0;
+    let targetCameraZ = 14;
+    let targetCameraX = 0;
+
+    const dots = [
+      document.getElementById('dot-0'),
+      document.getElementById('dot-1'),
+      document.getElementById('dot-2'),
+      document.getElementById('dot-3')
+    ];
+
+    function updateDots(activeIdx: number) {
+      dots.forEach((dot, idx) => {
+        if (!dot) return;
+        if (idx === activeIdx) {
+          dot.className = "scrolly-dot w-3.5 h-3.5 rounded-full bg-[#FC0432] ring-4 ring-red-100 transition-all duration-300";
+        } else {
+          dot.className = "scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300";
+        }
+      });
+    }
+
+    const wrapper = document.getElementById('fiber-scrollytelling-wrapper');
+
+    function onScroll() {
+      if (!wrapper) return;
+      const rect = wrapper.getBoundingClientRect();
+      const totalScroll = wrapper.offsetHeight - window.innerHeight;
+      const currentScroll = -rect.top;
+      const progress = Math.min(1, Math.max(0, currentScroll / (totalScroll || 1)));
+
+      // 4 Estaciones de Cámara 3D sincronizadas exactamente como Musée
+      if (progress < 0.25) {
+        // Capítulo 1: Vista Frontal Equilibrada
+        targetRotationY = progress * Math.PI * 2;
+        targetRotationX = 0.2;
+        targetCameraZ = 14;
+        targetCameraX = 0.8;
+        knotMat.color.setHex(0xFC0432); // Rojo IP
+        updateDots(0);
+      } else if (progress < 0.55) {
+        // Capítulo 2: Acercamiento dinámico hacia el lateral derecho
+        const localProg = (progress - 0.25) / 0.3;
+        targetRotationY = Math.PI * 1.5 + localProg * 2;
+        targetRotationX = -0.3;
+        targetCameraZ = 9.5;
+        targetCameraX = -2.8;
+        knotMat.color.setHex(0x0A559F); // Azul Telecom
+        updateDots(1);
+      } else if (progress < 0.82) {
+        // Capítulo 3: Macro zoom en la estructura interna de fibra
+        const localProg = (progress - 0.55) / 0.27;
+        targetRotationY = Math.PI * 2.8 + localProg * 2.5;
+        targetRotationX = 0.5;
+        targetCameraZ = 7.2;
+        targetCameraX = 2.5;
+        knotMat.color.setHex(0x10B981); // Verde Simetría
+        updateDots(2);
+      } else {
+        // Capítulo 4: Alejamiento panorámico para la llamada a la acción
+        targetRotationY = Math.PI * 4;
+        targetRotationX = 0;
+        targetCameraZ = 16;
+        targetCameraX = 0;
+        knotMat.color.setHex(0xFC0432);
+        updateDots(3);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Render loop con física elástica (lerp)
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Interpolación continua para suavidad absoluta
+      fiberKnot.rotation.y += (targetRotationY - fiberKnot.rotation.y) * 0.05;
+      fiberKnot.rotation.x += (targetRotationX - fiberKnot.rotation.x) * 0.05;
+      orbitParticles.rotation.y += 0.002;
+      orbitParticles.rotation.x += 0.001;
+
+      camera.position.z += (targetCameraZ - camera.position.z) * 0.05;
+      camera.position.x += (targetCameraX - camera.position.x) * 0.05;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  }
+</script>

@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import FiberScrollytelling from '../components/FiberScrollytelling.astro';
 import TrustBar from '../components/TrustBar.astro';
 import AboutUs from '../components/AboutUs.astro';
 import PlansCards from '../components/PlansCards.astro';
@@ -19,38 +20,41 @@ import Footer from '../components/Footer.astro';
   <Header />
 
   <main class="relative z-10">
-    <!-- 2. Hero con headline, CTAs y mockup visual superpuesto -->
+    <!-- 2. Hero con headline y llamado a la acción -->
     <Hero />
 
-    <!-- 3. Franja oscura de confianza / marcas / Conatel -->
+    <!-- 3. Experiencia Scrollytelling 3D Inmersiva (Estilo Musée) -->
+    <FiberScrollytelling />
+
+    <!-- 4. Franja oscura de confianza / marcas / Conatel -->
     <TrustBar />
 
-    <!-- 4. La Empresa / About Us con tarjeta de estadísticas -->
+    <!-- 5. La Empresa / About Us con tarjeta de estadísticas -->
     <AboutUs />
 
-    <!-- 5. Tarjetas de Servicios reales (Banda Ancha, WiFi, Dedicados, Comunicaciones) -->
+    <!-- 6. Tarjetas de Servicios reales (Banda Ancha, WiFi, Dedicados, Comunicaciones) -->
     <PlansCards />
 
-    <!-- 6. ¿Por qué elegirnos? Beneficios numerados + Tarjeta de velocidad -->
+    <!-- 7. ¿Por qué elegirnos? Beneficios numerados + Tarjeta de velocidad -->
     <WhyChooseUs />
 
-    <!-- 7. Banner de Soluciones Dedicadas y Empresas -->
+    <!-- 8. Banner de Soluciones Dedicadas y Empresas -->
     <OfferBanner />
 
-    <!-- 8. Zonas de cobertura + Mapa interactivo embebido de Trujillo -->
+    <!-- 9. Zonas de cobertura + Mapa interactivo embebido de Trujillo -->
     <CoverageMap />
 
-    <!-- 9. Tabla de Precios y Planes destacados -->
+    <!-- 10. Tabla de Precios y Planes destacados -->
     <PricingTable />
 
-    <!-- 10. Testimonios (oculto si no hay datos reales para no inventar) -->
+    <!-- 11. Testimonios (oculto si no hay datos reales para no inventar) -->
     <Testimonials />
 
-    <!-- 11. Preguntas Frecuentes -->
+    <!-- 12. Preguntas Frecuentes -->
     <Faq />
   </main>
 
-  <!-- 12. Footer institucional completo -->
+  <!-- 13. Footer institucional completo -->
   <Footer />
 </Layout>
 
