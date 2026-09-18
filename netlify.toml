@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NPM_FLAGS = "--no-optional"
+  NODE_VERSION = "22"
 
 [[headers]]
   for = "/*"
@@ -12,4 +12,5 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
 
