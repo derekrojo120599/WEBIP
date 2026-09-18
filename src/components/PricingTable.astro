@@ -1,0 +1,105 @@
+---
+import { pricingPlans, type PricingPlan } from '../data/pricing';
+
+interface Props {
+  plans?: PricingPlan[];
+}
+
+const { plans = pricingPlans } = Astro.props;
+---
+
+<!-- PricingTable.astro: 3 planes con tarjeta del medio destacada en rojo (Orbitix style) -->
+<section id="planes" class="py-24 bg-slate-50 border-t border-slate-200/80 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Title -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold uppercase tracking-wider">
+        Planes de Internet
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+        Conéctate con la velocidad de <span class="text-gradient-ip">IP SISTEMAS</span>
+      </h2>
+      <p class="text-slate-600 text-base sm:text-lg">
+        Selecciona el plan ideal para tu hogar, comercio o empresa en el estado Trujillo.
+      </p>
+    </div>
+
+    <!-- Pricing Cards 3 Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+      {plans.map((plan) => (
+        <div class={`plan-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 relative ${
+          plan.popular 
+            ? 'bg-white border-2 border-[#FC0432] shadow-2xl shadow-red-500/10 md:-translate-y-3 z-20' 
+            : 'bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-300 z-10'
+        }`}>
+          
+          {plan.popular && (
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FC0432] to-[#DF0E0E] text-white text-[11px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
+              Plan Más Popular
+            </div>
+          )}
+
+          <div>
+            <div class="flex items-center justify-between mb-4 mt-2">
+              <span class={`text-xs font-mono font-bold uppercase tracking-wider ${plan.popular ? 'text-[#FC0432]' : 'text-slate-500'}`}>
+                {plan.category}
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-slate-100 text-slate-700">
+                Ilimitado
+              </span>
+            </div>
+
+            <h3 class="text-2xl font-black text-slate-900 mb-1">
+              {plan.name}
+            </h3>
+            
+            <p class="text-xs text-slate-500 min-h-[32px] leading-relaxed mb-6">
+              {plan.priceNote}
+            </p>
+
+            <!-- Velocidad / Tarifa -->
+            <div class="flex items-baseline gap-1 my-6 pb-6 border-b border-slate-100">
+              <span class="text-5xl font-black text-slate-900 font-mono tracking-tight">
+                {plan.speed}
+              </span>
+              <span class="text-lg font-bold text-[#FC0432] font-mono">
+                {plan.speedUnit}
+              </span>
+              <!-- PENDIENTE: precios oficiales en USD si la empresa los publica -->
+            </div>
+
+            <!-- Lista de beneficios con checks -->
+            <ul class="space-y-3.5 text-xs sm:text-sm text-slate-600 font-medium">
+              {plan.features.map((feature) => (
+                <li class="flex items-center gap-2.5">
+                  <span class="w-5 h-5 rounded-full bg-red-50 text-[#FC0432] flex items-center justify-center font-bold text-xs shrink-0">
+                    ✓
+                  </span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="pt-8 mt-6 border-t border-slate-100">
+            <a 
+              href={plan.ctaLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class={`w-full py-4 px-6 rounded-xl text-xs font-black uppercase tracking-wider block text-center transition-all ${
+                plan.popular
+                  ? 'bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] text-white hover:from-[#ff2b52] hover:to-[#FC0432] shadow-lg shadow-[#FC0432]/30 hover:scale-[1.02] active:scale-[0.98]'
+                  : 'bg-slate-100 text-slate-900 hover:bg-[#FC0432] hover:text-white'
+              }`}
+            >
+              {plan.ctaText}
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

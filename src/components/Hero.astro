@@ -1,65 +1,117 @@
 ---
 ---
 
-<section class="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-radial-mesh-light">
-  <!-- Interactive Canvas para partículas de fibra óptica reactivas al mouse -->
+<!-- Hero.astro: Título con acento rojo + Composición gráfica superpuesta estilo Orbitix -->
+<section class="relative min-h-[92vh] flex items-center justify-center pt-36 pb-20 overflow-hidden bg-radial-mesh-light">
+  <!-- Partículas interactivas -->
   <canvas id="hero-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0"></canvas>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-    <div class="max-w-4xl mx-auto text-center space-y-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
       
-      <!-- Badge Conatel / Estado Operativo -->
-      <div class="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50/90 border border-red-200 text-xs text-[#FC0432] font-semibold tracking-wide shadow-xs backdrop-blur-xs">
-        <span class="w-2.5 h-2.5 rounded-full bg-[#FC0432] animate-ping"></span>
-        <span class="font-mono">FIBRA ÓPTICA SIMÉTRICA • CONATEL HGTS-00565</span>
+      <!-- Columna Izquierda: Copy + CTAs + Social Proof -->
+      <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold tracking-wide shadow-xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FC0432] animate-ping"></span>
+          <span>INTERNET DE ALTA VELOCIDAD & FIBRA ÓPTICA EN TRUJILLO</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] text-slate-900">
+          Mejora la educación de tus hijos con <br class="hidden sm:inline" />
+          <span class="text-gradient-ip">nuestros planes de Internet.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+          IP Sistemas ofrece una conexión de internet estable que permite a tus hijos realizar sus actividades escolares de manera interactiva y a tu negocio mantenerse siempre conectado.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <a 
+            href="#planes" 
+            class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-xl shadow-[#FC0432]/25 hover:scale-[1.02] active:scale-[0.98] transition-all text-center flex items-center justify-center gap-2"
+          >
+            <span>Ver Planes</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <a 
+            href="tel:02712210316" 
+            class="w-full sm:w-auto px-6 py-4 rounded-xl text-sm font-bold text-slate-800 bg-white border-2 border-slate-200 hover:border-[#0A559F] hover:text-[#0A559F] transition-all text-center shadow-xs"
+          >
+            Llamar: 0271-2210316
+          </a>
+        </div>
+
+        <!-- Social Proof / Rating block -->
+        <div class="pt-6 border-t border-slate-200/80 flex flex-wrap items-center justify-center lg:justify-start gap-6">
+          <div class="flex items-center gap-1 text-amber-400">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <span class="text-xs font-bold text-slate-700 ml-1.5 font-mono">5.0 / 5.0</span>
+          </div>
+          <div class="text-xs text-slate-500 font-medium">
+            <!-- PENDIENTE: número exacto de clientes atendidos en Trujillo -->
+            <span class="font-bold text-slate-900">+10 Zonas Conectadas</span> en el estado Trujillo
+          </div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Habilitación CONATEL Nº HGTS-00565
+          </div>
+        </div>
+
       </div>
 
-      <!-- Main Headline Editorial -->
-      <h1 class="hero-title text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-[1.08] text-slate-900">
-        Vive una experiencia <br />
-        <span class="text-gradient-ip">de otro nivel.</span>
-      </h1>
+      <!-- Columna Derecha: Composición de imágenes / Mockup flotante Orbitix Style -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative max-w-md mx-auto">
+          
+          <!-- Tarjeta Principal con Gradiente y Detalle de Red -->
+          <div class="rounded-3xl bg-gradient-to-br from-slate-900 to-[#0C1020] p-8 text-white shadow-2xl border border-slate-800 relative overflow-hidden">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-[#FC0432] animate-ping"></span>
+                <span class="font-mono text-xs uppercase font-bold text-slate-300">Conectividad Fibra Óptica</span>
+              </div>
+              <span class="text-[10px] font-mono bg-white/10 px-2.5 py-1 rounded text-cyan-300 border border-white/10 font-bold">FTTH GIGA</span>
+            </div>
 
-      <!-- Subtitle -->
-      <p class="hero-desc text-lg sm:text-2xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
-        Conexión de alta velocidad y máxima estabilidad para el hogar, la educación de tus hijos y el crecimiento de empresas en el estado Trujillo.
-      </p>
+            <div class="py-10 text-center relative flex flex-col items-center justify-center">
+              <span class="text-6xl font-black font-mono tracking-tight text-white">500</span>
+              <span class="text-xs font-bold text-[#FC0432] uppercase tracking-widest mt-1 font-mono">Mbps de Velocidad</span>
+              <p class="text-xs text-slate-400 mt-4 max-w-xs mx-auto">
+                Conexión estable y dedicada para streaming en 4K, teletrabajo y educación escolar interactiva.
+              </p>
+            </div>
 
-      <!-- Action Buttons -->
-      <div class="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-        <a 
-          href="#planes" 
-          class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-xl shadow-[#FC0432]/25 hover:scale-[1.02] active:scale-[0.98] transition-all text-center flex items-center justify-center gap-2"
-        >
-          <span>Ver Planes y Tarifas</span>
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
+            <div class="grid grid-cols-2 gap-3 pt-4 border-t border-white/10 text-xs font-mono">
+              <div class="bg-black/30 rounded-xl p-3 border border-white/5">
+                <span class="text-slate-400 block text-[10px]">Latencia Trujillo</span>
+                <span class="font-bold text-emerald-400 text-sm mt-0.5 block">&lt; 8 ms</span>
+              </div>
+              <div class="bg-black/30 rounded-xl p-3 border border-white/5">
+                <span class="text-slate-400 block text-[10px]">Disponibilidad</span>
+                <span class="font-bold text-[#38bdf8] text-sm mt-0.5 block">99.9% Uptime</span>
+              </div>
+            </div>
+          </div>
 
-        <a 
-          href="https://portal.ipsistemas.com.ve" 
-          target="_blank"
-          class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-[#0A559F] bg-blue-50 border border-blue-200 hover:bg-[#0A559F] hover:text-white transition-all text-center shadow-xs"
-        >
-          Portal de Pagos
-        </a>
-      </div>
+          <!-- Tarjeta Flotante Secundaria Superpuesta (Orbitix style) -->
+          <div class="absolute -bottom-6 -left-6 sm:-left-8 bg-white p-5 rounded-2xl shadow-xl border border-slate-200 flex items-center gap-4 max-w-xs animate-bounce" style="animation-duration: 4s;">
+            <div class="w-12 h-12 rounded-xl bg-red-50 border border-red-200 flex items-center justify-center text-2xl shrink-0">
+              🚀
+            </div>
+            <div>
+              <span class="text-xs font-mono font-bold text-[#FC0432] block uppercase">Instalación Rápida</span>
+              <p class="text-xs text-slate-700 font-bold leading-snug">
+                Enlace dedicado y residencial en Valera
+              </p>
+            </div>
+          </div>
 
-      <!-- Micro Metrics Bento Pills -->
-      <div class="hero-stats pt-10 grid grid-cols-3 gap-4 sm:gap-6 border-t border-slate-200/80 max-w-2xl mx-auto">
-        <div class="p-3 sm:p-4 rounded-2xl bg-white/70 border border-slate-200/60 shadow-xs">
-          <div class="text-2xl sm:text-4xl font-black text-[#FC0432] font-mono">100%</div>
-          <div class="text-[11px] sm:text-xs text-slate-500 mt-1 font-semibold uppercase tracking-wider">Fibra Simétrica</div>
-        </div>
-        <div class="p-3 sm:p-4 rounded-2xl bg-white/70 border border-slate-200/60 shadow-xs">
-          <div class="text-2xl sm:text-4xl font-black text-[#0A559F] font-mono">&lt; 8 ms</div>
-          <div class="text-[11px] sm:text-xs text-slate-500 mt-1 font-semibold uppercase tracking-wider">Baja Latencia</div>
-        </div>
-        <div class="p-3 sm:p-4 rounded-2xl bg-white/70 border border-slate-200/60 shadow-xs">
-          <div class="text-2xl sm:text-4xl font-black text-emerald-600 font-mono">24/7</div>
-          <div class="text-[11px] sm:text-xs text-slate-500 mt-1 font-semibold uppercase tracking-wider">Soporte Local</div>
         </div>
       </div>
 
@@ -68,47 +120,7 @@
 </section>
 
 <script>
-  import { animate } from 'animejs';
-
-  animate('.hero-badge', {
-    opacity: [0, 1],
-    translateY: [-15, 0],
-    duration: 600,
-    ease: 'outQuad'
-  });
-
-  animate('.hero-title', {
-    opacity: [0, 1],
-    translateY: [25, 0],
-    duration: 700,
-    delay: 100,
-    ease: 'outQuad'
-  });
-
-  animate('.hero-desc', {
-    opacity: [0, 1],
-    translateY: [20, 0],
-    duration: 600,
-    delay: 200,
-    ease: 'outQuad'
-  });
-
-  animate('.hero-cta', {
-    opacity: [0, 1],
-    translateY: [15, 0],
-    duration: 600,
-    delay: 300,
-    ease: 'outQuad'
-  });
-
-  animate('.hero-stats', {
-    opacity: [0, 1],
-    duration: 800,
-    delay: 450,
-    ease: 'outQuad'
-  });
-
-  // Canvas de partículas interactivas de fibra
+  // Canvas interactivo de partículas
   const canvas = document.getElementById('hero-particles-canvas') as HTMLCanvasElement;
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -121,7 +133,7 @@
     });
 
     const colors = ['rgba(252, 4, 50, ', 'rgba(10, 85, 159, ', 'rgba(0, 150, 255, '];
-    const particleCount = Math.min(60, Math.floor(width / 22));
+    const particleCount = Math.min(50, Math.floor(width / 24));
     const particles: any[] = [];
 
     for (let i = 0; i < particleCount; i++) {
@@ -136,7 +148,7 @@
       });
     }
 
-    const mouse = { x: -1000, y: -1000, radius: 130 };
+    const mouse = { x: -1000, y: -1000, radius: 120 };
 
     window.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
@@ -154,9 +166,9 @@
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 110) {
+          if (dist < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(10, 85, 159, ${0.1 * (1 - dist / 110)})`;
+            ctx.strokeStyle = `rgba(10, 85, 159, ${0.1 * (1 - dist / 100)})`;
             ctx.lineWidth = 0.8;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -179,8 +191,8 @@
         if (distance < mouse.radius) {
           const force = (mouse.radius - distance) / mouse.radius;
           const angle = Math.atan2(dy, dx);
-          p.x -= Math.cos(angle) * force * 3.5;
-          p.y -= Math.sin(angle) * force * 3.5;
+          p.x -= Math.cos(angle) * force * 3;
+          p.y -= Math.sin(angle) * force * 3;
         }
 
         ctx.beginPath();

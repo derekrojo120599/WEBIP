@@ -1,11 +1,47 @@
 ---
 ---
 
-<footer class="bg-[#03060c] border-t border-white/5 pt-16 pb-12 text-slate-400 text-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-white/5">
+<!-- Footer.astro: Franja oscura con CTA newsletter, columnas de enlaces, teléfonos y CONATEL -->
+<footer id="contacto" class="bg-[#03060c] text-slate-400 text-sm border-t border-slate-800">
+  
+  <!-- Franja superior de contacto y newsletter CTA Orbitix Style -->
+  <div class="border-b border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between">
+        
+        <div class="md:col-span-6 space-y-2">
+          <span class="text-xs font-mono font-bold uppercase text-[#FC0432]">Canales de Atención</span>
+          <h3 class="text-2xl font-black text-white">
+            ¿Tienes dudas sobre tu servicio o deseas contratar?
+          </h3>
+          <p class="text-xs text-slate-400">Nuestro equipo en Valera te atiende de Lunes a Sábado de 8:00 AM a 5:00 PM.</p>
+        </div>
+
+        <div class="md:col-span-6 flex flex-col sm:flex-row items-center gap-3 justify-start md:justify-end">
+          <a 
+            href="tel:02712210316" 
+            class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white font-mono font-bold text-xs text-center"
+          >
+            📞 0271-2210316
+          </a>
+          <a 
+            href="https://wa.me/584260337589?text=Hola,%20deseo%20información%20de%20IP%20Sistemas" 
+            target="_blank" 
+            class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#FC0432] to-[#DF0E0E] text-white font-bold text-xs text-center uppercase tracking-wider shadow-lg shadow-[#FC0432]/30"
+          >
+            WhatsApp Directo
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Columnas principales del Footer -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/5">
       
-      <!-- Company Info con Logo Blanco más prominente -->
+      <!-- Company Info + Logo Blanco -->
       <div class="space-y-4">
         <a href="/" class="inline-block">
           <img 
@@ -19,11 +55,11 @@
         </p>
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-[11px] text-emerald-400 font-mono font-medium">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          Habilitación Conatel Nº HGTS-00565
+          Habilitación CONATEL Nº HGTS-00565
         </div>
       </div>
 
-      <!-- Cobertura -->
+      <!-- Zonas de Cobertura -->
       <div>
         <h4 class="font-bold text-white mb-4 text-xs uppercase tracking-wider">Zonas de Cobertura</h4>
         <ul class="space-y-2 text-xs">
@@ -36,9 +72,20 @@
         </ul>
       </div>
 
+      <!-- La Empresa & Enlaces -->
+      <div>
+        <h4 class="font-bold text-white mb-4 text-xs uppercase tracking-wider">La Empresa</h4>
+        <ul class="space-y-2.5 text-xs">
+          <li><a href="#about" class="hover:text-[#FC0432] transition-colors">Nosotros</a></li>
+          <li><a href="#planes" class="hover:text-[#FC0432] transition-colors">Planes y Servicios</a></li>
+          <li><a href="#cobertura" class="hover:text-[#FC0432] transition-colors">Cobertura en Trujillo</a></li>
+          <li><a href="https://portal.ipsistemas.com.ve" target="_blank" class="hover:text-[#FC0432] transition-colors text-cyan-300 font-semibold">Portal de Pagos 24/7</a></li>
+        </ul>
+      </div>
+
       <!-- Contact & Office -->
       <div>
-        <h4 class="font-bold text-white mb-4 text-xs uppercase tracking-wider">Atención al Cliente</h4>
+        <h4 class="font-bold text-white mb-4 text-xs uppercase tracking-wider">Atención y Horario</h4>
         <ul class="space-y-2.5 text-xs">
           <li class="flex items-start gap-2">
             <span class="text-[#FC0432]">📍</span>
@@ -66,7 +113,7 @@
 
     </div>
 
-    <!-- Bottom copyright -->
+    <!-- Bottom Copyright -->
     <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
       <p>Copyrighted by IP Sistemas, CA - All Right Reserved</p>
       <p class="font-mono text-[11px] text-slate-600">Habilitación CONATEL Nº HGTS-00565</p>

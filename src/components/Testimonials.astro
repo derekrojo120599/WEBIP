@@ -1,0 +1,39 @@
+---
+import { testimonialsData, type Testimonial } from '../data/testimonials';
+
+interface Props {
+  testimonials?: Testimonial[];
+}
+
+const { testimonials = testimonialsData } = Astro.props;
+---
+
+<!-- Testimonials.astro: Oculto elegantemente si no hay testimonios reales para evitar inventar contenido -->
+{testimonials && testimonials.length > 0 ? (
+  <section class="py-24 bg-white border-t border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs text-[#0A559F] font-semibold uppercase tracking-wider">
+          Testimonios
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+          Lo que dicen <span class="text-gradient-ip">nuestros clientes</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map((item) => (
+          <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 space-y-4">
+            <p class="text-sm text-slate-600 italic">"{item.quote}"</p>
+            <div class="pt-4 border-t border-slate-200">
+              <h4 class="font-bold text-slate-900">{item.name}</h4>
+              <span class="text-xs text-slate-500 font-mono">{item.location}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+) : (
+  <!-- PENDIENTE: testimonios reales de clientes de IP Sistemas (sección oculta para no inventar contenido) -->
+)}

@@ -1,30 +1,63 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
+import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Features from '../components/Features.astro';
-import Plans from '../components/Plans.astro';
-import Coverage from '../components/Coverage.astro';
+import TrustBar from '../components/TrustBar.astro';
+import AboutUs from '../components/AboutUs.astro';
+import PlansCards from '../components/PlansCards.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import OfferBanner from '../components/OfferBanner.astro';
+import CoverageMap from '../components/CoverageMap.astro';
+import PricingTable from '../components/PricingTable.astro';
+import Testimonials from '../components/Testimonials.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
-  <Navbar />
+  <!-- 1. Header institucional + navbar sticky -->
+  <Header />
+
   <main class="relative z-10">
+    <!-- 2. Hero con headline, CTAs y mockup visual superpuesto -->
     <Hero />
-    <Features />
-    <Plans />
-    <Coverage />
+
+    <!-- 3. Franja oscura de confianza / marcas / Conatel -->
+    <TrustBar />
+
+    <!-- 4. La Empresa / About Us con tarjeta de estadísticas -->
+    <AboutUs />
+
+    <!-- 5. Tarjetas de Servicios reales (Banda Ancha, WiFi, Dedicados, Comunicaciones) -->
+    <PlansCards />
+
+    <!-- 6. ¿Por qué elegirnos? Beneficios numerados + Tarjeta de velocidad -->
+    <WhyChooseUs />
+
+    <!-- 7. Banner de Soluciones Dedicadas y Empresas -->
+    <OfferBanner />
+
+    <!-- 8. Zonas de cobertura + Mapa interactivo embebido de Trujillo -->
+    <CoverageMap />
+
+    <!-- 9. Tabla de Precios y Planes destacados -->
+    <PricingTable />
+
+    <!-- 10. Testimonios (oculto si no hay datos reales para no inventar) -->
+    <Testimonials />
+
+    <!-- 11. Preguntas Frecuentes -->
     <Faq />
   </main>
+
+  <!-- 12. Footer institucional completo -->
   <Footer />
 </Layout>
 
 <script>
   import { animate } from 'animejs';
 
-  // Animación de entrada suave basada en scroll con IntersectionObserver & Anime.js
+  // Animación suave de entrada al hacer scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -37,7 +70,7 @@ import Footer from '../components/Footer.astro';
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
 
   document.querySelectorAll('.plan-card, .coverage-card, .faq-item, .feature-card').forEach(el => {
     observer.observe(el);
