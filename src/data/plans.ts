@@ -5,39 +5,49 @@ export interface ServiceCard {
   speed?: string;
   link: string;
   badge?: string;
+  equipmentDetail: string; // Patrón Xfinity: detalle de hardware/servicio tangible
+  iconType: string;
 }
 
 export const servicesData: ServiceCard[] = [
   {
     id: "banda-ancha",
-    title: "Banda Ancha",
-    description: "Ofrecemos el mejor servicio de internet para ayudar a nuestros productores y hogares.",
+    title: "Banda Ancha Residencial",
+    description: "Conexión continua por fibra e inalámbrica para la educación de tus hijos y entretenimiento familiar.",
     speed: "Desde 10 MB",
     link: "#planes",
-    badge: "Inalámbrico & FTTH"
+    badge: "FTTH + Inalámbrico",
+    equipmentDetail: "Router Wi-Fi de alta cobertura y terminal óptica incluida",
+    iconType: "🌐"
   },
   {
     id: "wifi",
-    title: "WIFI",
-    description: "Los mejores equipos para brindarte la mejor experiencia de navegación inalámbrica.",
+    title: "WIFI de Alta Potencia",
+    description: "Equipos de doble banda (2.4 GHz y 5 GHz) para conectar múltiples dispositivos en todo tu hogar.",
     speed: "Doble Banda",
     link: "#planes",
-    badge: "Equipos Incluidos"
+    badge: "Equipos Incluidos",
+    equipmentDetail: "Mínima latencia para streaming simultáneo en HD/4K",
+    iconType: "📶"
   },
   {
     id: "enlaces-dedicados",
     title: "Enlaces Dedicados",
-    description: "Conexión exclusiva para su negocio, que garantiza la transferencia continua de internet y datos.",
+    description: "Conexión exclusiva 1:1 para empresas y productores, garantizando transferencia continua de datos y facturación.",
     speed: "Canal 1:1",
     link: "#planes",
-    badge: "Corporativo"
+    badge: "Empresas & Fincas",
+    equipmentDetail: "IP pública fija y monitoreo de enlace empresarial",
+    iconType: "⚡"
   },
   {
     id: "comunicaciones",
-    title: "Comunicaciones",
-    description: "Manténgase en contacto con proveedores y clientes a través de nuevos canales de telecomunicaciones.",
+    title: "Comunicaciones & Soporte",
+    description: "Manténgase en contacto con proveedores y clientes a través de enlaces directos y atención presencial.",
     speed: "Alta Disponibilidad",
     link: "#contacto",
-    badge: "Empresas"
+    badge: "Atención Local",
+    equipmentDetail: "Cuadrillas técnicas en Valera y soporte telefónico directo",
+    iconType: "🛠️"
   }
 ];

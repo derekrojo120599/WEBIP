@@ -1,0 +1,108 @@
+---
+import { coverageZones } from '../data/coverage';
+
+interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  id = "coverage-checker",
+  title = "¿Dónde vives?",
+  subtitle = "Selecciona tu zona o municipio para comprobar la disponibilidad técnica de inmediato."
+} = Astro.props;
+---
+
+<div id={id} class="w-full max-w-4xl mx-auto px-4 sm:px-6 relative z-30">
+  <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-slate-200 shadow-xl shadow-slate-200/50">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      
+      <div class="space-y-1 text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-[11px] font-mono font-bold text-[#FC0432] uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-[#FC0432] animate-ping"></span>
+          <span>Verificador de Disponibilidad</span>
+        </div>
+        <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+          {title}
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-500">
+          {subtitle}
+        </p>
+      </div>
+
+      <!-- Selector y botón CTA -->
+      <form class="checker-form flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+        <div class="relative w-full sm:w-64">
+          <select 
+            required 
+            class="checker-select w-full appearance-none bg-slate-50 border border-slate-300 hover:border-slate-400 focus:border-[#FC0432] focus:ring-2 focus:ring-red-100 rounded-xl px-4 py-3.5 text-xs sm:text-sm font-semibold text-slate-800 pr-10 transition-all outline-hidden cursor-pointer"
+          >
+            <option value="" disabled selected>Selecciona tu zona...</option>
+            {coverageZones.map((zone) => (
+              <option value={zone.name}>{zone.name} ({zone.type})</option>
+            ))}
+            <option value="otra">Otra zona en Trujillo...</option>
+          </select>
+          <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400 text-xs font-bold">
+            ▼
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-md shadow-[#FC0432]/25 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap cursor-pointer"
+        >
+          Consultar Cobertura
+        </button>
+      </form>
+
+    </div>
+
+    <!-- Output de resultado dinámico -->
+    <div class="checker-result hidden mt-4 pt-4 border-t border-slate-100 text-left">
+      <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-800 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <span class="text-base">✓</span>
+          <span class="result-message font-medium"></span>
+        </div>
+        <a 
+          href="#" 
+          target="_blank" 
+          class="result-link px-3 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs shrink-0"
+        >
+          Pedir Instalación
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.checker-form').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const parentBox = (e.target as HTMLElement).closest('.bg-white');
+      const select = parentBox?.querySelector('.checker-select') as HTMLSelectElement;
+      const resultBox = parentBox?.querySelector('.checker-result') as HTMLElement;
+      const resultMsg = parentBox?.querySelector('.result-message') as HTMLElement;
+      const resultLink = parentBox?.querySelector('.result-link') as HTMLAnchorElement;
+
+      if (select && resultBox && resultMsg && resultLink) {
+        const val = select.value;
+        resultBox.classList.remove('hidden');
+
+        if (val === 'otra') {
+          resultMsg.innerHTML = `<strong>Consultando factibilidad:</strong> Evaluamos expansión en tu sector. Escríbenos tus coordenadas.`;
+          resultLink.href = `https://wa.me/584260337589?text=Hola,%20deseo%20consultar%20cobertura%20en%20una%20zona%20no%20listada%20de%20Trujillo`;
+          resultLink.innerText = "Consultar Vía WhatsApp";
+        } else {
+          resultMsg.innerHTML = `<strong>¡Excelente!</strong> Contamos con cobertura activa en <strong>${val}</strong>.`;
+          resultLink.href = `https://wa.me/584260337589?text=Hola,%20confirmé%20cobertura%20en%20${encodeURIComponent(val)}%20y%20deseo%20contratar%20el%20servicio`;
+          resultLink.innerText = "Pedir Instalación";
+        }
+      }
+    });
+  });
+</script>

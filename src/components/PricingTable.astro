@@ -8,24 +8,45 @@ interface Props {
 const { plans = pricingPlans } = Astro.props;
 ---
 
-<!-- PricingTable.astro: 3 planes con tarjeta del medio destacada en rojo (Orbitix style) -->
+<!-- PricingTable.astro: Jerarquía clara estilo Google Fiber (Core, Plus, Max) + Bloque de Garantía -->
 <section id="planes" class="py-24 bg-slate-50 border-t border-slate-200/80 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Title -->
     <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold uppercase tracking-wider">
-        Planes de Internet
+        Planes & Velocidad Simétrica
       </div>
       <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
         Conéctate con la velocidad de <span class="text-gradient-ip">IP SISTEMAS</span>
       </h2>
       <p class="text-slate-600 text-base sm:text-lg">
-        Selecciona el plan ideal para tu hogar, comercio o empresa en el estado Trujillo.
+        Sin contratos forzados ni letras pequeñas. Conexión de fibra e inalámbrica para Valera y todo Trujillo.
       </p>
     </div>
 
-    <!-- Pricing Cards 3 Grid -->
+    <!-- Mini-bloque tipo Uptime Guarantee (Patrón Google Fiber) -->
+    <div class="max-w-3xl mx-auto mb-12 p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-black text-lg shrink-0">
+          🛡️
+        </div>
+        <div>
+          <span class="text-xs font-bold text-slate-900 block">Garantía de Estabilidad y Uptime 99.9%</span>
+          <span class="text-[11px] text-slate-500 font-mono">Monitoreo continuo y cuadrillas técnicas en Valera</span>
+        </div>
+      </div>
+      <!-- PENDIENTE: dato real de SLA o garantía de reposición si está en contrato -->
+      <a 
+        href="https://wa.me/584260337589?text=Hola,%20deseo%20conocer%20la%20garantía%20de%20servicio%20de%20los%20planes" 
+        target="_blank"
+        class="text-xs font-bold text-[#0A559F] hover:text-[#FC0432] shrink-0 font-mono"
+      >
+        Conoce más →
+      </a>
+    </div>
+
+    <!-- Pricing Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
       {plans.map((plan) => (
         <div class={`plan-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 relative ${
@@ -36,17 +57,20 @@ const { plans = pricingPlans } = Astro.props;
           
           {plan.popular && (
             <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FC0432] to-[#DF0E0E] text-white text-[11px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
-              Plan Más Popular
+              Plan Recomendado
             </div>
           )}
 
           <div>
+            <!-- Tier Badge estilo Google Fiber (Core, Plus, Max) -->
             <div class="flex items-center justify-between mb-4 mt-2">
-              <span class={`text-xs font-mono font-bold uppercase tracking-wider ${plan.popular ? 'text-[#FC0432]' : 'text-slate-500'}`}>
-                {plan.category}
+              <span class={`text-xs font-mono font-black uppercase tracking-wider px-2.5 py-1 rounded-lg ${
+                plan.popular ? 'bg-red-50 text-[#FC0432] border border-red-200' : 'bg-slate-100 text-slate-700'
+              }`}>
+                TIER {plan.planTier}
               </span>
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-slate-100 text-slate-700">
-                Ilimitado
+              <span class="text-[11px] font-mono font-semibold text-slate-500">
+                {plan.category}
               </span>
             </div>
 
@@ -58,7 +82,7 @@ const { plans = pricingPlans } = Astro.props;
               {plan.priceNote}
             </p>
 
-            <!-- Velocidad / Tarifa -->
+            <!-- Velocidad -->
             <div class="flex items-baseline gap-1 my-6 pb-6 border-b border-slate-100">
               <span class="text-5xl font-black text-slate-900 font-mono tracking-tight">
                 {plan.speed}
@@ -69,7 +93,7 @@ const { plans = pricingPlans } = Astro.props;
               <!-- PENDIENTE: precios oficiales en USD si la empresa los publica -->
             </div>
 
-            <!-- Lista de beneficios con checks -->
+            <!-- Lista de beneficios -->
             <ul class="space-y-3.5 text-xs sm:text-sm text-slate-600 font-medium">
               {plan.features.map((feature) => (
                 <li class="flex items-center gap-2.5">

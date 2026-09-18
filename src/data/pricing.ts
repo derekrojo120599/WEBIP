@@ -1,6 +1,7 @@
 export interface PricingPlan {
   id: string;
   name: string;
+  planTier: string; // Patrón Google Fiber: Core, Turbo Plus, Max Enterprise
   category: string;
   speed: string;
   speedUnit: string;
@@ -15,10 +16,11 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: "hogar-10",
     name: "Plan Hogar",
+    planTier: "CORE",
     category: "Residencial Inalámbrico",
     speed: "10",
     speedUnit: "MB",
-    priceNote: "Tu vida conectada Inalámbricamente",
+    priceNote: "Tu vida conectada inalámbricamente",
     popular: false,
     features: [
       "Conexión inalámbrica estable",
@@ -32,15 +34,16 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: "fibra-turbo",
     name: "Plan Fibra",
+    planTier: "PLUS",
     category: "Fibra Óptica FTTH",
     speed: "20 - 80",
     speedUnit: "MB",
-    priceNote: "Disfruta desde 20 hasta 80 MB de velocidad",
+    priceNote: "Disfruta desde 20 hasta 80 MB simétricos",
     popular: true,
     features: [
       "Conexión directa por fibra óptica pura",
       "Misma velocidad de subida y bajada (Simétrica)",
-      "Streaming 4K y gaming sin interrupciones",
+      "Streaming 4K y clases virtuales sin cortes",
       "Soporte técnico preferencial"
     ],
     ctaText: "Contratar Plan Fibra",
@@ -49,10 +52,11 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: "dedicados",
     name: "Soluciones Dedicadas",
-    category: "Corporativo & Productores",
+    planTier: "MAX",
+    category: "Empresas & Productores",
     speed: "80 - 500",
     speedUnit: "MB",
-    priceNote: "Una solución exclusiva para su negocio",
+    priceNote: "Conexión 1:1 exclusiva para tu negocio",
     popular: false,
     features: [
       "Canal 1:1 exclusivo sin compartición",

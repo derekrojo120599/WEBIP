@@ -2,7 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import CoverageChecker from '../components/CoverageChecker.astro';
+import TrustBadges from '../components/TrustBadges.astro';
+import QuickPay from '../components/QuickPay.astro';
 import FiberScrollytelling from '../components/FiberScrollytelling.astro';
+import Statement from '../components/Statement.astro';
 import TrustBar from '../components/TrustBar.astro';
 import AboutUs from '../components/AboutUs.astro';
 import PlansCards from '../components/PlansCards.astro';
@@ -20,41 +24,64 @@ import Footer from '../components/Footer.astro';
   <Header />
 
   <main class="relative z-10">
-    <!-- 2. Hero con headline y llamado a la acción -->
+    <!-- 2. Hero con headline, CTAs y mockup visual superpuesto -->
     <Hero />
 
-    <!-- 3. Experiencia Scrollytelling 3D Inmersiva (Estilo Musée) -->
+    <!-- 3. Patrón Google Fiber/Xfinity: Checker de Cobertura Prioritario justo bajo el Hero -->
+    <div class="-mt-8 mb-6 relative z-30">
+      <CoverageChecker id="hero-coverage-checker" />
+    </div>
+
+    <!-- 4. Patrón Google Fiber: Fila de confianza e insignias reales (CONATEL, Trujillo, FTTH, Portal) -->
+    <TrustBadges />
+
+    <!-- 5. Patrón Jio: Bloque rápido de acceso a consulta de factura y portal de pagos -->
+    <QuickPay />
+
+    <!-- 6. Patrón Verizon: Statement tipográfico de impacto ("Confiable.") -->
+    <Statement />
+
+    <!-- 7. Experiencia Scrollytelling 3D Inmersiva de Trujillo -->
     <FiberScrollytelling />
 
-    <!-- 4. Franja oscura de confianza / marcas / Conatel -->
+    <!-- 8. Franja oscura de confianza técnica / Conatel -->
     <TrustBar />
 
-    <!-- 5. La Empresa / About Us con tarjeta de estadísticas -->
+    <!-- 9. La Empresa / About Us con tarjeta de estadísticas -->
     <AboutUs />
 
-    <!-- 6. Tarjetas de Servicios reales (Banda Ancha, WiFi, Dedicados, Comunicaciones) -->
+    <!-- 10. Tarjetas de Servicios con detalle tangible de equipamiento (Patrón Xfinity) -->
     <PlansCards />
 
-    <!-- 7. ¿Por qué elegirnos? Beneficios numerados + Tarjeta de velocidad -->
+    <!-- 11. ¿Por qué elegirnos? Beneficios numerados + Tarjeta de velocidad -->
     <WhyChooseUs />
 
-    <!-- 8. Banner de Soluciones Dedicadas y Empresas -->
+    <!-- 12. Banner de Soluciones Dedicadas y Empresas -->
     <OfferBanner />
 
-    <!-- 9. Zonas de cobertura + Mapa interactivo embebido de Trujillo -->
+    <!-- 13. Zonas de cobertura + Mapa interactivo embebido de Trujillo -->
     <CoverageMap />
 
-    <!-- 10. Tabla de Precios y Planes destacados -->
+    <!-- 14. Tabla de Precios y Planes con tiers Core/Plus/Max + Garantía de Uptime (Google Fiber) -->
     <PricingTable />
 
-    <!-- 11. Testimonios (oculto si no hay datos reales para no inventar) -->
+    <!-- 15. Repetición de Checker de Cobertura antes del final (Patrón Xfinity/Google Fiber) -->
+    <div class="py-16 bg-slate-50 border-t border-slate-200/80">
+      <CoverageChecker 
+        id="bottom-coverage-checker" 
+        title="¿Listo para conectarte en tu sector?" 
+        subtitle="Verifica tu zona ahora mismo y solicita tu instalación en Trujillo."
+      />
+    </div>
+
+    <!-- 16. Testimonios (oculto si no hay datos reales para no inventar) -->
     <Testimonials />
 
-    <!-- 12. Preguntas Frecuentes -->
+    <!-- 17. Preguntas Frecuentes -->
     <Faq />
   </main>
 
-  <!-- 13. Footer institucional completo -->
+  <!-- 18. Footer institucional con Speedtest accesible y canales de atención -->
   <Footer />
 </Layout>
 
