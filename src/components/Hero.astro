@@ -1,7 +1,7 @@
 ---
 ---
 
-<section class="relative min-h-[90vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-radial-mesh-light">
+<section class="relative min-h-[92vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-radial-mesh-light">
   <!-- Interactive Canvas para partículas de fibra óptica reactivas al mouse -->
   <canvas id="hero-particles-canvas" class="absolute inset-0 w-full h-full pointer-events-auto z-0"></canvas>
 
@@ -15,18 +15,18 @@
       </div>
 
       <!-- Main Headline -->
-      <h1 class="hero-title text-5xl sm:text-7xl font-black tracking-tight leading-[1.12] text-slate-900">
+      <h1 class="hero-title text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.12] text-slate-900">
         Vive una experiencia <br />
         <span class="text-gradient-ip">de otro nivel.</span>
       </h1>
 
       <!-- Description -->
-      <p class="hero-desc text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
-        Conexión de fibra óptica y soluciones inalámbricas estables para la educación de tus hijos, streaming en alta definición y soluciones dedicadas para empresas y productores en Valera y todo Trujillo.
+      <p class="hero-desc text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+        Conexión de fibra óptica simétrica y soluciones inalámbricas de alto rendimiento para el hogar, la educación y empresas en todo el estado Trujillo.
       </p>
 
       <!-- Action Buttons -->
-      <div class="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+      <div class="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 pt-1">
         <a 
           href="#planes" 
           class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-xl shadow-[#FC0432]/25 hover:scale-[1.02] active:scale-[0.98] transition-all text-center flex items-center justify-center gap-2"
@@ -47,19 +47,55 @@
         </a>
       </div>
 
-      <!-- Trust Metrics pill stats -->
-      <div class="hero-stats pt-10 grid grid-cols-3 gap-6 border-t border-slate-200/80 max-w-2xl mx-auto">
-        <div>
-          <div class="text-3xl sm:text-4xl font-black text-[#FC0432] font-mono">100%</div>
-          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Estabilidad Real</div>
+      <!-- PROPUESTA 1: Showcase 3D Card con Efecto Tilt y Tabs de Casos de Uso -->
+      <div class="pt-6 max-w-3xl mx-auto">
+        <!-- Interactive Tabs Selector -->
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <button id="tab-btn-1" class="hero-tab-btn active px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-white border-2 border-[#FC0432] text-[#FC0432] shadow-sm transition-all">
+            👨‍👩‍👧‍👦 Familia & Hogar
+          </button>
+          <button id="tab-btn-2" class="hero-tab-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 border-2 border-transparent text-slate-600 hover:text-slate-900 transition-all">
+            🌾 Productores & Pymes
+          </button>
+          <button id="tab-btn-3" class="hero-tab-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 border-2 border-transparent text-slate-600 hover:text-slate-900 transition-all">
+            🎮 Gaming & 4K
+          </button>
         </div>
-        <div>
-          <div class="text-3xl sm:text-4xl font-black text-[#0A559F] font-mono">500 MB</div>
-          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Velocidad Máxima</div>
-        </div>
-        <div>
-          <div class="text-3xl sm:text-4xl font-black text-emerald-600 font-mono">24/7</div>
-          <div class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Soporte Técnico</div>
+
+        <!-- 3D Tilt Card Interactive Container -->
+        <div 
+          id="hero-tilt-card" 
+          class="relative bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-2xl shadow-slate-300/40 text-left transition-transform duration-150 ease-out cursor-pointer overflow-hidden group"
+          style="transform-style: preserve-3d;"
+        >
+          <!-- Subtle lighting reflection overlay -->
+          <div id="tilt-glare" class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent pointer-events-none opacity-0 transition-opacity duration-300"></div>
+
+          <div class="flex flex-col sm:flex-row items-center gap-6 relative z-10">
+            <div id="tilt-icon" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center text-3xl sm:text-4xl shadow-xs shrink-0">
+              🎓
+            </div>
+            
+            <div class="space-y-1.5 text-center sm:text-left flex-1">
+              <div class="flex items-center justify-center sm:justify-start gap-2">
+                <span id="tilt-tag" class="text-[11px] font-mono font-bold uppercase text-[#FC0432] bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200">
+                  Educación y Streaming
+                </span>
+                <span class="text-xs text-emerald-600 font-bold font-mono">● Sin Cortes</span>
+              </div>
+              <h3 id="tilt-title" class="text-xl sm:text-2xl font-black text-slate-900">
+                Impulsa la educación de tus hijos con internet estable
+              </h3>
+              <p id="tilt-desc" class="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
+                Acceso continuo a plataformas educativas, clases virtuales simultáneas y entretenimiento familiar en alta definición sin interrupciones.
+              </p>
+            </div>
+
+            <div class="shrink-0 text-center sm:text-right border-t sm:border-t-0 sm:border-l border-slate-100 pt-4 sm:pt-0 sm:pl-6">
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Velocidad Sugerida</span>
+              <span id="tilt-speed" class="text-2xl sm:text-3xl font-black font-mono text-[#FC0432] block">50 - 200 <span class="text-xs">MB</span></span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -70,46 +106,111 @@
 <script>
   import { animate } from 'animejs';
 
-  // Animaciones de entrada suaves
-  animate('.hero-badge', {
-    opacity: [0, 1],
-    translateY: [-15, 0],
-    duration: 600,
-    ease: 'outQuad'
-  });
-
-  animate('.hero-title', {
-    opacity: [0, 1],
-    translateY: [25, 0],
-    duration: 700,
-    delay: 100,
-    ease: 'outQuad'
-  });
-
-  animate('.hero-desc', {
+  // Animaciones iniciales
+  animate('.hero-badge, .hero-title, .hero-desc, .hero-cta', {
     opacity: [0, 1],
     translateY: [20, 0],
+    delay: (el, i) => i * 120,
     duration: 600,
-    delay: 200,
     ease: 'outQuad'
   });
 
-  animate('.hero-cta', {
-    opacity: [0, 1],
-    translateY: [15, 0],
-    duration: 600,
-    delay: 300,
-    ease: 'outQuad'
+  // Efecto 3D Tilt interactivo que reacciona a la posición del mouse
+  const card = document.getElementById('hero-tilt-card');
+  const glare = document.getElementById('tilt-glare');
+
+  if (card) {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      
+      if (glare) {
+        glare.style.opacity = '1';
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.6) 0%, transparent 60%)`;
+      }
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      if (glare) glare.style.opacity = '0';
+    });
+  }
+
+  // Lógica de pestañas interactivas de Casos de Uso
+  const tabsData = [
+    {
+      icon: "🎓",
+      tag: "Educación & Streaming",
+      title: "Impulsa la educación de tus hijos con internet estable",
+      desc: "Acceso continuo a plataformas de estudio, videoconferencias escolares y entretenimiento en 4K sin ralentizaciones.",
+      speed: "50 - 200 MB"
+    },
+    {
+      icon: "🏢",
+      tag: "Productores & Comercios",
+      title: "Conectividad robusta para potenciar tu negocio en Trujillo",
+      desc: "Enlaces dedicados 1:1, transferencias de archivos masivos, puntos de venta siempre activos y facturación electrónica.",
+      speed: "Dedicado SLA"
+    },
+    {
+      icon: "⚡",
+      tag: "Gaming & Fibra Simétrica",
+      title: "Latencia ultrabaja para juegos competitivos y streaming",
+      desc: "Ping mínimo hacia servidores internacionales (<8ms) y velocidad de subida exacta a la de bajada.",
+      speed: "200 - 500 MB"
+    }
+  ];
+
+  const btns = [
+    document.getElementById('tab-btn-1'),
+    document.getElementById('tab-btn-2'),
+    document.getElementById('tab-btn-3')
+  ];
+
+  const tiltIcon = document.getElementById('tilt-icon');
+  const tiltTag = document.getElementById('tilt-tag');
+  const tiltTitle = document.getElementById('tilt-title');
+  const tiltDesc = document.getElementById('tilt-desc');
+  const tiltSpeed = document.getElementById('tilt-speed');
+
+  btns.forEach((btn, index) => {
+    btn?.addEventListener('click', () => {
+      btns.forEach(b => {
+        if (b) {
+          b.className = "hero-tab-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 border-2 border-transparent text-slate-600 hover:text-slate-900 transition-all";
+        }
+      });
+      if (btn) {
+        btn.className = "hero-tab-btn active px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-white border-2 border-[#FC0432] text-[#FC0432] shadow-sm transition-all";
+      }
+
+      const data = tabsData[index];
+      if (card) {
+        animate(card, {
+          scale: [0.98, 1],
+          duration: 300,
+          ease: 'outQuad'
+        });
+      }
+
+      if (tiltIcon) tiltIcon.innerText = data.icon;
+      if (tiltTag) tiltTag.innerText = data.tag;
+      if (tiltTitle) tiltTitle.innerText = data.title;
+      if (tiltDesc) tiltDesc.innerText = data.desc;
+      if (tiltSpeed) tiltSpeed.innerHTML = `${data.speed} <span class="text-xs">MB</span>`;
+    });
   });
 
-  animate('.hero-stats', {
-    opacity: [0, 1],
-    duration: 800,
-    delay: 450,
-    ease: 'outQuad'
-  });
-
-  // Canvas interactivo de partículas flotantes de fibra óptica con física al pasar el mouse
+  // Canvas interactivo de partículas de fibra flotantes
   const canvas = document.getElementById('hero-particles-canvas') as HTMLCanvasElement;
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -131,30 +232,24 @@
       radius: number;
       colorBase: string;
       alpha: number;
-      baseX: number;
-      baseY: number;
     }
 
-    const particleCount = Math.min(65, Math.floor(width / 20));
+    const particleCount = Math.min(50, Math.floor(width / 25));
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
-      const x = Math.random() * width;
-      const y = Math.random() * height;
       particles.push({
-        x,
-        y,
-        baseX: x,
-        baseY: y,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
-        radius: Math.random() * 2.5 + 1.2,
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        radius: Math.random() * 2.2 + 1,
         colorBase: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.4 + 0.2
+        alpha: Math.random() * 0.35 + 0.15
       });
     }
 
-    const mouse = { x: -1000, y: -1000, radius: 140 };
+    const mouse = { x: -1000, y: -1000, radius: 120 };
 
     window.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
@@ -162,25 +257,19 @@
       mouse.y = e.clientY - rect.top;
     });
 
-    window.addEventListener('mouseleave', () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
-    });
-
     function render() {
       if (!ctx) return;
       ctx.clearRect(0, 0, width, height);
 
-      // Dibujar líneas conectoras tenues de fibra óptica
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 110) {
+          if (dist < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(10, 85, 159, ${0.12 * (1 - dist / 110)})`;
+            ctx.strokeStyle = `rgba(10, 85, 159, ${0.1 * (1 - dist / 100)})`;
             ctx.lineWidth = 0.8;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -189,26 +278,22 @@
         }
       }
 
-      // Actualizar y dibujar partículas
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Rebote en bordes
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
-        // Interacción física con el cursor (repulsión magnética elástica)
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < mouse.radius) {
           const force = (mouse.radius - distance) / mouse.radius;
-          const maxPush = 45;
           const angle = Math.atan2(dy, dx);
-          p.x -= Math.cos(angle) * force * 4;
-          p.y -= Math.sin(angle) * force * 4;
+          p.x -= Math.cos(angle) * force * 3;
+          p.y -= Math.sin(angle) * force * 3;
         }
 
         ctx.beginPath();
