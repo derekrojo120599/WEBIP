@@ -2,11 +2,11 @@
 ---
 
 <div id="fiber-scrollytelling-wrapper" class="relative w-full">
-  <!-- Canvas 3D Fijo de Fondo: Maqueta Topográfica Hiperrealista de Trujillo -->
+  <!-- Canvas 3D Fijo de Fondo: Maqueta Topográfica Esculpida con Textura Táctil de Yeso/Arcilla y Curvas Topográficas de Alta Precisión -->
   <div class="sticky top-0 h-screen w-full overflow-hidden pointer-events-none z-0">
     <canvas id="scrolly-canvas-3d" class="absolute inset-0 w-full h-full"></canvas>
     
-    <!-- Indicador de capítulos lateral estilo Musée con glow -->
+    <!-- Indicador de capítulos lateral estilo Musée -->
     <div class="absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-5 z-20 pointer-events-auto">
       <div id="dot-0" class="scrolly-dot w-3.5 h-3.5 rounded-full bg-[#FC0432] ring-4 ring-red-100 shadow-[0_0_12px_rgba(252,4,50,0.6)] transition-all duration-300"></div>
       <div id="dot-1" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
@@ -114,7 +114,7 @@
   if (canvas) {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#f8fafc');
-    scene.fog = new THREE.FogExp2('#f8fafc', 0.02);
+    scene.fog = new THREE.FogExp2('#f8fafc', 0.018);
 
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 10, 16);
@@ -125,87 +125,94 @@
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 1.1;
 
-    // Iluminación cinemática PBR avanzada
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+    // Iluminación arquitectónica de estudio
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
     scene.add(ambientLight);
 
-    const sunLight = new THREE.DirectionalLight(0xfff5ea, 2.5);
-    sunLight.position.set(15, 25, 12);
-    sunLight.castShadow = true;
-    sunLight.shadow.mapSize.width = 2048;
-    sunLight.shadow.mapSize.height = 2048;
-    sunLight.shadow.camera.near = 0.5;
-    sunLight.shadow.camera.far = 60;
-    sunLight.shadow.camera.left = -16;
-    sunLight.shadow.camera.right = 16;
-    sunLight.shadow.camera.top = 16;
-    sunLight.shadow.camera.bottom = -16;
-    sunLight.shadow.bias = -0.0003;
-    scene.add(sunLight);
+    const keyLight = new THREE.DirectionalLight(0xfff7ed, 2.4);
+    keyLight.position.set(14, 26, 12);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.width = 2048;
+    keyLight.shadow.mapSize.height = 2048;
+    keyLight.shadow.camera.near = 0.5;
+    keyLight.shadow.camera.far = 60;
+    keyLight.shadow.camera.left = -16;
+    keyLight.shadow.camera.right = 16;
+    keyLight.shadow.camera.top = 16;
+    keyLight.shadow.camera.bottom = -16;
+    keyLight.shadow.bias = -0.0004;
+    scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xdbeafe, 0.8);
-    fillLight.position.set(-15, 10, -10);
-    scene.add(fillLight);
+    const rimLight = new THREE.DirectionalLight(0xe0f2fe, 0.7);
+    rimLight.position.set(-14, 12, -12);
+    scene.add(rimLight);
 
-    const redPoint = new THREE.PointLight(0xFC0432, 8, 25);
-    redPoint.position.set(0, 4.5, 0);
-    scene.add(redPoint);
+    const redGlow = new THREE.PointLight(0xFC0432, 6, 20);
+    redGlow.position.set(0, 4.5, 0);
+    scene.add(redGlow);
 
-    const bluePoint = new THREE.PointLight(0x0A559F, 6, 25);
-    bluePoint.position.set(-5, 3.5, 4);
-    scene.add(bluePoint);
+    const blueGlow = new THREE.PointLight(0x0A559F, 5, 20);
+    blueGlow.position.set(-5, 3.5, 4);
+    scene.add(blueGlow);
 
     // GRUPO PRINCIPAL
     const mapGroup = new THREE.Group();
     scene.add(mapGroup);
 
-    // TEXTURA PROCEDURAL HIPERDETALLADA (Relieve de roca andina, curvas de nivel y grid)
-    function createHighResTexture() {
+    // GENERADOR DE TEXTURA HIPERREALISTA DE YESO / ESTRATOS DE SUELO ESCULPIDO
+    function createSculptedTerrainTexture() {
       const texCanvas = document.createElement('canvas');
       texCanvas.width = 2048;
       texCanvas.height = 2048;
       const ctx = texCanvas.getContext('2d');
       if (ctx) {
-        // Base con sutil gradiente mineral
-        const grad = ctx.createLinearGradient(0, 0, 2048, 2048);
-        grad.addColorStop(0, '#f8fafc');
-        grad.addColorStop(0.5, '#f1f5f9');
-        grad.addColorStop(1, '#e2e8f0');
-        ctx.fillStyle = grad;
+        // Base con textura de piedra caliza/yeso arquitectónico
+        ctx.fillStyle = '#f8fafc';
         ctx.fillRect(0, 0, 2048, 2048);
 
-        // Textura de ruido de superficie de montaña
-        for (let i = 0; i < 40000; i++) {
-          const x = Math.random() * 2048;
-          const y = Math.random() * 2048;
-          const shade = Math.random() * 25;
-          ctx.fillStyle = `rgba(${200 - shade}, ${210 - shade}, ${225 - shade}, 0.15)`;
-          ctx.fillRect(x, y, Math.random() * 3 + 1, Math.random() * 3 + 1);
+        // Micro-porosidad de arcilla y grano orgánico
+        const imgData = ctx.getImageData(0, 0, 2048, 2048);
+        const data = imgData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          const noise = (Math.random() - 0.5) * 14;
+          data[i] = Math.min(255, Math.max(220, 248 + noise));     // R
+          data[i + 1] = Math.min(255, Math.max(225, 250 + noise)); // G
+          data[i + 2] = Math.min(255, Math.max(230, 252 + noise)); // B
+        }
+        ctx.putImageData(imgData, 0, 0);
+
+        // Estratos geológicos y curvas de nivel grabadas en bajorrelieve
+        ctx.lineWidth = 3;
+        for (let r = 60; r < 1400; r += 60) {
+          // Sombra interior de la hendidura
+          ctx.strokeStyle = 'rgba(148, 163, 184, 0.45)';
+          ctx.beginPath();
+          ctx.arc(1024, 1024, r, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Resalte superior iluminado de la hendidura
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.arc(1024, 1024, r + 1.5, 0, Math.PI * 2);
+          ctx.stroke();
         }
 
-        // Curvas de nivel topográficas principales y secundarias
-        ctx.strokeStyle = 'rgba(148, 163, 184, 0.35)';
-        ctx.lineWidth = 2.5;
-        for (let r = 80; r < 1400; r += 70) {
+        // Curvas secundarias finas
+        ctx.strokeStyle = 'rgba(203, 213, 225, 0.35)';
+        ctx.lineWidth = 1;
+        for (let r = 30; r < 1400; r += 30) {
           ctx.beginPath();
           ctx.arc(1024, 1024, r, 0, Math.PI * 2);
           ctx.stroke();
         }
 
+        // Grilla técnica suave
         ctx.strokeStyle = 'rgba(203, 213, 225, 0.2)';
-        ctx.lineWidth = 1;
-        for (let r = 40; r < 1400; r += 35) {
-          ctx.beginPath();
-          ctx.arc(1024, 1024, r, 0, Math.PI * 2);
-          ctx.stroke();
-        }
-
-        // Micro-retícula técnica
-        ctx.strokeStyle = 'rgba(203, 213, 225, 0.25)';
-        ctx.lineWidth = 1;
-        for (let i = 0; i < 2048; i += 64) {
+        ctx.lineWidth = 0.8;
+        for (let i = 0; i < 2048; i += 128) {
           ctx.beginPath();
           ctx.moveTo(i, 0);
           ctx.lineTo(i, 2048);
@@ -223,13 +230,38 @@
       return tex;
     }
 
-    // MAPA DE RELIEVE / ROUGHNESS
-    const terrainTexture = createHighResTexture();
+    // MAPA NORMAL PROCEDURAL (Para que la luz interactúe físicamente con cada poro de la montaña)
+    function createNormalMapTexture() {
+      const normCanvas = document.createElement('canvas');
+      normCanvas.width = 1024;
+      normCanvas.height = 1024;
+      const ctx = normCanvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#8080ff'; // Normal flat vector
+        ctx.fillRect(0, 0, 1024, 1024);
 
-    // 1. Malla de Terreno Montañoso de Alta Definición
+        const imgData = ctx.getImageData(0, 0, 1024, 1024);
+        const data = imgData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          data[i] = 128 + Math.floor((Math.random() - 0.5) * 22);     // Normal X
+          data[i + 1] = 128 + Math.floor((Math.random() - 0.5) * 22); // Normal Y
+          data[i + 2] = 255;                                          // Normal Z
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+      const nTex = new THREE.CanvasTexture(normCanvas);
+      nTex.wrapS = THREE.RepeatWrapping;
+      nTex.wrapT = THREE.RepeatWrapping;
+      return nTex;
+    }
+
+    const terrainTexture = createSculptedTerrainTexture();
+    const terrainNormal = createNormalMapTexture();
+
+    // 1. Malla de Terreno Esculpida con Geometría Orgánica
     const terrainWidth = 24;
     const terrainDepth = 24;
-    const terrainSegments = 90;
+    const terrainSegments = 100;
     const terrainGeo = new THREE.PlaneGeometry(terrainWidth, terrainDepth, terrainSegments, terrainSegments);
     terrainGeo.rotateX(-Math.PI / 2);
 
@@ -237,7 +269,12 @@
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i);
       const z = pos.getZ(i);
-      const elevation = Math.sin(x * 0.32) * Math.cos(z * 0.32) * 1.9 + Math.sin(x * 0.65 + z * 0.5) * 0.8 + Math.cos(x * 1.1) * 0.2;
+      // Fusión de armónicos fractales para crear valles y mesetas andinas
+      const elevation = 
+        Math.sin(x * 0.28) * Math.cos(z * 0.28) * 2.1 + 
+        Math.sin(x * 0.6 + z * 0.45) * 0.9 + 
+        Math.cos(x * 1.2 - z * 0.8) * 0.35 +
+        Math.sin(x * 2.0) * Math.cos(z * 2.0) * 0.12;
       pos.setY(i, Math.max(-0.25, elevation));
     }
     terrainGeo.computeVertexNormals();
@@ -245,21 +282,23 @@
     const terrainMat = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       map: terrainTexture,
-      roughness: 0.55,
-      metalness: 0.15,
+      normalMap: terrainNormal,
+      normalScale: new THREE.Vector2(0.8, 0.8),
+      roughness: 0.72,
+      metalness: 0.08,
       bumpMap: terrainTexture,
-      bumpScale: 0.05
+      bumpScale: 0.08
     });
     const terrain = new THREE.Mesh(terrainGeo, terrainMat);
     terrain.receiveShadow = true;
     terrain.castShadow = true;
     mapGroup.add(terrain);
 
-    // Pedestal arquitectónico biselado
+    // Pedestal arquitectónico estilo galería
     const baseGeo = new THREE.BoxGeometry(terrainWidth + 0.8, 1.4, terrainDepth + 0.8);
     const baseMat = new THREE.MeshStandardMaterial({
       color: 0x090d1a,
-      roughness: 0.15,
+      roughness: 0.2,
       metalness: 0.85
     });
     const base = new THREE.Mesh(baseGeo, baseMat);
@@ -267,23 +306,22 @@
     base.receiveShadow = true;
     mapGroup.add(base);
 
-    // 2. Nodos de Red y Torres con Celosía y Antenas Parabólicas
+    // 2. Torres de Red Estructurales
     const nodesData = [
-      { name: "Valera (Central)", x: 0, z: 0, h: 2.35, color: 0xFC0432, isCenter: true, label: "Valera Central" },
-      { name: "Jajó", x: -5.5, z: 4.2, h: 1.85, color: 0x0A559F, isCenter: false, label: "Jajó" },
-      { name: "La Mesa de Esnujaque", x: -4.5, z: -5.2, h: 1.95, color: 0x0A559F, isCenter: false, label: "La Mesa" },
-      { name: "Cabimbú", x: 4.5, z: 5.2, h: 1.75, color: 0x0A559F, isCenter: false, label: "Cabimbú" },
-      { name: "Cuicas & Burbusay", x: 6.2, z: -4.2, h: 1.65, color: 0x10B981, isCenter: false, label: "Cuicas" }
+      { name: "Valera (Central)", x: 0, z: 0, h: 2.5, color: 0xFC0432, isCenter: true },
+      { name: "Jajó", x: -5.5, z: 4.2, h: 1.95, color: 0x0A559F, isCenter: false },
+      { name: "La Mesa de Esnujaque", x: -4.5, z: -5.2, h: 2.05, color: 0x0A559F, isCenter: false },
+      { name: "Cabimbú", x: 4.5, z: 5.2, h: 1.85, color: 0x0A559F, isCenter: false },
+      { name: "Cuicas & Burbusay", x: 6.2, z: -4.2, h: 1.75, color: 0x10B981, isCenter: false }
     ];
 
     const towerMeshes: THREE.Group[] = [];
 
-    // Función creadora de torres metálicas detalladas
     nodesData.forEach((n) => {
       const tower = new THREE.Group();
       tower.position.set(n.x, n.h, n.z);
 
-      // Mástil de celosía triangular metálica
+      // Mástil de celosía
       const poleGeo = new THREE.CylinderGeometry(0.08, n.isCenter ? 0.35 : 0.22, 2.4, 4);
       const poleMat = new THREE.MeshStandardMaterial({
         color: 0x1e293b,
@@ -296,7 +334,7 @@
       pole.receiveShadow = true;
       tower.add(pole);
 
-      // Travesaños y crucetas de la torre
+      // Crucetas
       for (let c = 0.4; c < 2.2; c += 0.5) {
         const ringGeo = new THREE.BoxGeometry(n.isCenter ? 0.45 : 0.32, 0.04, n.isCenter ? 0.45 : 0.32);
         const ring = new THREE.Mesh(ringGeo, poleMat);
@@ -304,7 +342,7 @@
         tower.add(ring);
       }
 
-      // Plato de antena satelital microondas
+      // Plato parabólico
       const dishGeo = new THREE.SphereGeometry(0.32, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2);
       const dishMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.3, metalness: 0.7 });
       const dish = new THREE.Mesh(dishGeo, dishMat);
@@ -312,7 +350,7 @@
       dish.rotation.z = -Math.PI / 3;
       tower.add(dish);
 
-      // Baliza de luz de fibra con resplandor PBR
+      // Baliza de luz
       const beaconGeo = new THREE.SphereGeometry(n.isCenter ? 0.36 : 0.24, 24, 24);
       const beaconMat = new THREE.MeshPhysicalMaterial({
         color: n.color,
@@ -326,7 +364,7 @@
       beacon.position.y = 2.5;
       tower.add(beacon);
 
-      // Halo de luz volumétrico alrededor de la baliza
+      // Halo
       const haloGeo = new THREE.SphereGeometry(n.isCenter ? 0.6 : 0.4, 16, 16);
       const haloMat = new THREE.MeshBasicMaterial({
         color: n.color,
@@ -338,7 +376,7 @@
       halo.position.y = 2.5;
       tower.add(halo);
 
-      // Base / Cimentación de hormigón en el terreno
+      // Cimentación en el terreno
       const foundationGeo = new THREE.CylinderGeometry(0.6, 0.75, 0.25, 16);
       const foundationMat = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.95 });
       const foundation = new THREE.Mesh(foundationGeo, foundationMat);
@@ -346,55 +384,30 @@
       foundation.receiveShadow = true;
       tower.add(foundation);
 
-      // Ondas concéntricas de radar animadas en el suelo
-      const radarGeo = new THREE.RingGeometry(0.3, 0.5, 32);
-      radarGeo.rotateX(-Math.PI / 2);
-      const radarMat = new THREE.MeshBasicMaterial({ color: n.color, transparent: true, opacity: 0.6, side: THREE.DoubleSide });
-      const radar = new THREE.Mesh(radarGeo, radarMat);
-      radar.position.y = 0.15;
-      tower.add(radar);
-
       mapGroup.add(tower);
       towerMeshes.push(tower);
     });
 
-    // 3. Enlaces Láser de Fibra Volumétricos con Pulsos de Luz Viajando
-    const valeraPos = new THREE.Vector3(0, 2.35 + 2.5, 0);
-    const photonParticles: { mesh: THREE.Mesh; start: THREE.Vector3; end: THREE.Vector3; progress: number; speed: number }[] = [];
+    // 3. Enlaces Láser de Fibra Óptica Volumétricos (Estáticos y Limpios)
+    const valeraPos = new THREE.Vector3(0, 2.5 + 2.5, 0);
 
     for (let i = 1; i < nodesData.length; i++) {
       const targetPos = new THREE.Vector3(nodesData[i].x, nodesData[i].h + 2.5, nodesData[i].z);
       const distance = valeraPos.distanceTo(targetPos);
       
-      // Tubo de fibra volumétrico
       const beamGeo = new THREE.CylinderGeometry(0.045, 0.045, distance, 12);
       const beamMat = new THREE.MeshPhysicalMaterial({
         color: 0xFC0432,
         emissive: 0xFC0432,
         emissiveIntensity: 2.2,
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.85,
         roughness: 0.08
       });
       const beam = new THREE.Mesh(beamGeo, beamMat);
       beam.position.copy(valeraPos).lerp(targetPos, 0.5);
       beam.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), targetPos.clone().sub(valeraPos).normalize());
       mapGroup.add(beam);
-
-      // Paquetes / Pulsos de luz viajando por cada rayo de fibra
-      for (let p = 0; p < 2; p++) {
-        const photonGeo = new THREE.SphereGeometry(0.14, 12, 12);
-        const photonMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-        const photon = new THREE.Mesh(photonGeo, photonMat);
-        mapGroup.add(photon);
-        photonParticles.push({
-          mesh: photon,
-          start: valeraPos.clone(),
-          end: targetPos.clone(),
-          progress: p * 0.5,
-          speed: 0.008 + Math.random() * 0.004
-        });
-      }
     }
 
     // Responsive resize
@@ -440,9 +453,7 @@
       const currentScroll = -rect.top;
       const progress = Math.min(1, Math.max(0, currentScroll / (totalScroll || 1)));
 
-      // 4 Fases de Vuelo Cinemático de Alta Fidelidad
       if (progress < 0.25) {
-        // Capítulo 1: Acercamiento angular a la torre central de Valera
         targetCamX = 2.2;
         targetCamY = 6.2;
         targetCamZ = 8.2;
@@ -452,7 +463,6 @@
         targetMapRotY = progress * 0.45;
         updateDots(0);
       } else if (progress < 0.55) {
-        // Capítulo 2: Vuelo rasante sobre los valles andinos hacia Jajó y La Mesa
         const local = (progress - 0.25) / 0.3;
         targetCamX = -6.5;
         targetCamY = 5.5;
@@ -463,7 +473,6 @@
         targetMapRotY = 0.55 + local * 0.85;
         updateDots(1);
       } else if (progress < 0.82) {
-        // Capítulo 3: Plano macro sobre la torre y el rayo de fibra en destino
         const local = (progress - 0.55) / 0.27;
         targetCamX = 4.0;
         targetCamY = 4.2;
@@ -474,7 +483,6 @@
         targetMapRotY = 1.35 + local * 0.65;
         updateDots(2);
       } else {
-        // Capítulo 4: Vista aérea panorámica cenital con pedestal visible
         targetCamX = 0;
         targetCamY = 16.5;
         targetCamZ = 17.5;
@@ -491,7 +499,6 @@
 
     const currentLookAt = new THREE.Vector3(0, 1, 0);
 
-    // Render loop con animación de pulsos de fotones continuos
     function animate() {
       requestAnimationFrame(animate);
 
@@ -506,29 +513,17 @@
 
       mapGroup.rotation.y += (targetMapRotY - mapGroup.rotation.y) * 0.05;
 
-      // Animación de pulsos de fotones viajando por los cables de fibra
-      photonParticles.forEach((p) => {
-        p.progress += p.speed;
-        if (p.progress > 1) p.progress = 0;
-        p.mesh.position.copy(p.start).lerp(p.end, p.progress);
-      });
-
-      // Animación de pulso y halo de luz en balizas
+      // Pulsación sutil en balizas fijas
       const time = performance.now() * 0.003;
       towerMeshes.forEach((t, i) => {
         const beacon = t.children[3] as THREE.Mesh;
         const halo = t.children[4] as THREE.Mesh;
-        const radar = t.children[6] as THREE.Mesh;
 
         if (beacon) {
-          beacon.scale.setScalar(1 + Math.sin(time * 2 + i) * 0.15);
+          beacon.scale.setScalar(1 + Math.sin(time * 2 + i) * 0.12);
         }
         if (halo) {
-          halo.scale.setScalar(1 + Math.sin(time * 2 + i) * 0.25);
-        }
-        if (radar) {
-          radar.scale.setScalar(1 + ((time * 1.5 + i * 0.5) % 2) * 1.2);
-          (radar.material as THREE.MeshBasicMaterial).opacity = Math.max(0, 0.7 - (((time * 1.5 + i * 0.5) % 2) / 2) * 0.7);
+          halo.scale.setScalar(1 + Math.sin(time * 2 + i) * 0.2);
         }
       });
 
