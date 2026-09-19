@@ -1,49 +1,69 @@
 ---
 ---
 
-<!-- TrustBadges.astro: Fila de confianza e insignias reales estilo Google Fiber -->
-<div class="w-full max-w-5xl mx-auto px-4 sm:px-6 my-8">
+<!-- TrustBadges.astro: Fila de confianza y acreditación institucional de alta gama -->
+<section class="w-full max-w-6xl mx-auto px-4 sm:px-6 my-10 relative z-20">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
     
-    <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center gap-3 text-left">
-      <div class="w-10 h-10 rounded-xl bg-red-50 text-[#FC0432] flex items-center justify-center font-bold text-lg shrink-0">
-        🏛️
+    <!-- 1. CONATEL -->
+    <div class="p-4 rounded-2xl bg-white/90 backdrop-blur-xs border border-slate-200/80 shadow-xs hover:border-[#FC0432]/30 hover:shadow-md transition-all duration-300 flex items-center gap-3.5 text-left group">
+      <div class="w-10 h-10 rounded-xl bg-red-50 text-[#FC0432] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18"/>
+          <path d="M3 10h18"/>
+          <path d="M5 10v11"/>
+          <path d="M19 10v11"/>
+          <path d="M9 10v11"/>
+          <path d="M15 10v11"/>
+          <path d="m12 2 10 5H2z"/>
+        </svg>
       </div>
       <div>
-        <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Habilitación Oficial</span>
+        <span class="text-[10px] font-mono uppercase text-slate-400 font-bold tracking-wider block">Habilitación Oficial</span>
         <span class="text-xs font-black text-slate-900 block font-mono">CONATEL HGTS-00565</span>
       </div>
     </div>
 
-    <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center gap-3 text-left">
-      <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#0A559F] flex items-center justify-center font-bold text-lg shrink-0">
-        📍
+    <!-- 2. Sede y soporte local -->
+    <div class="p-4 rounded-2xl bg-white/90 backdrop-blur-xs border border-slate-200/80 shadow-xs hover:border-[#0A559F]/30 hover:shadow-md transition-all duration-300 flex items-center gap-3.5 text-left group">
+      <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#0A559F] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
       </div>
       <div>
-        <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Sede & Cuadrillas</span>
-        <span class="text-xs font-black text-slate-900 block">Valera, Trujillo</span>
+        <span class="text-[10px] font-mono uppercase text-slate-400 font-bold tracking-wider block">Presencia Local</span>
+        <span class="text-xs font-bold text-slate-900 block">Valera & Trujillo</span>
       </div>
     </div>
 
-    <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center gap-3 text-left">
-      <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg shrink-0">
-        ⚡
+    <!-- 3. Red Troncal FTTH -->
+    <div class="p-4 rounded-2xl bg-white/90 backdrop-blur-xs border border-slate-200/80 shadow-xs hover:border-emerald-500/30 hover:shadow-md transition-all duration-300 flex items-center gap-3.5 text-left group">
+      <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
       </div>
       <div>
-        <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Tecnología Troncal</span>
-        <span class="text-xs font-black text-slate-900 block">Fibra FTTH + Microondas</span>
+        <span class="text-[10px] font-mono uppercase text-slate-400 font-bold tracking-wider block">Red Gigabit</span>
+        <span class="text-xs font-bold text-slate-900 block">Fibra Óptica 100% FTTH</span>
       </div>
     </div>
 
-    <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center gap-3 text-left">
-      <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-lg shrink-0">
-        💳
+    <!-- 4. Autogestión 24/7 -->
+    <div class="p-4 rounded-2xl bg-white/90 backdrop-blur-xs border border-slate-200/80 shadow-xs hover:border-purple-500/30 hover:shadow-md transition-all duration-300 flex items-center gap-3.5 text-left group">
+      <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="14" x="2" y="5" rx="2"/>
+          <line x1="2" x2="22" y1="10" y2="10"/>
+        </svg>
       </div>
       <div>
-        <span class="text-[10px] font-mono uppercase text-slate-400 font-bold block">Autogestión 24/7</span>
-        <span class="text-xs font-black text-slate-900 block">Portal de Pagos Online</span>
+        <span class="text-[10px] font-mono uppercase text-slate-400 font-bold tracking-wider block">Autogestión 24/7</span>
+        <span class="text-xs font-bold text-slate-900 block">Portal Web de Pagos</span>
       </div>
     </div>
 
   </div>
-</div>
+</section>

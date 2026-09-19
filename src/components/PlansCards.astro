@@ -31,11 +31,36 @@ const { services = servicesData } = Astro.props;
         <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="w-12 h-12 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                {item.iconType}
-              </span>
+              <div class="w-12 h-12 rounded-2xl bg-red-50 border border-red-100 text-[#FC0432] flex items-center justify-center group-hover:scale-105 group-hover:bg-[#FC0432] group-hover:text-white transition-all duration-300 shadow-2xs">
+                {item.id === 'banda-ancha' && (
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" x2="22" y1="12" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  </svg>
+                )}
+                {item.id === 'wifi' && (
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 20h.01"/>
+                    <path d="M2 8.82a15 15 0 0 1 20 0"/>
+                    <path d="M5 12.859a10 10 0 0 1 14 0"/>
+                    <path d="M8.5 16.429a5 5 0 0 1 7 0"/>
+                  </svg>
+                )}
+                {item.id === 'enlaces-dedicados' && (
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                )}
+                {item.id === 'comunicaciones' && (
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/>
+                    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
+                  </svg>
+                )}
+              </div>
               {item.badge && (
-                <span class="text-[10px] font-mono font-bold uppercase text-[#0A559F] bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                <span class="text-[10px] font-mono font-bold uppercase text-[#0A559F] bg-blue-50/80 px-3 py-1 rounded-full border border-blue-100">
                   {item.badge}
                 </span>
               )}

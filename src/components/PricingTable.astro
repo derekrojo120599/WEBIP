@@ -26,21 +26,24 @@ const { plans = pricingPlans } = Astro.props;
     </div>
 
     <!-- Mini-bloque tipo Uptime Guarantee (Patrón Google Fiber) -->
-    <div class="max-w-3xl mx-auto mb-12 p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-black text-lg shrink-0">
-          🛡️
+    <div class="max-w-3xl mx-auto mb-12 p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
         </div>
         <div>
           <span class="text-xs font-bold text-slate-900 block">Garantía de Estabilidad y Uptime 99.9%</span>
-          <span class="text-[11px] text-slate-500 font-mono">Monitoreo continuo y cuadrillas técnicas en Valera</span>
+          <span class="text-[11px] text-slate-500 font-mono">Monitoreo proactivo continuo y cuadrillas técnicas locales en Valera</span>
         </div>
       </div>
       <!-- PENDIENTE: dato real de SLA o garantía de reposición si está en contrato -->
       <a 
-        href="https://wa.me/584260337589?text=Hola,%20deseo%20conocer%20la%20garantía%20de%20servicio%20de%20los%20planes" 
-        target="_blank"
-        class="text-xs font-bold text-[#0A559F] hover:text-[#FC0432] shrink-0 font-mono"
+        href="https://wa.me/584260337589?text=Hola,%20deseo%20conocer%20la%20garant%C3%ADa%20de%20servicio%20de%20los%20planes" 
+        target="_blank" 
+        class="text-xs font-bold text-[#0A559F] hover:text-[#FC0432] shrink-0 font-mono transition-colors"
       >
         Conoce más →
       </a>
