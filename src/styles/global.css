@@ -2,10 +2,10 @@
 
 @layer base {
   :root {
-    --color-ip-red: #FC0432;
-    --color-ip-red-dark: #DF0E0E;
+    --color-ip-red: #ff66b2; /* Rosado */
+    --color-ip-red-dark: #ff3399; /* Rosado oscuro */
     --color-ip-blue: #0A559F;
-    --color-ip-blue-bright: #0066cc;
+    --color-ip-blue-bright: #33ccff; /* Azul claro / cyan */
     --color-ip-dark: #0C1020;
     --color-bg-base: #ffffff;
     --color-bg-subtle: #f8fafc;
