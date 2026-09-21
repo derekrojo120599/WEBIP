@@ -148,7 +148,11 @@ def generate_logo(prompt, style=None, industry=None, brand_name=None,
         return None
 
     # Initialize client
-    client = genai.Client(api_key=GEMINI_API_KEY)
+    base_url = os.environ.get("GEMINI_BASE_URL")
+    if base_url:
+        client = genai.Client(api_key=GEMINI_API_KEY, http_options={"base_url": base_url})
+    else:
+        client = genai.Client(api_key=GEMINI_API_KEY)
 
     # Enhance the prompt
     full_prompt = enhance_prompt(prompt, style, industry, brand_name)
