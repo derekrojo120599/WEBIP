@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
-import CoverageChecker from '../components/CoverageChecker.astro';
+import FiberScrollytelling from '../components/FiberScrollytelling.astro';
 import TrustBadges from '../components/TrustBadges.astro';
+import CoverageChecker from '../components/CoverageChecker.astro';
 import QuickPay from '../components/QuickPay.astro';
 import Statement from '../components/Statement.astro';
 import AboutUs from '../components/AboutUs.astro';
@@ -24,6 +25,9 @@ import Footer from '../components/Footer.astro';
   <main class="relative z-10">
     <!-- 2. Hero con headline, CTAs y mockup visual -->
     <Hero />
+
+    <!-- 2.5. Maqueta 3D Topográfica -->
+    <FiberScrollytelling />
 
     <!-- 3. Validador de Cobertura Prioritario justo bajo el Hero -->
     <div class="-mt-10 mb-8 relative z-30">
