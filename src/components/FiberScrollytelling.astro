@@ -1,0 +1,535 @@
+---
+---
+
+<div id="fiber-scrollytelling-wrapper" class="relative w-full">
+  <!-- Canvas 3D Fijo de Fondo: Maqueta Topográfica Esculpida con Textura Táctil de Yeso/Arcilla y Curvas Topográficas de Alta Precisión -->
+  <div class="sticky top-0 h-screen w-full overflow-hidden pointer-events-none z-0">
+    <canvas id="scrolly-canvas-3d" class="absolute inset-0 w-full h-full"></canvas>
+    
+    <!-- Indicador de capítulos lateral estilo Musée -->
+    <div class="absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-5 z-20 pointer-events-auto">
+      <div id="dot-0" class="scrolly-dot w-3.5 h-3.5 rounded-full bg-[#FC0432] ring-4 ring-red-100 shadow-[0_0_12px_rgba(252,4,50,0.6)] transition-all duration-300"></div>
+      <div id="dot-1" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+      <div id="dot-2" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+      <div id="dot-3" class="scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></div>
+    </div>
+  </div>
+
+  <!-- Capas de texto editorial superpuestas en el recorrido del scroll -->
+  <div class="relative z-10 -mt-[100vh]">
+    
+    <!-- Capítulo 1: Nodo Central Valera -->
+    <section class="min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto">
+      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4">
+        <span class="text-xs font-mono font-bold uppercase text-[#FC0432] tracking-widest block">
+          Capítulo 01 • Nodo Central Valera
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          El corazón de la red <span class="text-gradient-ip">en Trujillo</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Desde nuestra torre y central en Valera, distribuimos conectividad de fibra óptica troncal con anillos de respaldo y capacidad de hasta 10 Gbps.
+        </p>
+        <div class="pt-2 flex items-center gap-3 text-xs font-mono font-bold text-slate-500">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FC0432] animate-ping"></span>
+          <span>Torre Principal • Valera Central</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capítulo 2: Conexión a través de las Montañas -->
+    <section class="min-h-screen flex items-center justify-end px-6 lg:px-20 max-w-7xl mx-auto">
+      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4 text-right sm:text-left">
+        <span class="text-xs font-mono font-bold uppercase text-[#0A559F] tracking-widest block">
+          Capítulo 02 • Enlaces Andinos
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          Cruzando valles y cumbres <span class="text-gradient-ip">sin límites</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          Haces de microondas de alta potencia y anillos de fibra conectan Jajó, La Mesa de Esnujaque, Cabimbú, Cuicas y Burbusay, llevando internet estable a productores agrícolas y comercios.
+        </p>
+        <div class="pt-2 flex items-center justify-end sm:justify-start gap-2 text-xs font-mono text-[#0A559F] font-bold">
+          <span>● Enlaces Punto a Punto Inalámbricos & FTTH</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capítulo 3: Llegada al Hogar y Negocio -->
+    <section class="min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto">
+      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4">
+        <span class="text-xs font-mono font-bold uppercase text-emerald-600 tracking-widest block">
+          Capítulo 03 • Mínima Latencia
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          Fibra directa en <span class="text-gradient-ip">tu puerta</span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+          La señal desciende de la red metropolitana directo a tu inmueble. Velocidades simétricas de 10 a 500 MB y latencia inferior a 8ms para gaming, videollamadas y educación.
+        </p>
+        <div class="pt-2 inline-flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 font-bold">
+          <span>Ping local: &lt; 8 ms • 0% Pérdida</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capítulo 4: Visión General y Planes -->
+    <section class="min-h-screen flex items-center justify-center text-center px-6 max-w-4xl mx-auto">
+      <div class="bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-2xl space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold uppercase tracking-wider font-mono">
+          Toda la Región Conectada
+        </div>
+        <h2 class="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+          Elige tu plan y vive <br />
+          <span class="text-gradient-ip">una experiencia superior</span>
+        </h2>
+        <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
+          Consulta cobertura en tu sector y contrata hoy el plan de internet más confiable del estado Trujillo.
+        </p>
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="#planes" 
+            class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-[#FC0432] via-[#ff2b52] to-[#DF0E0E] hover:from-[#ff2b52] hover:to-[#FC0432] shadow-xl shadow-[#FC0432]/30 transition-all uppercase tracking-wider"
+          >
+            Ver Planes y Tarifas
+          </a>
+          <a 
+            href="https://portal.ipsistemas.com.ve" 
+            target="_blank" 
+            class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-bold text-[#0A559F] bg-blue-50 border border-blue-200 hover:bg-[#0A559F] hover:text-white transition-all shadow-xs"
+          >
+            Portal de Pagos
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+  import * as THREE from 'three';
+
+  const canvas = document.getElementById('scrolly-canvas-3d') as HTMLCanvasElement;
+  if (canvas) {
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#f8fafc');
+    scene.fog = new THREE.FogExp2('#f8fafc', 0.018);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 10, 16);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+
+    // Iluminación arquitectónica de estudio
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+    scene.add(ambientLight);
+
+    const keyLight = new THREE.DirectionalLight(0xfff7ed, 2.4);
+    keyLight.position.set(14, 26, 12);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.width = 2048;
+    keyLight.shadow.mapSize.height = 2048;
+    keyLight.shadow.camera.near = 0.5;
+    keyLight.shadow.camera.far = 60;
+    keyLight.shadow.camera.left = -16;
+    keyLight.shadow.camera.right = 16;
+    keyLight.shadow.camera.top = 16;
+    keyLight.shadow.camera.bottom = -16;
+    keyLight.shadow.bias = -0.0004;
+    scene.add(keyLight);
+
+    const rimLight = new THREE.DirectionalLight(0xe0f2fe, 0.7);
+    rimLight.position.set(-14, 12, -12);
+    scene.add(rimLight);
+
+    const redGlow = new THREE.PointLight(0xFC0432, 6, 20);
+    redGlow.position.set(0, 4.5, 0);
+    scene.add(redGlow);
+
+    const blueGlow = new THREE.PointLight(0x0A559F, 5, 20);
+    blueGlow.position.set(-5, 3.5, 4);
+    scene.add(blueGlow);
+
+    // GRUPO PRINCIPAL
+    const mapGroup = new THREE.Group();
+    scene.add(mapGroup);
+
+    // GENERADOR DE TEXTURA HIPERREALISTA DE YESO / ESTRATOS DE SUELO ESCULPIDO
+    function createSculptedTerrainTexture() {
+      const texCanvas = document.createElement('canvas');
+      texCanvas.width = 2048;
+      texCanvas.height = 2048;
+      const ctx = texCanvas.getContext('2d');
+      if (ctx) {
+        // Base con textura de piedra caliza/yeso arquitectónico
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(0, 0, 2048, 2048);
+
+        // Micro-porosidad de arcilla y grano orgánico
+        const imgData = ctx.getImageData(0, 0, 2048, 2048);
+        const data = imgData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          const noise = (Math.random() - 0.5) * 14;
+          data[i] = Math.min(255, Math.max(220, 248 + noise));     // R
+          data[i + 1] = Math.min(255, Math.max(225, 250 + noise)); // G
+          data[i + 2] = Math.min(255, Math.max(230, 252 + noise)); // B
+        }
+        ctx.putImageData(imgData, 0, 0);
+
+        // Estratos geológicos y curvas de nivel grabadas en bajorrelieve
+        ctx.lineWidth = 3;
+        for (let r = 60; r < 1400; r += 60) {
+          // Sombra interior de la hendidura
+          ctx.strokeStyle = 'rgba(148, 163, 184, 0.45)';
+          ctx.beginPath();
+          ctx.arc(1024, 1024, r, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Resalte superior iluminado de la hendidura
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.arc(1024, 1024, r + 1.5, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        // Curvas secundarias finas
+        ctx.strokeStyle = 'rgba(203, 213, 225, 0.35)';
+        ctx.lineWidth = 1;
+        for (let r = 30; r < 1400; r += 30) {
+          ctx.beginPath();
+          ctx.arc(1024, 1024, r, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        // Grilla técnica suave
+        ctx.strokeStyle = 'rgba(203, 213, 225, 0.2)';
+        ctx.lineWidth = 0.8;
+        for (let i = 0; i < 2048; i += 128) {
+          ctx.beginPath();
+          ctx.moveTo(i, 0);
+          ctx.lineTo(i, 2048);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(0, i);
+          ctx.lineTo(2048, i);
+          ctx.stroke();
+        }
+      }
+      const tex = new THREE.CanvasTexture(texCanvas);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      return tex;
+    }
+
+    // MAPA NORMAL PROCEDURAL (Para que la luz interactúe físicamente con cada poro de la montaña)
+    function createNormalMapTexture() {
+      const normCanvas = document.createElement('canvas');
+      normCanvas.width = 1024;
+      normCanvas.height = 1024;
+      const ctx = normCanvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#8080ff'; // Normal flat vector
+        ctx.fillRect(0, 0, 1024, 1024);
+
+        const imgData = ctx.getImageData(0, 0, 1024, 1024);
+        const data = imgData.data;
+        for (let i = 0; i < data.length; i += 4) {
+          data[i] = 128 + Math.floor((Math.random() - 0.5) * 22);     // Normal X
+          data[i + 1] = 128 + Math.floor((Math.random() - 0.5) * 22); // Normal Y
+          data[i + 2] = 255;                                          // Normal Z
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+      const nTex = new THREE.CanvasTexture(normCanvas);
+      nTex.wrapS = THREE.RepeatWrapping;
+      nTex.wrapT = THREE.RepeatWrapping;
+      return nTex;
+    }
+
+    const terrainTexture = createSculptedTerrainTexture();
+    const terrainNormal = createNormalMapTexture();
+
+    // 1. Malla de Terreno Esculpida con Geometría Orgánica
+    const terrainWidth = 24;
+    const terrainDepth = 24;
+    const terrainSegments = 100;
+    const terrainGeo = new THREE.PlaneGeometry(terrainWidth, terrainDepth, terrainSegments, terrainSegments);
+    terrainGeo.rotateX(-Math.PI / 2);
+
+    const pos = terrainGeo.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const z = pos.getZ(i);
+      // Fusión de armónicos fractales para crear valles y mesetas andinas
+      const elevation = 
+        Math.sin(x * 0.28) * Math.cos(z * 0.28) * 2.1 + 
+        Math.sin(x * 0.6 + z * 0.45) * 0.9 + 
+        Math.cos(x * 1.2 - z * 0.8) * 0.35 +
+        Math.sin(x * 2.0) * Math.cos(z * 2.0) * 0.12;
+      pos.setY(i, Math.max(-0.25, elevation));
+    }
+    terrainGeo.computeVertexNormals();
+
+    const terrainMat = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      map: terrainTexture,
+      normalMap: terrainNormal,
+      normalScale: new THREE.Vector2(0.8, 0.8),
+      roughness: 0.72,
+      metalness: 0.08,
+      bumpMap: terrainTexture,
+      bumpScale: 0.08
+    });
+    const terrain = new THREE.Mesh(terrainGeo, terrainMat);
+    terrain.receiveShadow = true;
+    terrain.castShadow = true;
+    mapGroup.add(terrain);
+
+    // Pedestal arquitectónico estilo galería
+    const baseGeo = new THREE.BoxGeometry(terrainWidth + 0.8, 1.4, terrainDepth + 0.8);
+    const baseMat = new THREE.MeshStandardMaterial({
+      color: 0x090d1a,
+      roughness: 0.2,
+      metalness: 0.85
+    });
+    const base = new THREE.Mesh(baseGeo, baseMat);
+    base.position.y = -0.9;
+    base.receiveShadow = true;
+    mapGroup.add(base);
+
+    // 2. Torres de Red Estructurales
+    const nodesData = [
+      { name: "Valera (Central)", x: 0, z: 0, h: 2.5, color: 0xFC0432, isCenter: true },
+      { name: "Jajó", x: -5.5, z: 4.2, h: 1.95, color: 0x0A559F, isCenter: false },
+      { name: "La Mesa de Esnujaque", x: -4.5, z: -5.2, h: 2.05, color: 0x0A559F, isCenter: false },
+      { name: "Cabimbú", x: 4.5, z: 5.2, h: 1.85, color: 0x0A559F, isCenter: false },
+      { name: "Cuicas & Burbusay", x: 6.2, z: -4.2, h: 1.75, color: 0x10B981, isCenter: false }
+    ];
+
+    const towerMeshes: THREE.Group[] = [];
+
+    nodesData.forEach((n) => {
+      const tower = new THREE.Group();
+      tower.position.set(n.x, n.h, n.z);
+
+      // Mástil de celosía
+      const poleGeo = new THREE.CylinderGeometry(0.08, n.isCenter ? 0.35 : 0.22, 2.4, 4);
+      const poleMat = new THREE.MeshStandardMaterial({
+        color: 0x1e293b,
+        metalness: 0.95,
+        roughness: 0.2
+      });
+      const pole = new THREE.Mesh(poleGeo, poleMat);
+      pole.position.y = 1.2;
+      pole.castShadow = true;
+      pole.receiveShadow = true;
+      tower.add(pole);
+
+      // Crucetas
+      for (let c = 0.4; c < 2.2; c += 0.5) {
+        const ringGeo = new THREE.BoxGeometry(n.isCenter ? 0.45 : 0.32, 0.04, n.isCenter ? 0.45 : 0.32);
+        const ring = new THREE.Mesh(ringGeo, poleMat);
+        ring.position.y = c;
+        tower.add(ring);
+      }
+
+      // Plato parabólico
+      const dishGeo = new THREE.SphereGeometry(0.32, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2);
+      const dishMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.3, metalness: 0.7 });
+      const dish = new THREE.Mesh(dishGeo, dishMat);
+      dish.position.set(0.22, 1.6, 0);
+      dish.rotation.z = -Math.PI / 3;
+      tower.add(dish);
+
+      // Baliza de luz
+      const beaconGeo = new THREE.SphereGeometry(n.isCenter ? 0.36 : 0.24, 24, 24);
+      const beaconMat = new THREE.MeshPhysicalMaterial({
+        color: n.color,
+        emissive: n.color,
+        emissiveIntensity: 2.8,
+        roughness: 0.05,
+        metalness: 0.1,
+        clearcoat: 1.0
+      });
+      const beacon = new THREE.Mesh(beaconGeo, beaconMat);
+      beacon.position.y = 2.5;
+      tower.add(beacon);
+
+      // Halo
+      const haloGeo = new THREE.SphereGeometry(n.isCenter ? 0.6 : 0.4, 16, 16);
+      const haloMat = new THREE.MeshBasicMaterial({
+        color: n.color,
+        transparent: true,
+        opacity: 0.25,
+        blending: THREE.AdditiveBlending
+      });
+      const halo = new THREE.Mesh(haloGeo, haloMat);
+      halo.position.y = 2.5;
+      tower.add(halo);
+
+      // Cimentación en el terreno
+      const foundationGeo = new THREE.CylinderGeometry(0.6, 0.75, 0.25, 16);
+      const foundationMat = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.95 });
+      const foundation = new THREE.Mesh(foundationGeo, foundationMat);
+      foundation.position.y = 0.12;
+      foundation.receiveShadow = true;
+      tower.add(foundation);
+
+      mapGroup.add(tower);
+      towerMeshes.push(tower);
+    });
+
+    // 3. Enlaces Láser de Fibra Óptica Volumétricos (Estáticos y Limpios)
+    const valeraPos = new THREE.Vector3(0, 2.5 + 2.5, 0);
+
+    for (let i = 1; i < nodesData.length; i++) {
+      const targetPos = new THREE.Vector3(nodesData[i].x, nodesData[i].h + 2.5, nodesData[i].z);
+      const distance = valeraPos.distanceTo(targetPos);
+      
+      const beamGeo = new THREE.CylinderGeometry(0.045, 0.045, distance, 12);
+      const beamMat = new THREE.MeshPhysicalMaterial({
+        color: 0xFC0432,
+        emissive: 0xFC0432,
+        emissiveIntensity: 2.2,
+        transparent: true,
+        opacity: 0.85,
+        roughness: 0.08
+      });
+      const beam = new THREE.Mesh(beamGeo, beamMat);
+      beam.position.copy(valeraPos).lerp(targetPos, 0.5);
+      beam.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), targetPos.clone().sub(valeraPos).normalize());
+      mapGroup.add(beam);
+    }
+
+    // Responsive resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Scrollytelling Targets
+    let targetCamX = 0;
+    let targetCamY = 10;
+    let targetCamZ = 16;
+    let targetLookX = 0;
+    let targetLookY = 1;
+    let targetLookZ = 0;
+    let targetMapRotY = 0;
+
+    const dots = [
+      document.getElementById('dot-0'),
+      document.getElementById('dot-1'),
+      document.getElementById('dot-2'),
+      document.getElementById('dot-3')
+    ];
+
+    function updateDots(activeIdx: number) {
+      dots.forEach((dot, idx) => {
+        if (!dot) return;
+        if (idx === activeIdx) {
+          dot.className = "scrolly-dot w-3.5 h-3.5 rounded-full bg-[#FC0432] ring-4 ring-red-100 shadow-[0_0_12px_rgba(252,4,50,0.6)] transition-all duration-300";
+        } else {
+          dot.className = "scrolly-dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300";
+        }
+      });
+    }
+
+    const wrapper = document.getElementById('fiber-scrollytelling-wrapper');
+
+    function onScroll() {
+      if (!wrapper) return;
+      const rect = wrapper.getBoundingClientRect();
+      const totalScroll = wrapper.offsetHeight - window.innerHeight;
+      const currentScroll = -rect.top;
+      const progress = Math.min(1, Math.max(0, currentScroll / (totalScroll || 1)));
+
+      if (progress < 0.25) {
+        targetCamX = 2.2;
+        targetCamY = 6.2;
+        targetCamZ = 8.2;
+        targetLookX = 0;
+        targetLookY = 3.0;
+        targetLookZ = 0;
+        targetMapRotY = progress * 0.45;
+        updateDots(0);
+      } else if (progress < 0.55) {
+        const local = (progress - 0.25) / 0.3;
+        targetCamX = -6.5;
+        targetCamY = 5.5;
+        targetCamZ = 7.2;
+        targetLookX = -4.2;
+        targetLookY = 2.4;
+        targetLookZ = -1.2;
+        targetMapRotY = 0.55 + local * 0.85;
+        updateDots(1);
+      } else if (progress < 0.82) {
+        const local = (progress - 0.55) / 0.27;
+        targetCamX = 4.0;
+        targetCamY = 4.2;
+        targetCamZ = 5.8;
+        targetLookX = 4.2;
+        targetLookY = 2.6;
+        targetLookZ = 5.0;
+        targetMapRotY = 1.35 + local * 0.65;
+        updateDots(2);
+      } else {
+        targetCamX = 0;
+        targetCamY = 16.5;
+        targetCamZ = 17.5;
+        targetLookX = 0;
+        targetLookY = 0;
+        targetLookZ = 0;
+        targetMapRotY = Math.PI * 0.9;
+        updateDots(3);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const currentLookAt = new THREE.Vector3(0, 1, 0);
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      camera.position.x += (targetCamX - camera.position.x) * 0.05;
+      camera.position.y += (targetCamY - camera.position.y) * 0.05;
+      camera.position.z += (targetCamZ - camera.position.z) * 0.05;
+
+      currentLookAt.x += (targetLookX - currentLookAt.x) * 0.05;
+      currentLookAt.y += (targetLookY - currentLookAt.y) * 0.05;
+      currentLookAt.z += (targetLookZ - currentLookAt.z) * 0.05;
+      camera.lookAt(currentLookAt);
+
+      mapGroup.rotation.y += (targetMapRotY - mapGroup.rotation.y) * 0.05;
+
+      // Pulsación sutil en balizas fijas
+      const time = performance.now() * 0.003;
+      towerMeshes.forEach((t, i) => {
+        const beacon = t.children[3] as THREE.Mesh;
+        const halo = t.children[4] as THREE.Mesh;
+
+        if (beacon) {
+          beacon.scale.setScalar(1 + Math.sin(time * 2 + i) * 0.12);
+        }
+        if (halo) {
+          halo.scale.setScalar(1 + Math.sin(time * 2 + i) * 0.2);
+        }
+      });
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  }
+</script>
