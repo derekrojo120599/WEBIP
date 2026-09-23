@@ -3,7 +3,7 @@
 
 <div id="fiber-scrollytelling-wrapper" class="relative w-full">
   <!-- Canvas 3D Fijo de Fondo: Maqueta Topográfica Esculpida con Textura Táctil de Yeso/Arcilla y Curvas Topográficas de Alta Precisión -->
-  <div id="scrolly-canvas-container" class="sticky top-0 h-screen w-full overflow-hidden pointer-events-none z-0">
+  <div id="scrolly-canvas-container" class="h-screen w-full overflow-hidden pointer-events-none z-0">
     <canvas id="scrolly-canvas-3d" class="absolute inset-0 w-full h-full"></canvas>
 
     <!-- Overlay de grano analógico (Film Grain) para eliminar color banding en degradados WebGL -->
@@ -511,6 +511,9 @@
         });
       });
     }, wrapper);
+
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+    window.addEventListener('load', () => ScrollTrigger.refresh());
 
     // --- 4. Ticker unificado GSAP -> Lenis + Three.js ---
     const tickerCallback = (time: number) => {
