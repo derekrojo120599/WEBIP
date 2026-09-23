@@ -73,18 +73,16 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <script>
-  import { animate } from 'animejs';
+  import { gsap } from 'gsap';
 
   // Animación suave de entrada al hacer scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animate(entry.target, {
-          opacity: [0, 1],
-          translateY: [25, 0],
-          duration: 650,
-          ease: 'outCubic'
-        });
+        gsap.fromTo(entry.target, 
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.65, ease: 'power2.out' }
+        );
         observer.unobserve(entry.target);
       }
     });
