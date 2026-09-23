@@ -145,7 +145,7 @@
     renderer.toneMappingExposure = 1.1;
 
     // 2. Luces base
-    const ambientLight = new THREE.AmbientLight(0x0f172a, 0.4);
+    const ambientLight = new THREE.AmbientLight(0x8a9a8a, 0.4);
     scene.add(ambientLight);
 
     const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
@@ -161,7 +161,7 @@
     keyLight.shadow.bias = -0.0004;
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0x38bdf8, 1.5);
+    const rimLight = new THREE.DirectionalLight(0x38bdf8, 0.9);
     rimLight.position.set(-3, 2, -4);
     scene.add(rimLight);
 
@@ -169,7 +169,7 @@
     redGlow.position.set(0, 4.5, 0);
     scene.add(redGlow);
 
-    const blueGlow = new THREE.PointLight(0x0A559F, 2.5, 20);
+    const blueGlow = new THREE.PointLight(0x0A559F, 1.4, 20);
     blueGlow.position.set(-5, 3.5, 4);
     scene.add(blueGlow);
 
@@ -196,42 +196,6 @@
           data[i + 2] = Math.min(255, Math.max(230, 252 + noise));
         }
         ctx.putImageData(imgData, 0, 0);
-
-        ctx.lineWidth = 3;
-        for (let r = 60; r < 1400; r += 60) {
-          ctx.strokeStyle = 'rgba(148, 163, 184, 0.45)';
-          ctx.beginPath();
-          ctx.arc(1024, 1024, r, 0, Math.PI * 2);
-          ctx.stroke();
-
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.arc(1024, 1024, r + 1.5, 0, Math.PI * 2);
-          ctx.stroke();
-        }
-
-        ctx.strokeStyle = 'rgba(203, 213, 225, 0.35)';
-        ctx.lineWidth = 1;
-        for (let r = 30; r < 1400; r += 30) {
-          ctx.beginPath();
-          ctx.arc(1024, 1024, r, 0, Math.PI * 2);
-          ctx.stroke();
-        }
-
-        ctx.strokeStyle = 'rgba(203, 213, 225, 0.2)';
-        ctx.lineWidth = 0.8;
-        for (let i = 0; i < 2048; i += 128) {
-          ctx.beginPath();
-          ctx.moveTo(i, 0);
-          ctx.lineTo(i, 2048);
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(0, i);
-          ctx.lineTo(2048, i);
-          ctx.stroke();
-        }
       }
       const tex = new THREE.CanvasTexture(texCanvas);
       tex.wrapS = THREE.RepeatWrapping;
@@ -419,7 +383,7 @@
         const tz = Math.sin(angle) * topRadius;
         
         const path = new THREE.LineCurve3(new THREE.Vector3(bx, 0, bz), new THREE.Vector3(tx, height, tz));
-        const legGeo = new THREE.TubeGeometry(path, 1, 0.03, 4, false);
+        const legGeo = new THREE.TubeGeometry(path, 1, 0.05, 6, false);
         const leg = new THREE.Mesh(legGeo, metalMat);
         leg.castShadow = true;
         leg.receiveShadow = true;
@@ -446,14 +410,14 @@
           const p2 = new THREE.Vector3(Math.cos(angle2) * r1, h1, Math.sin(angle2) * r1);
           
           const bracePath = new THREE.LineCurve3(p1, p2);
-          const braceGeo = new THREE.TubeGeometry(bracePath, 1, 0.015, 3, false);
+          const braceGeo = new THREE.TubeGeometry(bracePath, 1, 0.025, 6, false);
           const brace = new THREE.Mesh(braceGeo, metalMat);
           brace.castShadow = true;
           tower.add(brace);
           
           const p3 = new THREE.Vector3(Math.cos(angle2) * r0, h0, Math.sin(angle2) * r0);
           const ringPath = new THREE.LineCurve3(p1, p3);
-          const ringGeo = new THREE.TubeGeometry(ringPath, 1, 0.02, 3, false);
+          const ringGeo = new THREE.TubeGeometry(ringPath, 1, 0.025, 6, false);
           const ringMesh = new THREE.Mesh(ringGeo, metalMat);
           ringMesh.castShadow = true;
           tower.add(ringMesh);
@@ -472,7 +436,7 @@
       }
 
       // 4. Parabolica (Dish)
-      const dishGeo = new THREE.SphereGeometry(0.28, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2.2);
+      const dishGeo = new THREE.SphereGeometry(n.isCenter ? 0.28 : 0.22, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2.2);
       const dishMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.3, metalness: 0.7 });
       const dish = new THREE.Mesh(dishGeo, dishMat);
       dish.position.set(0.15, height - 0.8, 0);
@@ -480,7 +444,7 @@
       tower.add(dish);
 
       // 5. Beacon (Baliza luminosa)
-      const beaconGeo = new THREE.SphereGeometry(n.isCenter ? 0.3 : 0.2, 16, 16);
+      const beaconGeo = new THREE.SphereGeometry(n.isCenter ? 0.3 : 0.16, 16, 16);
       const beaconMat = new THREE.MeshPhysicalMaterial({
         color: n.color,
         emissive: n.color,
@@ -493,7 +457,7 @@
       beacon.position.y = height + 0.1;
       tower.add(beacon);
 
-      const haloGeo = new THREE.SphereGeometry(n.isCenter ? 0.5 : 0.35, 16, 16);
+      const haloGeo = new THREE.SphereGeometry(n.isCenter ? 0.5 : 0.28, 16, 16);
       const haloMat = new THREE.MeshBasicMaterial({
         color: n.color,
         transparent: true,
@@ -504,13 +468,9 @@
       halo.position.y = height + 0.1;
       tower.add(halo);
 
-      const foundationGeo = new THREE.CylinderGeometry(baseRadius + 0.1, baseRadius + 0.2, 0.2, 12);
-      const foundationMat = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.95 });
-      const foundation = new THREE.Mesh(foundationGeo, foundationMat);
-      foundation.position.y = 0.1;
-      foundation.receiveShadow = true;
-      tower.add(foundation);
-
+      // Eliminar el pedestal/foundation negro que generaba el muro,
+      // o reducirlo al mínimo si hace falta. Como se pidió quitar, no lo agregamos.
+      
       mapGroup.add(tower);
       towerMeshes.push(tower);
     });
@@ -634,16 +594,16 @@
         }
       });
 
-      // Fase 2: Acercamiento macro a texturas
+      // Fase 2: Acercamiento macro a texturas. Tarjeta a la derecha, la torre de Jajó está a la izq.
+      // Offset de x a -1.5 en el target para que Jajó quede centrada a la izq
       scrollyTl
         .to(camera.position, { x: 1.4, y: 0.2, z: 2.2, ease: "power1.inOut" }, "fase-2")
-        .to(cameraTarget, { x: 0.4, y: 0.1, z: 0, ease: "power1.inOut" }, "fase-2")
+        .to(cameraTarget, { x: -1.5, y: 0.1, z: 0, ease: "power1.inOut" }, "fase-2")
 
-      // Fase 3: Giro de perspectiva y foco de luz cenital
+      // Fase 3: Giro de perspectiva. Tarjeta a la izquierda, torre protagonista (Cabimbú / Cuicas) a la der.
+      // Offset de x a 2.0 en el target para encuadrar a la derecha
         .to(camera.position, { x: -2.8, y: 1.8, z: 3.5, ease: "power1.inOut" }, "fase-3")
-        .to(cameraTarget, { x: 0, y: -0.2, z: 0, ease: "power1.inOut" }, "fase-3")
-        .to(keyLight.position, { x: 0, y: 8, z: 2, ease: "power1.inOut" }, "fase-3")
-        .to(keyLight, { intensity: 2.8, ease: "power1.inOut" }, "fase-3")
+        .to(cameraTarget, { x: 2.0, y: -0.2, z: 0, ease: "power1.inOut" }, "fase-3")
 
       // Fase 4: Encuadre final equilibrado para CTA
         .to(camera.position, { x: 0, y: 0, z: 4.8, ease: "power2.out" }, "fase-4")
