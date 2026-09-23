@@ -4,12 +4,17 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title = "IP SISTEMAS C.A. | Internet de Alta Velocidad & Fibra Óptica",
-  description = "Proveedor líder de internet de alta velocidad, fibra óptica simétrica y enlaces dedicados en Trujillo y Valera. Habilitación CONATEL Nº HGTS-00565."
+  description = "Proveedor líder de internet de alta velocidad, fibra óptica simétrica y enlaces dedicados en Trujillo y Valera. Habilitación CONATEL Nº HGTS-00565.",
+  image = "/icons/Logo color.svg"
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const resolvedImage = new URL(image, Astro.site).href;
 ---
 
 <!doctype html>
@@ -21,10 +26,45 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={resolvedImage} />
+    <meta property="og:locale" content="es_VE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedImage} />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+
     <!-- Google Fonts Rubik & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "InternetServiceProvider",
+      "name": "IP Sistemas C.A.",
+      "telephone": ["+58-271-2210316", "+58-426-0337589"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle 13",
+        "addressLocality": "Valera",
+        "addressRegion": "Trujillo",
+        "postalCode": "3101",
+        "addressCountry": "VE"
+      },
+      "openingHours": "Mo-Sa 08:00-17:00",
+      "areaServed": "Estado Trujillo, Venezuela"
+    })} />
   </head>
   <body class="bg-white text-slate-900 min-h-screen flex flex-col selection:bg-[#FC0432]/20 selection:text-[#FC0432]">
     <slot />
