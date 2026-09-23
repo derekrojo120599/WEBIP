@@ -13,7 +13,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,3 +30,51 @@ const {
     <slot />
   </body>
 </html>
+
+<script>
+  import Lenis from 'lenis';
+  import 'lenis/dist/lenis.css';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  let lenis: Lenis;
+
+  function initGlobalLenis() {
+    if (lenis) return;
+
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // Smooth scroll para enlaces ancla
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId !== '#') {
+          e.preventDefault();
+          lenis.scrollTo(targetId);
+        }
+      });
+    });
+  }
+
+  // Soporte para Astro View Transitions (si se usa en el futuro) y carga normal
+  document.addEventListener('astro:page-load', initGlobalLenis);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGlobalLenis);
+  } else {
+    initGlobalLenis();
+  }
+</script>

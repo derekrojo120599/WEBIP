@@ -114,8 +114,6 @@
 </div>
 
 <script>
-  import Lenis from 'lenis';
-  import 'lenis/dist/lenis.css';
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import * as THREE from 'three';
@@ -128,16 +126,6 @@
     const canvasContainer = document.getElementById('scrolly-canvas-container');
 
     if (!canvas || !wrapper || !canvasContainer) return;
-
-    // --- 1. Inicialización de Lenis ---
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      touchMultiplier: 1.5
-    });
-
-    lenis.on('scroll', ScrollTrigger.update);
 
     // --- 2. Escena Three.js ---
     const scene = new THREE.Scene();
@@ -517,9 +505,6 @@
 
     // --- 4. Ticker unificado GSAP -> Lenis + Three.js ---
     const tickerCallback = (time: number) => {
-      // 1. Pulso de Lenis en cada frame del ticker
-      lenis.raf(time * 1000);
-
       // 2. Interpolación suave del foco en cada frame
       camera.lookAt(cameraTarget.x, cameraTarget.y, cameraTarget.z);
 
@@ -543,7 +528,6 @@
     function cleanup() {
       window.removeEventListener('resize', handleResize);
       gsap.ticker.remove(tickerCallback);
-      lenis.destroy();
       ctx.revert();
 
       // Liberar geometrías, materiales y texturas de Three.js
