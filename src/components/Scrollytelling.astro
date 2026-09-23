@@ -1,0 +1,199 @@
+---
+interface Step {
+  id: string;
+  badge: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  id?: string;
+  steps?: Step[];
+}
+
+const {
+  id = "scrolly-section",
+  steps = [
+    {
+      id: "step-1",
+      badge: "Fase 01",
+      title: "Infraestructura Troncal",
+      description: "Despliegue de fibra óptica de ultra baja latencia con redundancia directa en anillos metropolitanos."
+    },
+    {
+      id: "step-2",
+      badge: "Fase 02",
+      title: "Enlaces de Alta Capacidad",
+      description: "Distribución punto a punto sobre nodos estratégicos garantizando ancho de banda simétrico."
+    },
+    {
+      id: "step-3",
+      badge: "Fase 03",
+      title: "Conexión de Última Milla",
+      description: "Llegada directa al cliente final mediante tecnología FTTH y equipos certificados para máximo rendimiento."
+    }
+  ]
+} = Astro.props;
+---
+
+<section id={id} class="scrolly-container relative w-full bg-slate-950 text-white overflow-clip">
+  <div class="scrolly-pin-wrapper min-h-screen grid grid-cols-1 lg:grid-cols-12 items-center gap-8 px-6 lg:px-16 py-20 max-w-7xl mx-auto">
+    
+    <!-- Lado Izquierdo: Escenario Visual Fijo (Pinned Stage) -->
+    <div class="lg:col-span-6 flex flex-col items-center justify-center relative min-h-[360px] lg:min-h-[500px]">
+      <div class="scrolly-visual-stage relative w-full aspect-square max-w-md rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 p-8 flex flex-col items-center justify-center shadow-2xl overflow-hidden">
+        
+        <!-- Glow ambiental reactivo -->
+        <div class="scrolly-glow absolute -inset-2 bg-gradient-to-r from-red-600/30 to-blue-600/30 blur-2xl opacity-50 pointer-events-none"></div>
+
+        <!-- Indicador central de progreso -->
+        <div class="relative z-10 text-center space-y-3">
+          <span class="scrolly-step-indicator font-mono text-xs font-bold uppercase tracking-widest text-red-400">
+            Fase Activa: 01
+          </span>
+          <h3 class="scrolly-visual-title text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Iniciando Recorrido
+          </h3>
+          <div class="w-32 h-1.5 bg-white/10 rounded-full mx-auto overflow-hidden">
+            <div class="scrolly-progress-bar h-full w-0 bg-gradient-to-r from-red-500 to-blue-500 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Anillos animados en el fondo -->
+        <div class="scrolly-orb scrolly-orb-1 absolute w-64 h-64 rounded-full border border-red-500/20 pointer-events-none"></div>
+        <div class="scrolly-orb scrolly-orb-2 absolute w-80 h-80 rounded-full border border-blue-500/20 pointer-events-none"></div>
+      </div>
+    </div>
+
+    <!-- Lado Derecho: Contenido Editorial que Scrollea -->
+    <div class="lg:col-span-6 flex flex-col gap-32 py-24">
+      {steps.map((step, index) => (
+        <article
+          class="scrolly-card p-8 sm:p-10 rounded-3xl border border-white/10 bg-slate-900/80 backdrop-blur-md transition-all duration-300"
+          data-step={index + 1}
+        >
+          <span class="inline-block text-xs font-mono font-bold tracking-widest uppercase text-red-400 mb-3 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20">
+            {step.badge}
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white mb-4">
+            {step.title}
+          </h2>
+          <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+            {step.description}
+          </p>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import Lenis from 'lenis';
+  import 'lenis/dist/lenis.css';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initScrollytelling() {
+    // 1. Inicialización de Lenis (Scroll Suave)
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true
+    });
+
+    // 2. Sincronización bidireccional Lenis <-> GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // 3. Configuración de Scrollytelling con GSAP Pin & Scrub
+    const container = document.querySelector('.scrolly-container');
+    const pinWrapper = document.querySelector('.scrolly-pin-wrapper');
+    const visualStage = document.querySelector('.scrolly-visual-stage');
+    const cards = gsap.utils.toArray<HTMLElement>('.scrolly-card');
+    const progressBar = document.querySelector('.scrolly-progress-bar');
+    const visualTitle = document.querySelector('.scrolly-visual-title');
+    const stepIndicator = document.querySelector('.scrolly-step-indicator');
+    const orb1 = document.querySelector('.scrolly-orb-1');
+    const orb2 = document.querySelector('.scrolly-orb-2');
+
+    if (!container || !pinWrapper || cards.length === 0) return;
+
+    // Pin del lado visual en pantallas de escritorio
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      ScrollTrigger.create({
+        trigger: container,
+        start: "top top",
+        end: "bottom bottom",
+        pin: visualStage,
+        pinSpacing: false
+      });
+    });
+
+    // Timeline global con Scrub sincronizado
+    const mainTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+        onUpdate: (self) => {
+          if (progressBar) {
+            gsap.to(progressBar, { width: `${self.progress * 100}%`, duration: 0.1, overwrite: true });
+          }
+        }
+      }
+    });
+
+    if (orb1 && orb2) {
+      mainTimeline
+        .to(orb1, { scale: 1.4, rotate: 180, duration: 1, ease: 'none' }, 0)
+        .to(orb2, { scale: 0.8, rotate: -180, duration: 1, ease: 'none' }, 0);
+    }
+
+    // Triggers individuales por tarjeta para activar estados editoriales
+    cards.forEach((card, index) => {
+      const stepNumber = card.getAttribute('data-step') || `${index + 1}`;
+      const cardTitle = card.querySelector('h2')?.textContent || `Fase ${stepNumber}`;
+
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => activateStep(card, stepNumber, cardTitle),
+        onEnterBack: () => activateStep(card, stepNumber, cardTitle)
+      });
+    });
+
+    function activateStep(activeCard: HTMLElement, step: string, title: string) {
+      cards.forEach((c) => {
+        if (c === activeCard) {
+          gsap.to(c, { opacity: 1, scale: 1, borderColor: 'rgba(252, 4, 50, 0.5)', duration: 0.3 });
+        } else {
+          gsap.to(c, { opacity: 0.35, scale: 0.96, borderColor: 'rgba(255, 255, 255, 0.1)', duration: 0.3 });
+        }
+      });
+
+      if (stepIndicator) stepIndicator.textContent = `Fase Activa: 0${step}`;
+      if (visualTitle) visualTitle.textContent = title;
+    }
+  }
+
+  // Inicializar al cargar el DOM o en cambios de navegación de Astro
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollytelling);
+  } else {
+    initScrollytelling();
+  }
+
+  document.addEventListener('astro:page-load', initScrollytelling);
+</script>

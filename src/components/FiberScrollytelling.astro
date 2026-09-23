@@ -3,8 +3,14 @@
 
 <div id="fiber-scrollytelling-wrapper" class="relative w-full">
   <!-- Canvas 3D Fijo de Fondo: Maqueta Topográfica Esculpida con Textura Táctil de Yeso/Arcilla y Curvas Topográficas de Alta Precisión -->
-  <div class="sticky top-0 h-screen w-full overflow-hidden pointer-events-none z-0">
+  <div id="scrolly-canvas-container" class="sticky top-0 h-screen w-full overflow-hidden pointer-events-none z-0">
     <canvas id="scrolly-canvas-3d" class="absolute inset-0 w-full h-full"></canvas>
+
+    <!-- Overlay de grano analógico (Film Grain) para eliminar color banding en degradados WebGL -->
+    <div 
+      class="pointer-events-none absolute inset-0 z-10 opacity-[0.035] mix-blend-overlay"
+      style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;);"
+    ></div>
     
     <!-- Indicador de capítulos lateral estilo Musée -->
     <div class="absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-5 z-20 pointer-events-auto">
@@ -19,8 +25,8 @@
   <div class="relative z-10 -mt-[100vh]">
     
     <!-- Capítulo 1: Nodo Central Valera -->
-    <section class="min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto">
-      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4">
+    <section class="scrolly-chapter min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto" data-step="0">
+      <div class="scrolly-card max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4">
         <span class="text-xs font-mono font-bold uppercase text-[#FC0432] tracking-widest block">
           Capítulo 01 • Nodo Central Valera
         </span>
@@ -38,8 +44,8 @@
     </section>
 
     <!-- Capítulo 2: Conexión a través de las Montañas -->
-    <section class="min-h-screen flex items-center justify-end px-6 lg:px-20 max-w-7xl mx-auto">
-      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4 text-right sm:text-left">
+    <section class="scrolly-chapter min-h-screen flex items-center justify-end px-6 lg:px-20 max-w-7xl mx-auto" data-step="1">
+      <div class="scrolly-card max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4 text-right sm:text-left">
         <span class="text-xs font-mono font-bold uppercase text-[#0A559F] tracking-widest block">
           Capítulo 02 • Enlaces Andinos
         </span>
@@ -56,8 +62,8 @@
     </section>
 
     <!-- Capítulo 3: Llegada al Hogar y Negocio -->
-    <section class="min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto">
-      <div class="max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4">
+    <section class="scrolly-chapter min-h-screen flex items-center px-6 lg:px-20 max-w-7xl mx-auto" data-step="2">
+      <div class="scrolly-card max-w-lg bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xl space-y-4">
         <span class="text-xs font-mono font-bold uppercase text-emerald-600 tracking-widest block">
           Capítulo 03 • Mínima Latencia
         </span>
@@ -74,8 +80,8 @@
     </section>
 
     <!-- Capítulo 4: Visión General y Planes -->
-    <section class="min-h-screen flex items-center justify-center text-center px-6 max-w-4xl mx-auto">
-      <div class="bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-2xl space-y-6">
+    <section class="scrolly-chapter min-h-screen flex items-center justify-center text-center px-6 max-w-4xl mx-auto" data-step="3">
+      <div class="scrolly-card bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-2xl space-y-6">
         <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs text-[#FC0432] font-semibold uppercase tracking-wider font-mono">
           Toda la Región Conectada
         </div>
@@ -108,18 +114,41 @@
 </div>
 
 <script>
+  import Lenis from 'lenis';
+  import 'lenis/dist/lenis.css';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import * as THREE from 'three';
 
-  const canvas = document.getElementById('scrolly-canvas-3d') as HTMLCanvasElement;
-  if (canvas) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  function setupFiberScrollytelling() {
+    const canvas = document.getElementById('scrolly-canvas-3d') as HTMLCanvasElement | null;
+    const wrapper = document.getElementById('fiber-scrollytelling-wrapper');
+    const canvasContainer = document.getElementById('scrolly-canvas-container');
+
+    if (!canvas || !wrapper || !canvasContainer) return;
+
+    // --- 1. Inicialización de Lenis ---
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // --- 2. Escena Three.js ---
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#f8fafc');
     scene.fog = new THREE.FogExp2('#f8fafc', 0.018);
 
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 10, 16);
+    // 1. Configuración de cámara inicial: FOV 40 (lente 50mm cinematográfico)
+    const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0.5, 6);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
@@ -127,15 +156,14 @@
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.1;
 
-    // Iluminación arquitectónica de estudio
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+    // 2. Luces base
+    const ambientLight = new THREE.AmbientLight(0x0f172a, 0.4);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xfff7ed, 2.4);
-    keyLight.position.set(14, 26, 12);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+    keyLight.position.set(4, 5, 4);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.width = 2048;
-    keyLight.shadow.mapSize.height = 2048;
+    keyLight.shadow.mapSize.set(2048, 2048);
     keyLight.shadow.camera.near = 0.5;
     keyLight.shadow.camera.far = 60;
     keyLight.shadow.camera.left = -16;
@@ -145,8 +173,8 @@
     keyLight.shadow.bias = -0.0004;
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0xe0f2fe, 0.7);
-    rimLight.position.set(-14, 12, -12);
+    const rimLight = new THREE.DirectionalLight(0x38bdf8, 1.5);
+    rimLight.position.set(-3, 2, -4);
     scene.add(rimLight);
 
     const redGlow = new THREE.PointLight(0xFC0432, 6, 20);
@@ -157,42 +185,37 @@
     blueGlow.position.set(-5, 3.5, 4);
     scene.add(blueGlow);
 
-    // GRUPO PRINCIPAL
+    // Grupo Principal
     const mapGroup = new THREE.Group();
     scene.add(mapGroup);
 
-    // GENERADOR DE TEXTURA HIPERREALISTA DE YESO / ESTRATOS DE SUELO ESCULPIDO
-    function createSculptedTerrainTexture() {
+    // Texturas Procedurales
+    function createSculptedTerrainTexture(): THREE.CanvasTexture {
       const texCanvas = document.createElement('canvas');
       texCanvas.width = 2048;
       texCanvas.height = 2048;
       const ctx = texCanvas.getContext('2d');
       if (ctx) {
-        // Base con textura de piedra caliza/yeso arquitectónico
         ctx.fillStyle = '#f8fafc';
         ctx.fillRect(0, 0, 2048, 2048);
 
-        // Micro-porosidad de arcilla y grano orgánico
         const imgData = ctx.getImageData(0, 0, 2048, 2048);
         const data = imgData.data;
         for (let i = 0; i < data.length; i += 4) {
           const noise = (Math.random() - 0.5) * 14;
-          data[i] = Math.min(255, Math.max(220, 248 + noise));     // R
-          data[i + 1] = Math.min(255, Math.max(225, 250 + noise)); // G
-          data[i + 2] = Math.min(255, Math.max(230, 252 + noise)); // B
+          data[i] = Math.min(255, Math.max(220, 248 + noise));
+          data[i + 1] = Math.min(255, Math.max(225, 250 + noise));
+          data[i + 2] = Math.min(255, Math.max(230, 252 + noise));
         }
         ctx.putImageData(imgData, 0, 0);
 
-        // Estratos geológicos y curvas de nivel grabadas en bajorrelieve
         ctx.lineWidth = 3;
         for (let r = 60; r < 1400; r += 60) {
-          // Sombra interior de la hendidura
           ctx.strokeStyle = 'rgba(148, 163, 184, 0.45)';
           ctx.beginPath();
           ctx.arc(1024, 1024, r, 0, Math.PI * 2);
           ctx.stroke();
 
-          // Resalte superior iluminado de la hendidura
           ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
           ctx.lineWidth = 1.5;
           ctx.beginPath();
@@ -200,7 +223,6 @@
           ctx.stroke();
         }
 
-        // Curvas secundarias finas
         ctx.strokeStyle = 'rgba(203, 213, 225, 0.35)';
         ctx.lineWidth = 1;
         for (let r = 30; r < 1400; r += 30) {
@@ -209,7 +231,6 @@
           ctx.stroke();
         }
 
-        // Grilla técnica suave
         ctx.strokeStyle = 'rgba(203, 213, 225, 0.2)';
         ctx.lineWidth = 0.8;
         for (let i = 0; i < 2048; i += 128) {
@@ -230,22 +251,21 @@
       return tex;
     }
 
-    // MAPA NORMAL PROCEDURAL (Para que la luz interactúe físicamente con cada poro de la montaña)
-    function createNormalMapTexture() {
+    function createNormalMapTexture(): THREE.CanvasTexture {
       const normCanvas = document.createElement('canvas');
       normCanvas.width = 1024;
       normCanvas.height = 1024;
       const ctx = normCanvas.getContext('2d');
       if (ctx) {
-        ctx.fillStyle = '#8080ff'; // Normal flat vector
+        ctx.fillStyle = '#8080ff';
         ctx.fillRect(0, 0, 1024, 1024);
 
         const imgData = ctx.getImageData(0, 0, 1024, 1024);
         const data = imgData.data;
         for (let i = 0; i < data.length; i += 4) {
-          data[i] = 128 + Math.floor((Math.random() - 0.5) * 22);     // Normal X
-          data[i + 1] = 128 + Math.floor((Math.random() - 0.5) * 22); // Normal Y
-          data[i + 2] = 255;                                          // Normal Z
+          data[i] = 128 + Math.floor((Math.random() - 0.5) * 22);
+          data[i + 1] = 128 + Math.floor((Math.random() - 0.5) * 22);
+          data[i + 2] = 255;
         }
         ctx.putImageData(imgData, 0, 0);
       }
@@ -258,7 +278,7 @@
     const terrainTexture = createSculptedTerrainTexture();
     const terrainNormal = createNormalMapTexture();
 
-    // 1. Malla de Terreno Esculpida con Geometría Orgánica
+    // Malla de Terreno
     const terrainWidth = 24;
     const terrainDepth = 24;
     const terrainSegments = 100;
@@ -269,7 +289,6 @@
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i);
       const z = pos.getZ(i);
-      // Fusión de armónicos fractales para crear valles y mesetas andinas
       const elevation = 
         Math.sin(x * 0.28) * Math.cos(z * 0.28) * 2.1 + 
         Math.sin(x * 0.6 + z * 0.45) * 0.9 + 
@@ -294,7 +313,7 @@
     terrain.castShadow = true;
     mapGroup.add(terrain);
 
-    // Pedestal arquitectónico estilo galería
+    // Pedestal
     const baseGeo = new THREE.BoxGeometry(terrainWidth + 0.8, 1.4, terrainDepth + 0.8);
     const baseMat = new THREE.MeshStandardMaterial({
       color: 0x090d1a,
@@ -306,7 +325,7 @@
     base.receiveShadow = true;
     mapGroup.add(base);
 
-    // 2. Torres de Red Estructurales
+    // Torres de Red
     const nodesData = [
       { name: "Valera (Central)", x: 0, z: 0, h: 2.5, color: 0xFC0432, isCenter: true },
       { name: "Jajó", x: -5.5, z: 4.2, h: 1.95, color: 0x0A559F, isCenter: false },
@@ -321,7 +340,6 @@
       const tower = new THREE.Group();
       tower.position.set(n.x, n.h, n.z);
 
-      // Mástil de celosía
       const poleGeo = new THREE.CylinderGeometry(0.08, n.isCenter ? 0.35 : 0.22, 2.4, 4);
       const poleMat = new THREE.MeshStandardMaterial({
         color: 0x1e293b,
@@ -334,7 +352,6 @@
       pole.receiveShadow = true;
       tower.add(pole);
 
-      // Crucetas
       for (let c = 0.4; c < 2.2; c += 0.5) {
         const ringGeo = new THREE.BoxGeometry(n.isCenter ? 0.45 : 0.32, 0.04, n.isCenter ? 0.45 : 0.32);
         const ring = new THREE.Mesh(ringGeo, poleMat);
@@ -342,7 +359,6 @@
         tower.add(ring);
       }
 
-      // Plato parabólico
       const dishGeo = new THREE.SphereGeometry(0.32, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2);
       const dishMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.3, metalness: 0.7 });
       const dish = new THREE.Mesh(dishGeo, dishMat);
@@ -350,7 +366,6 @@
       dish.rotation.z = -Math.PI / 3;
       tower.add(dish);
 
-      // Baliza de luz
       const beaconGeo = new THREE.SphereGeometry(n.isCenter ? 0.36 : 0.24, 24, 24);
       const beaconMat = new THREE.MeshPhysicalMaterial({
         color: n.color,
@@ -364,7 +379,6 @@
       beacon.position.y = 2.5;
       tower.add(beacon);
 
-      // Halo
       const haloGeo = new THREE.SphereGeometry(n.isCenter ? 0.6 : 0.4, 16, 16);
       const haloMat = new THREE.MeshBasicMaterial({
         color: n.color,
@@ -376,7 +390,6 @@
       halo.position.y = 2.5;
       tower.add(halo);
 
-      // Cimentación en el terreno
       const foundationGeo = new THREE.CylinderGeometry(0.6, 0.75, 0.25, 16);
       const foundationMat = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.95 });
       const foundation = new THREE.Mesh(foundationGeo, foundationMat);
@@ -388,7 +401,7 @@
       towerMeshes.push(tower);
     });
 
-    // 3. Enlaces Láser de Fibra Óptica Volumétricos (Estáticos y Limpios)
+    // Enlaces de Fibra Óptica Láser
     const valeraPos = new THREE.Vector3(0, 2.5 + 2.5, 0);
 
     for (let i = 1; i < nodesData.length; i++) {
@@ -410,21 +423,18 @@
       mapGroup.add(beam);
     }
 
-    // Responsive resize
-    window.addEventListener('resize', () => {
+    // Resize Handler
+    const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener('resize', handleResize);
 
-    // Scrollytelling Targets
-    let targetCamX = 0;
-    let targetCamY = 10;
-    let targetCamZ = 16;
-    let targetLookX = 0;
-    let targetLookY = 1;
-    let targetLookZ = 0;
-    let targetMapRotY = 0;
+    // --- 3. Proxy de Foco & GSAP Timeline con ScrollTrigger ---
+    const cameraTarget = { x: 0, y: 0, z: 0 };
 
     const dots = [
       document.getElementById('dot-0'),
@@ -444,92 +454,126 @@
       });
     }
 
-    const wrapper = document.getElementById('fiber-scrollytelling-wrapper');
-
-    function onScroll() {
-      if (!wrapper) return;
-      const rect = wrapper.getBoundingClientRect();
-      const totalScroll = wrapper.offsetHeight - window.innerHeight;
-      const currentScroll = -rect.top;
-      const progress = Math.min(1, Math.max(0, currentScroll / (totalScroll || 1)));
-
-      if (progress < 0.25) {
-        targetCamX = 2.2;
-        targetCamY = 6.2;
-        targetCamZ = 8.2;
-        targetLookX = 0;
-        targetLookY = 3.0;
-        targetLookZ = 0;
-        targetMapRotY = progress * 0.45;
-        updateDots(0);
-      } else if (progress < 0.55) {
-        const local = (progress - 0.25) / 0.3;
-        targetCamX = -6.5;
-        targetCamY = 5.5;
-        targetCamZ = 7.2;
-        targetLookX = -4.2;
-        targetLookY = 2.4;
-        targetLookZ = -1.2;
-        targetMapRotY = 0.55 + local * 0.85;
-        updateDots(1);
-      } else if (progress < 0.82) {
-        const local = (progress - 0.55) / 0.27;
-        targetCamX = 4.0;
-        targetCamY = 4.2;
-        targetCamZ = 5.8;
-        targetLookX = 4.2;
-        targetLookY = 2.6;
-        targetLookZ = 5.0;
-        targetMapRotY = 1.35 + local * 0.65;
-        updateDots(2);
-      } else {
-        targetCamX = 0;
-        targetCamY = 16.5;
-        targetCamZ = 17.5;
-        targetLookX = 0;
-        targetLookY = 0;
-        targetLookZ = 0;
-        targetMapRotY = Math.PI * 0.9;
-        updateDots(3);
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    const currentLookAt = new THREE.Vector3(0, 1, 0);
-
-    function animate() {
-      requestAnimationFrame(animate);
-
-      camera.position.x += (targetCamX - camera.position.x) * 0.05;
-      camera.position.y += (targetCamY - camera.position.y) * 0.05;
-      camera.position.z += (targetCamZ - camera.position.z) * 0.05;
-
-      currentLookAt.x += (targetLookX - currentLookAt.x) * 0.05;
-      currentLookAt.y += (targetLookY - currentLookAt.y) * 0.05;
-      currentLookAt.z += (targetLookZ - currentLookAt.z) * 0.05;
-      camera.lookAt(currentLookAt);
-
-      mapGroup.rotation.y += (targetMapRotY - mapGroup.rotation.y) * 0.05;
-
-      // Pulsación sutil en balizas fijas
-      const time = performance.now() * 0.003;
-      towerMeshes.forEach((t, i) => {
-        const beacon = t.children[3] as THREE.Mesh;
-        const halo = t.children[4] as THREE.Mesh;
-
-        if (beacon) {
-          beacon.scale.setScalar(1 + Math.sin(time * 2 + i) * 0.12);
-        }
-        if (halo) {
-          halo.scale.setScalar(1 + Math.sin(time * 2 + i) * 0.2);
+    // GSAP Context para encapsular todos los triggers y facilitar su reversión limpia
+    const ctx = gsap.context(() => {
+      // Timeline Scrollytelling vinculada al contenedor con scrub 1.2 y pin sobre el canvas
+      const scrollyTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.2,
+          pin: canvasContainer,
+          pinSpacing: false
         }
       });
 
+      // Fase 2: Acercamiento macro a texturas
+      scrollyTl
+        .to(camera.position, { x: 1.4, y: 0.2, z: 2.2, ease: "power1.inOut" }, "fase-2")
+        .to(cameraTarget, { x: 0.4, y: 0.1, z: 0, ease: "power1.inOut" }, "fase-2")
+
+      // Fase 3: Giro de perspectiva y foco de luz cenital
+        .to(camera.position, { x: -2.8, y: 1.8, z: 3.5, ease: "power1.inOut" }, "fase-3")
+        .to(cameraTarget, { x: 0, y: -0.2, z: 0, ease: "power1.inOut" }, "fase-3")
+        .to(keyLight.position, { x: 0, y: 8, z: 2, ease: "power1.inOut" }, "fase-3")
+        .to(keyLight, { intensity: 2.8, ease: "power1.inOut" }, "fase-3")
+
+      // Fase 4: Encuadre final equilibrado para CTA
+        .to(camera.position, { x: 0, y: 0, z: 4.8, ease: "power2.out" }, "fase-4")
+        .to(cameraTarget, { x: 0, y: 0, z: 0, ease: "power2.out" }, "fase-4")
+        .to(keyLight.position, { x: 4, y: 5, z: 4, ease: "power2.out" }, "fase-4")
+        .to(keyLight, { intensity: 2.2, ease: "power2.out" }, "fase-4");
+
+      // Triggers por capítulo para encender puntos y animar tarjetas de texto
+      const chapters = gsap.utils.toArray<HTMLElement>('.scrolly-chapter');
+      chapters.forEach((chapter, index) => {
+        const card = chapter.querySelector('.scrolly-card');
+
+        ScrollTrigger.create({
+          trigger: chapter,
+          start: "top center+=100",
+          end: "bottom center-=100",
+          onEnter: () => {
+            updateDots(index);
+            if (card) gsap.to(card, { opacity: 1, y: 0, duration: 0.4 });
+          },
+          onEnterBack: () => {
+            updateDots(index);
+            if (card) gsap.to(card, { opacity: 1, y: 0, duration: 0.4 });
+          },
+          onLeave: () => {
+            if (card && index < chapters.length - 1) gsap.to(card, { opacity: 0.25, y: -20, duration: 0.3 });
+          },
+          onLeaveBack: () => {
+            if (card && index > 0) gsap.to(card, { opacity: 0.25, y: 20, duration: 0.3 });
+          }
+        });
+      });
+    }, wrapper);
+
+    // --- 4. Ticker unificado GSAP -> Lenis + Three.js ---
+    const tickerCallback = (time: number) => {
+      // 1. Pulso de Lenis en cada frame del ticker
+      lenis.raf(time * 1000);
+
+      // 2. Interpolación suave del foco en cada frame
+      camera.lookAt(cameraTarget.x, cameraTarget.y, cameraTarget.z);
+
+      // 3. Pulsación física de balizas de torres
+      const t = time * 3;
+      towerMeshes.forEach((tower, i) => {
+        const beacon = tower.children[3] as THREE.Mesh | undefined;
+        const halo = tower.children[4] as THREE.Mesh | undefined;
+        if (beacon) beacon.scale.setScalar(1 + Math.sin(t * 2 + i) * 0.12);
+        if (halo) halo.scale.setScalar(1 + Math.sin(t * 2 + i) * 0.2);
+      });
+
+      // 4. Render final sincronizado
       renderer.render(scene, camera);
+    };
+
+    gsap.ticker.add(tickerCallback);
+    gsap.ticker.lagSmoothing(0);
+
+    // --- 5. Limpieza Rigurosa de Recursos (Previene Memory Leaks en View Transitions) ---
+    function cleanup() {
+      window.removeEventListener('resize', handleResize);
+      gsap.ticker.remove(tickerCallback);
+      lenis.destroy();
+      ctx.revert();
+
+      // Liberar geometrías, materiales y texturas de Three.js
+      scene.traverse((object) => {
+        const mesh = object as THREE.Mesh;
+        if (mesh.geometry) {
+          mesh.geometry.dispose();
+        }
+        if (mesh.material) {
+          if (Array.isArray(mesh.material)) {
+            mesh.material.forEach((mat) => mat.dispose());
+          } else {
+            mesh.material.dispose();
+          }
+        }
+      });
+
+      terrainTexture.dispose();
+      terrainNormal.dispose();
+
+      renderer.dispose();
+      renderer.forceContextLoss();
     }
 
-    animate();
+    document.addEventListener('astro:before-swap', cleanup, { once: true });
   }
+
+  // Inicialización controlada
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFiberScrollytelling);
+  } else {
+    setupFiberScrollytelling();
+  }
+
+  document.addEventListener('astro:page-load', setupFiberScrollytelling);
 </script>
