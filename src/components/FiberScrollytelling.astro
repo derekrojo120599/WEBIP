@@ -555,12 +555,28 @@
     document.addEventListener('astro:before-swap', cleanup, { once: true });
   }
 
-  // Inicialización controlada
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupFiberScrollytelling);
-  } else {
-    setupFiberScrollytelling();
+  // Inicialización diferida (Lazy Load)
+  function initLazyScrollytelling() {
+    const wrapper = document.getElementById('fiber-scrollytelling-wrapper');
+    if (!wrapper) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setupFiberScrollytelling();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+
+    observer.observe(wrapper);
   }
 
-  document.addEventListener('astro:page-load', setupFiberScrollytelling);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLazyScrollytelling);
+  } else {
+    initLazyScrollytelling();
+  }
+
+  document.addEventListener('astro:page-load', initLazyScrollytelling);
 </script>
